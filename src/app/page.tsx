@@ -122,13 +122,13 @@ export default function Home() {
               <MdEmail size={28} />
             </a>
           </div>
-          <a
+          {/* <a
             href={personalInfo.resumePdf}
             download
             className="mt-6 inline-block bg-teal-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-teal-600 transition-colors"
           >
             Download Resume
-          </a>
+          </a> */}
         </div>
       </header>
 
