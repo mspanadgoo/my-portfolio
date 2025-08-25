@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Dependencies
+node_modules
+
+# Build output
+.next
+dist
+
+# Local environment variables
+.env.local
+
+# Other
+README.md
