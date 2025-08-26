@@ -79,10 +79,18 @@ const experiences = [
 
 const projects = [
   {
+    title: "Paysib Currency Exchange",
+    description:
+      "Engineered a secure and high-performance currency exchange platform, allowing users to instantly trade major world currencies against the Iranian Rial.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Paysib",
+    link: "https://paysib.com",
+    tags: ["Next.js", "Node.js", "MongoDB", "Redis", "Fintech", "Security"],
+  },
+  {
     title: "Mellat Mobile Bank",
     description:
       "Developed the flagship native iOS application for one of Iran's largest banks, serving over 3 million users with a focus on security and performance.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Bank",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Mobile+Bank",
     link: "https://mobile.bankmellat.ir/mobile/ios.html",
     tags: ["Swift", "Security", "Fintech", "iOS"],
   },
@@ -114,7 +122,7 @@ const projects = [
     title: "Iva Neobank Platform",
     description:
       "Designed the core frontend architecture for a new neobank platform, ensuring a scalable and maintainable system for both mobile and web clients.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Iva+Platform",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Iva",
     link: "https://ivaapp.com",
     tags: ["Architecture", "React Native", "Next.js"],
   },
