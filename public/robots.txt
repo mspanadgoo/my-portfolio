@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mspanadgoo.ir/sitemap.xml
