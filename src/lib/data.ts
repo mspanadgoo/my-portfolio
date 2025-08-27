@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Mohammad Sadegh Panadgoo",
   title: "Senior Software Engineer",
   summary:
-    "A senior software engineer with over a decade of experience building and scaling high-quality applications. I specialize in crafting robust solutions for both mobile (iOS, React Native) and web platforms, with a focus on clean architecture and exceptional user experiences.",
+    "A senior software engineer with a decade of experience designing, building, and scaling high-quality applications. My expertise spans the stack, from native iOS development and high-performance frontend with Next.js, to engineering resilient, event-driven backends with NestJS and message brokers like NATS. I am passionate about solving complex challenges with clean, maintainable architecture.",
   email: "mspanadgoo@me.com",
   linkedin: "https://linkedin.com/in/mspanadgoo",
   github: "https://github.com/mspanadgoo",
@@ -11,34 +11,51 @@ export const personalInfo = {
 
 export const skills = [
   {
-    category: "Mobile Development",
-    items: [
-      "React Native",
-      "Swift",
-      "SwiftUI",
-      "UIKit",
-      "Redux",
-      "React Navigation",
+    category: "Backend Development",
+    subcategories: [
+      {
+        title: "Frameworks & Runtimes",
+        items: ["NestJS", "Fastify", "Express.js", "Node.js"],
+      },
+      {
+        title: "Databases & Caching",
+        items: ["PostgreSQL", "MongoDB", "Redis", "T-SQL"],
+      },
+      {
+        title: "Messaging & Event Streaming",
+        items: ["NATS (JetStream)", "Event-Driven Architecture"],
+      },
     ],
   },
   {
-    category: "Frontend Web",
-    items: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "HTML5",
-      "Tailwind CSS",
+    category: "Frontend Development",
+    subcategories: [
+      { title: "Frameworks & Libraries", items: ["Next.js", "React"] },
+      {
+        title: "Languages & Core Web",
+        items: ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3"],
+      },
+      {
+        title: "Styling & UI",
+        items: ["Tailwind CSS", "SCSS/SASS", "shadcn/ui"],
+      },
     ],
   },
   {
-    category: "Backend & APIs",
-    items: ["Node.js", "Nest.js", "RESTful APIs", "GraphQL"],
+    category: "Native iOS Development",
+    subcategories: [
+      { title: "Languages", items: ["Swift", "Objective-C"] },
+      { title: "Frameworks & UI", items: ["SwiftUI", "UIKit", "XCTest"] },
+      { title: "Architecture", items: ["MVVM", "Clean Architecture"] },
+    ],
   },
   {
-    category: "Tools & DevOps",
-    items: ["Git", "GitHub Actions", "CI/CD for Mobile", "Docker", "Jest"],
+    category: "Architecture & DevOps",
+    subcategories: [
+      { title: "System Design", items: ["Microservices", "SOLID Principles"] },
+      { title: "Tools & Containerization", items: ["Docker", "Git", "Jest"] },
+      { title: "CI/CD", items: ["GitHub Actions", "Mobile CI/CD Pipelines"] },
+    ],
   },
 ];
 
@@ -46,42 +63,50 @@ export const experiences = [
   {
     company: "Sadad PSP Co.",
     link: "https://sadadpsp.ir",
-    title: "Lead Software Engineer",
+    title: "Lead Software Engineer | Backend & Frontend",
     dates: "06/2024 – Present",
     description:
-      "Leading the technical vision for a high-traffic payment application, focusing on creating a fast and flawless mobile user experience.",
+      "Leading the end-to-end technical architecture for a major payment application, overseeing both the Next.js frontend and the NestJS-powered backend services.",
   },
   {
     company: "Sibbank Co.",
     link: "https://sibbank.ir",
-    title: "Senior Software Engineer",
+    title: "Senior Software Engineer | iOS, Backend & Frontend",
     dates: "03/2024 – 06/2024",
     description:
-      "Built the main iOS application for the Sibbank App Store from scratch using Swift, owning everything from architecture to final user experience.",
+      "Architected and built the main native iOS app in Swift, while also engineering its supporting backend services with Nest.js and improving the frontend admin dashboard.",
   },
   {
     company: "Behpardakht Mellat Co.",
     link: "https://behpardakht.com",
-    title: "Senior Software Engineer",
+    title: "Senior Software Engineer | iOS, Backend & Frontend",
     dates: "02/2019 – 03/2024",
     description:
-      "Led the complete technical migration of the legacy Sekkeh iOS payment application to a modern, clean MVVM architecture, improving startup time by 50%.",
+      "Led the complete technical modernization of the legacy Sekkeh iOS app. Migrated the entire codebase to a clean MVVM architecture, which boosted startup time by 50%.",
   },
   {
     company: "Behsazan Mellat Co.",
     link: "https://www.behsazanmellat.ir",
-    title: "Software Engineer",
+    title: "Software Engineer | iOS & Backend (Delphi)",
     dates: "04/2015 – 02/2019",
     description:
-      "Built the Mellat Mobile Bank iOS app from zero using Swift, delivering all core security and transaction features for one of Iran's largest banks.",
+      "Developed the Mellat Mobile Bank native iOS app from zero. Also maintained and extended legacy financial backend systems written in Delphi.",
   },
 ];
 
 export const projects = [
   {
+    title: "Iva Neobank Platform",
+    description:
+      "Designed the core system architecture for a new neobank platform, architecting a resilient, event-driven backend using NestJS and NATS for asynchronous processing of financial transactions.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Iva",
+    link: "https://ivaapp.com",
+    tags: ["Architecture", "Event-Driven", "NATS", "NestJS", "System Design"],
+  },
+  {
     title: "Paysib Currency Exchange",
     description:
-      "Engineered a secure and high-performance currency exchange platform, allowing users to instantly trade major world currencies against the Iranian Rial.",
+      "Engineered a secure, full-stack currency exchange platform, crafting the user-facing trading interface with Next.js and the backend logic with Node.js.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Paysib",
     link: "https://paysib.com",
     tags: ["Next.js", "Node.js", "MongoDB", "Redis", "Fintech", "Security"],
@@ -108,7 +133,7 @@ export const projects = [
       "Architected and built the primary native iOS application from the ground up, leading the project from concept to App Store launch.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sibbank",
     link: "https://sibbank.com",
-    tags: ["Swift", "MVVM", "iOS"],
+    tags: ["Swift", "MVVM", "iOS", "Next.js", "Node.js", "MongoDB", "Redis"],
   },
   {
     title: "Sekkeh Payment App",
@@ -118,12 +143,17 @@ export const projects = [
     link: "https://sekeh.behpardakht.com",
     tags: ["Swift", "Refactoring", "Performance"],
   },
+];
+
+export const education = [
   {
-    title: "Iva Neobank Platform",
-    description:
-      "Designed the core frontend architecture for a new neobank platform, ensuring a scalable and maintainable system for both mobile and web clients.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Iva",
-    link: "https://ivaapp.com",
-    tags: ["Architecture", "React Native", "Next.js"],
+    degree: "Master's Degree, Computer Software Engineering",
+    university: "Azad University",
+    dates: "2013 – 2018",
+  },
+  {
+    degree: "Bachelor's Degree, Computer Software Engineering",
+    university: "Azad University",
+    dates: "2008 – 2012",
   },
 ];

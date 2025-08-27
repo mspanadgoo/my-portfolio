@@ -1,4 +1,10 @@
-import { experiences, personalInfo, projects, skills } from "@/lib/data";
+import {
+  education,
+  experiences,
+  personalInfo,
+  projects,
+  skills,
+} from "@/lib/data";
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
@@ -115,24 +121,36 @@ export default function Home() {
         {/* Skills Section */}
         <section id="skills" className="mb-20">
           <h3 className="text-3xl font-bold text-blue-400 mb-6 border-b-2 border-blue-400/30 pb-2">
-            Skills
+            Technical Skills
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
             {skills.map((skill) => (
               <div key={skill.category}>
-                <h4 className="text-xl font-semibold text-gray-200 mb-3">
+                <h4 className="text-xl font-semibold text-gray-200 mb-4">
                   {skill.category}
                 </h4>
-                <div className="flex flex-wrap gap-2">
-                  {skill.items.map((item) => (
-                    <span
-                      key={item}
-                      className="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+
+                {skill.subcategories && (
+                  <div className="space-y-4">
+                    {skill.subcategories.map((sub) => (
+                      <div key={sub.title}>
+                        <h5 className="text-md font-medium text-blue-400 mb-2">
+                          {sub.title}
+                        </h5>
+                        <div className="flex flex-wrap gap-2">
+                          {sub.items.map((item) => (
+                            <span
+                              key={item}
+                              className="bg-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-full"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -171,6 +189,39 @@ export default function Home() {
                   </a>
                   <p className="text-sm text-gray-500 mb-2">{exp.dates}</p>
                   <p className="text-gray-400">{exp.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section id="education" className="mb-16">
+          <h3 className="text-3xl font-bold text-blue-400 mb-8 border-b-2 border-blue-400/30 pb-2">
+            Education
+          </h3>
+          <div className="space-y-8">
+            {education.map((edu, index) => (
+              <div key={edu.degree} className="flex">
+                <div className="flex flex-col items-center mr-4">
+                  <div>
+                    <div className="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full">
+                      <div className="w-3 h-3 bg-gray-900 rounded-full"></div>
+                    </div>
+                  </div>
+                  {/* Hide the line for the last item in the list */}
+                  {index < education.length - 1 && (
+                    <div className="w-px h-full bg-gray-600"></div>
+                  )}
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-100">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-md font-semibold text-blue-400">
+                    {edu.university}
+                  </p>
+                  <p className="text-sm text-gray-500 mb-2">{edu.dates}</p>
                 </div>
               </div>
             ))}
