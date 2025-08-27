@@ -2,6 +2,8 @@
 # This stage builds the Next.js application
 FROM node:20-alpine AS builder
 
+RUN apk update && apk upgrade
+
 # Set working directory
 WORKDIR /app
 
@@ -21,6 +23,8 @@ RUN npm run build
 # ---- Stage 2: Production ----
 # This stage creates the final, small production image
 FROM node:20-alpine AS runner
+
+RUN apk update && apk upgrade
 
 WORKDIR /app
 
