@@ -27,10 +27,10 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-blue-400">
             {personalInfo.name}
           </h1>
-          <h2 className="mt-2 text-xl text-gray-300">{personalInfo.title}</h2>
-          <p className="mt-4 text-gray-400 dark:text-gray-100">
-            {personalInfo.summary}
-          </p>
+          <h2 className="mt-2 text-xl text-gray-500 dark:text-gray-100">
+            {personalInfo.title}
+          </h2>
+          <p className="mt-4 text-gray-400">{personalInfo.summary}</p>
           <div className="mt-6 flex justify-center space-x-4 md:justify-start">
             <a
               href={personalInfo.linkedin}
@@ -89,7 +89,7 @@ export default function Home() {
                   />
                 </a>
                 <div className="flex flex-grow flex-col p-6">
-                  <h4 className="text-xl font-bold text-gray-400 dark:text-gray-100">
+                  <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
                     {project.title}
                   </h4>
                   <p className="mt-2 line-clamp-3 flex-grow text-sm text-gray-400">
@@ -127,7 +127,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
             {skills.map((skill) => (
               <div key={skill.category}>
-                <h4 className="mb-4 text-xl font-semibold text-gray-200">
+                <h4 className="mb-4 text-xl font-semibold text-gray-500 dark:text-gray-100">
                   {skill.category}
                 </h4>
 
@@ -177,7 +177,7 @@ export default function Home() {
                   )}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-400 dark:text-gray-100">
+                  <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
                     {exp.title}
                   </h4>
                   <a
@@ -216,7 +216,7 @@ export default function Home() {
                   )}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-400 dark:text-gray-100">
+                  <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
                     {edu.degree}
                   </h4>
                   <p className="text-md font-semibold text-blue-400">
