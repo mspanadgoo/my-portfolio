@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Mohammad Sadegh Panadgoo",
   title: "Senior Software Engineer",
   summary:
-    "A senior software engineer with a decade of experience designing, building, and scaling high-quality applications. My expertise spans the stack, from native iOS development and high-performance frontend with Next.js, to engineering resilient, event-driven backends with NestJS and message brokers like NATS. I am passionate about solving complex challenges with clean, maintainable architecture.",
+    "A senior software engineer with over a decade of experience architecting and building scalable, high-performance applications across the full stack. My expertise lies in engineering resilient, event-driven backends with NestJS and NATS, creating dynamic user interfaces with Next.js, and developing polished native iOS applications. I am passionate about solving complex system design challenges with clean, maintainable, and well-tested code.",
   email: "mspanadgoo@me.com",
   linkedin: "https://linkedin.com/in/mspanadgoo",
   github: "https://github.com/mspanadgoo",
@@ -66,31 +66,31 @@ export const experiences = [
     title: "Lead Software Engineer | Backend & Frontend",
     dates: "06/2024 – Present",
     description:
-      "Leading the end-to-end technical architecture for a major payment application, overseeing both the Next.js frontend and the NestJS-powered backend services.",
+      "Leading the end-to-end technical architecture for a major payment application, overseeing both the Next.js frontend and the NestJS-powered, event-driven backend services.",
   },
   {
     company: "Sibbank Co.",
     link: "https://sibbank.ir",
-    title: "Senior Software Engineer | iOS, Backend & Frontend",
+    title: "Senior Software Engineer | Full-Stack & iOS",
     dates: "03/2024 – 06/2024",
     description:
-      "Architected and built the main native iOS app in Swift, while also engineering its supporting backend services with Nest.js and improving the frontend admin dashboard.",
+      "Led full-stack development, architecting the primary native iOS app in Swift while simultaneously engineering its supporting backend services in Nest.js and enhancing the frontend admin dashboard.",
   },
   {
     company: "Behpardakht Mellat Co.",
     link: "https://behpardakht.com",
-    title: "Senior Software Engineer | iOS, Backend & Frontend",
+    title: "Senior Software Engineer",
     dates: "02/2019 – 03/2024",
     description:
-      "Led the complete technical modernization of the legacy Sekkeh iOS app. Migrated the entire codebase to a clean MVVM architecture, which boosted startup time by 50%.",
+      "Led a major application modernization initiative, refactoring the legacy Sekkeh iOS app to a clean MVVM architecture. This project improved startup time by 50% and established new standards for code quality.",
   },
   {
     company: "Behsazan Mellat Co.",
     link: "https://www.behsazanmellat.ir",
-    title: "Software Engineer | iOS & Backend (Delphi)",
+    title: "Software Engineer",
     dates: "04/2015 – 02/2019",
     description:
-      "Developed the Mellat Mobile Bank native iOS app from zero. Also maintained and extended legacy financial backend systems written in Delphi.",
+      "Engineered the flagship Mellat Mobile Bank native iOS application from concept to launch. Also maintained and extended critical legacy financial backend systems written in Delphi, ensuring business continuity.",
   },
 ];
 
@@ -104,6 +104,30 @@ export const projects = [
     tags: ["Architecture", "Event-Driven", "NATS", "NestJS", "System Design"],
   },
   {
+    title: "Sibbank App Store",
+    description:
+      "Architected and led the development of a full-stack application ecosystem, including the primary native iOS app (Swift), its supporting backend (Nest.js), and the web admin portal.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sibbank",
+    link: "https://sibbank.com",
+    tags: [
+      "Swift",
+      "Nest.js",
+      "Next.js",
+      "iOS",
+      "Full-Stack",
+      "MongoDB",
+      "Redis",
+    ],
+  },
+  {
+    title: "Mellat Mobile Bank",
+    description:
+      "Engineered the flagship native mobile banking application for one of Iran's largest banks, architecting a secure and performant solution serving over 3 million users.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Mobile+Bank",
+    link: "https://mobile.bankmellat.ir/mobile/ios.html",
+    tags: ["Swift", "Security", "Fintech", "iOS"],
+  },
+  {
     title: "Paysib Currency Exchange",
     description:
       "Engineered a secure, full-stack currency exchange platform, crafting the user-facing trading interface with Next.js and the backend logic with Node.js.",
@@ -112,36 +136,20 @@ export const projects = [
     tags: ["Next.js", "Node.js", "MongoDB", "Redis", "Fintech", "Security"],
   },
   {
-    title: "Mellat Mobile Bank",
+    title: "Sekkeh Payment App Modernization",
     description:
-      "Developed the flagship native iOS application for one of Iran's largest banks, serving over 3 million users with a focus on security and performance.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Mobile+Bank",
-    link: "https://mobile.bankmellat.ir/mobile/ios.html",
-    tags: ["Swift", "Security", "Fintech", "iOS"],
+      "Led the complete technical modernization of a legacy mobile payment app, improving startup time by 50% and boosting overall code quality and maintainability through a strategic refactor.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sekkeh",
+    link: "https://sekeh.behpardakht.com",
+    tags: ["Swift", "Refactoring", "Performance", "Architecture"],
   },
   {
     title: "Ketabrah E-Reader",
     description:
-      "Contributed to the native iOS application for a leading digital bookstore, enhancing the e-reading experience for thousands of users.",
+      "Contributed to the development of a leading native iOS e-reader application, implementing features to enhance the digital reading experience for thousands of users.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Ketabrah",
     link: "https://www.ketabrah.ir/apps",
-    tags: ["Swift", "UIKit", "iOS"],
-  },
-  {
-    title: "Sibbank App Store",
-    description:
-      "Architected and built the primary native iOS application from the ground up, leading the project from concept to App Store launch.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sibbank",
-    link: "https://sibbank.com",
-    tags: ["Swift", "MVVM", "iOS", "Next.js", "Node.js", "MongoDB", "Redis"],
-  },
-  {
-    title: "Sekkeh Payment App",
-    description:
-      "Led the complete technical modernization of a legacy iOS payment app, improving startup time by 50% and boosting code quality.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sekkeh",
-    link: "https://sekeh.behpardakht.com",
-    tags: ["Swift", "Refactoring", "Performance"],
+    tags: ["Swift", "UIKit", "iOS", "User Experience"],
   },
 ];
 
