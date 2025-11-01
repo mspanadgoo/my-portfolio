@@ -1,3 +1,5 @@
+"use client";
+
 import {
   education,
   experiences,
@@ -6,11 +8,13 @@ import {
   skills,
 } from "@/lib/data";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="mx-auto max-w-5xl p-8 antialiased">
       {/* Hero Section */}
@@ -22,6 +26,7 @@ export default function Home() {
           height={150}
           className="mr-0 mb-4 rounded-full md:mr-8 md:mb-0"
           priority
+          onClick={() => router.push("/jackpot")}
         />
         <div className="text-center md:text-left">
           <h1 className="text-4xl font-bold text-blue-400">
