@@ -27,7 +27,6 @@ export default function Home() {
           height={150}
           className="mr-0 mb-4 rounded-full md:mr-8 md:mb-0"
           priority
-          onClick={() => router.push("/jackpot")}
         />
         <div className="text-center md:text-left">
           <h1 className="text-4xl font-bold text-blue-400">

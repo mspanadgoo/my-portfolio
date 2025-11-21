@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 12,
   },
   title: {
     fontSize: 14,
@@ -95,6 +95,15 @@ const styles = StyleSheet.create({
   skillsList: {
     fontSize: 11,
   },
+  footer: {
+    position: "absolute",
+    bottom: 20,
+    left: 0,
+    right: 0,
+    textAlign: "center",
+    fontSize: 9,
+    color: "#888",
+  },
 });
 
 const ResumeDocument = ({
@@ -103,6 +112,7 @@ const ResumeDocument = ({
   experiences,
   education,
   projects,
+  generationDate,
 }) => (
   <Document>
     <Page style={styles.page}>
@@ -122,13 +132,14 @@ const ResumeDocument = ({
           <Link style={styles.link} src={personalInfo.github}>
             GitHub
           </Link>
-          {/* === ADDED WEBSITE ADDRESS HERE === */}
           <Text>|</Text>
           <Link style={styles.link} src="https://mspanadgoo.ir">
             mspanadgoo.ir
           </Link>
         </View>
       </View>
+
+      {/* ... (All other sections: Summary, Skills, Experience, Projects, Education) remain the same */}
 
       {/* Summary */}
       <View style={styles.section}>
@@ -170,16 +181,12 @@ const ResumeDocument = ({
       {/* Projects */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Featured Projects</Text>
-        {projects.slice(0, 4).map(
-          (
-            proj, // Show top 4 projects for brevity
-          ) => (
-            <View key={proj.title} style={styles.entry}>
-              <Text style={styles.jobTitle}>{proj.title}</Text>
-              <Text style={styles.description}>{proj.description}</Text>
-            </View>
-          ),
-        )}
+        {projects.slice(0, 4).map((proj) => (
+          <View key={proj.title} style={styles.entry}>
+            <Text style={styles.jobTitle}>{proj.title}</Text>
+            <Text style={styles.description}>{proj.description}</Text>
+          </View>
+        ))}
       </View>
 
       {/* Education */}
@@ -195,6 +202,12 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
+
+      {generationDate && (
+        <View style={styles.footer}>
+          <Text>Generated on {generationDate}</Text>
+        </View>
+      )}
     </Page>
   </Document>
 );
