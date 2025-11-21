@@ -2,11 +2,36 @@ export const personalInfo = {
   name: "Mohammad Sadegh Panadgoo",
   title: "Senior Software Engineer",
   summary:
-    "A senior software engineer with over a decade of experience architecting and building scalable, high-performance applications across the full stack. My expertise lies in engineering resilient, event-driven backends with NestJS and NATS, creating dynamic user interfaces with Next.js, and developing polished native iOS applications. I am passionate about solving complex system design challenges with clean, maintainable, and well-tested code.",
+    "I build the systems that move money. As a senior software engineer with over a decade of experience, my passion is engineering the secure and scalable backends at the heart of financial technology. I was a key architect on the Behpardakht Mellat banking wallet, where I got hands-on experience building everything from the core transaction engine to partner integration APIs. I thrive on the challenges of event-driven architecture and creating robust platforms from the ground up.",
   email: "mspanadgoo@me.com",
   linkedin: "https://linkedin.com/in/mspanadgoo",
   github: "https://github.com/mspanadgoo",
   resumePdf: "/Mohammad-Sadegh-Panadgoo-Resume.pdf",
+};
+
+export const spotlight = {
+  title: "Spotlight: Architecting a Banking Wallet",
+  description:
+    "At Behpardakht Mellat, I was part of the core team that designed and built a modern, microservices-based banking wallet from scratch. My primary focus was on the critical backend infrastructure that ensured security, scalability, and reliability.",
+  responsibilities: {
+    title: "Key Responsibilities",
+    items: [
+      "Designed the high-throughput transaction engine.",
+      "Engineered the core wallet and ledger system.",
+      "Built the payment gateway & user management services.",
+      "Developed the partner API for major integrations (Irancell).",
+    ],
+  },
+  technologies: {
+    title: "Core Technologies",
+    items: [
+      "NestJS",
+      "Node.js",
+      "Microservices",
+      "Event-Driven Architecture",
+      "PostgreSQL",
+    ],
+  },
 };
 
 export const skills = [
@@ -66,7 +91,7 @@ export const experiences = [
     title: "Lead Software Engineer | Backend & Frontend",
     dates: "06/2024 – Present",
     description:
-      "Leading the end-to-end technical architecture for a major payment application, overseeing both the Next.js frontend and the NestJS-powered, event-driven backend services.",
+      "As the technical lead, I'm architecting a new major payment application from end to end. My role involves designing the core event-driven backend using NestJS and NATS while simultaneously steering the development of a scalable Next.js frontend.",
   },
   {
     company: "Sibbank Co.",
@@ -74,7 +99,7 @@ export const experiences = [
     title: "Senior Software Engineer | Full-Stack & iOS",
     dates: "03/2024 – 06/2024",
     description:
-      "Led full-stack development, architecting the primary native iOS app in Swift while simultaneously engineering its supporting backend services in Nest.js and enhancing the frontend admin dashboard.",
+      "I owned their flagship product, architecting and building both the native iOS application in Swift and its entire supporting backend in Nest.js. This involved designing all APIs, database schemas, and ensuring secure, seamless communication between the client and server.",
   },
   {
     company: "Behpardakht Mellat Co.",
@@ -82,7 +107,7 @@ export const experiences = [
     title: "Senior Software Engineer",
     dates: "02/2019 – 03/2024",
     description:
-      "Led a major application modernization initiative, refactoring the legacy Sekkeh iOS app to a clean MVVM architecture. This project improved startup time by 50% and established new standards for code quality.",
+      "I was a key engineer in the development of a new, greenfield banking wallet built on a microservices architecture. My work was central to the platform's success, as I designed and built the high-throughput transaction engine that served as the wallet's core. I also architected several critical microservices for User Management, Partner Management, and the Payment Gateway, which were essential for onboarding major partners like IRANCELL and scaling the ecosystem.",
   },
   {
     company: "Behsazan Mellat Co.",
@@ -90,18 +115,34 @@ export const experiences = [
     title: "Software Engineer",
     dates: "04/2015 – 02/2019",
     description:
-      "Engineered the flagship Mellat Mobile Bank native iOS application from concept to launch. Also maintained and extended critical legacy financial backend systems written in Delphi, ensuring business continuity.",
+      "I built the first version of the flagship Mellat Mobile Bank iOS app, translating complex financial requirements into a secure and user-friendly mobile experience. My responsibilities also included maintaining mission-critical legacy backend systems, which gave me a deep understanding of core banking logic and system stability.",
   },
 ];
 
 export const projects = [
   {
+    title: "Mellat Wallet",
+    description:
+      "As a key architect, I designed and built the core microservices for a new banking wallet, including the high-throughput transaction engine, partner APIs, and payment gateway for partners like Irancell.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Wallet",
+    link: "https://behpardakht.com",
+    tags: ["Architecture", "Microservices", "NestJS", "Fintech", "Node.js"],
+  },
+  {
     title: "Iva Neobank Platform",
     description:
-      "Designed the core system architecture for a new neobank platform, architecting a resilient, event-driven backend using NestJS and NATS for asynchronous processing of financial transactions.",
+      "I designed the entire system architecture for a new neobank. My solution was a resilient, event-driven backend using NestJS and NATS to ensure safe, asynchronous processing of financial transactions.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Iva",
     link: "https://ivaapp.com",
     tags: ["Architecture", "Event-Driven", "NATS", "NestJS", "System Design"],
+  },
+  {
+    title: "Mellat Mobile Bank",
+    description:
+      "Engineered the flagship native mobile banking app for one of Iran's largest banks. I architected a secure and performant solution designed to reliably serve over 3 million users.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Mobile+Bank",
+    link: "https://mobile.bankmellat.ir/mobile/ios.html",
+    tags: ["Swift", "Security", "Fintech", "Scale", "iOS"],
   },
   {
     title: "Sibbank App Store",
@@ -109,44 +150,36 @@ export const projects = [
       "Architected and led the development of a full-stack application ecosystem, including the primary native iOS app (Swift), its supporting backend (Nest.js), and the web admin portal.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sibbank",
     link: "https://sibbank.com",
-    tags: [
-      "Swift",
-      "Nest.js",
-      "Next.js",
-      "iOS",
-      "Full-Stack",
-      "MongoDB",
-      "Redis",
-    ],
+    tags: ["Swift", "Nest.js", "Next.js", "Full-Stack", "iOS"],
   },
   {
-    title: "Mellat Mobile Bank",
+    title: "Sekkeh App Modernization",
     description:
-      "Engineered the flagship native mobile banking application for one of Iran's largest banks, architecting a secure and performant solution serving over 3 million users.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Mobile+Bank",
-    link: "https://mobile.bankmellat.ir/mobile/ios.html",
-    tags: ["Swift", "Security", "Fintech", "iOS"],
-  },
-  {
-    title: "Paysib Currency Exchange",
-    description:
-      "Engineered a secure, full-stack currency exchange platform, crafting the user-facing trading interface with Next.js and the backend logic with Node.js.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Paysib",
-    link: "https://paysib.com",
-    tags: ["Next.js", "Node.js", "MongoDB", "Redis", "Fintech", "Security"],
-  },
-  {
-    title: "Sekkeh Payment App Modernization",
-    description:
-      "Led the complete technical modernization of a legacy mobile payment app, improving startup time by 50% and boosting overall code quality and maintainability through a strategic refactor.",
+      "I led the complete technical overhaul of a major payment app. By strategically refactoring the codebase to a modern MVVM architecture, we cut startup time by 50% and boosted system maintainability.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sekkeh",
     link: "https://sekeh.behpardakht.com",
     tags: ["Swift", "Refactoring", "Performance", "Architecture"],
   },
   {
+    title: "Jackpot Game",
+    description:
+      "A simple and fun jackpot game I built for my son. Developed with React and CSS animations to create an engaging and playful user experience. A great exercise in state management and UI.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Jackpot+Game",
+    link: "/jackpot",
+    tags: ["React", "CSS Animations", "Frontend", "Personal Project"],
+  },
+  {
+    title: "Paysib Currency Exchange",
+    description:
+      "Engineered a secure, full-stack currency exchange platform. I built the user-facing trading interface with Next.js and the core backend transaction logic with Node.js.",
+    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Paysib",
+    link: "https://paysib.com",
+    tags: ["Next.js", "Node.js", "MongoDB", "Fintech", "Security"],
+  },
+  {
     title: "Ketabrah E-Reader",
     description:
-      "Contributed to the development of a leading native iOS e-reader application, implementing features to enhance the digital reading experience for thousands of users.",
+      "Contributed to one of Iran's leading iOS e-reader apps. My work focused on implementing new features to enhance the digital reading experience for its large user base.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Ketabrah",
     link: "https://www.ketabrah.ir/apps",
     tags: ["Swift", "UIKit", "iOS", "User Experience"],

@@ -6,18 +6,19 @@ import {
   personalInfo,
   projects,
   skills,
+  spotlight,
 } from "@/lib/data";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
+import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 export default function Home() {
   const router = useRouter();
   return (
     <div className="mx-auto max-w-5xl p-8 antialiased">
-      {/* Hero Section */}
       <header className="mb-16 flex flex-col items-center md:flex-row md:items-start">
         <Image
           src="/profile.png"
@@ -60,15 +61,45 @@ export default function Home() {
               <MdEmail size={28} />
             </a>
           </div>
-          {/* Optional Download button, uncomment if needed */}
-          {/* <a href={personalInfo.resumePdf} download className="mt-6 inline-block bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors">
-            Download Resume
-          </a> */}
+          <ResumeDownloadButton />
         </div>
       </header>
 
+      <section className="mb-16 rounded-lg bg-gray-800 p-8 shadow-lg">
+        <h3 className="mb-4 text-2xl font-bold text-blue-400">
+          {spotlight.title}
+        </h3>
+        <p className="mb-6 text-gray-400">{spotlight.description}</p>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div>
+            <h4 className="mb-2 font-semibold text-gray-100">
+              {spotlight.responsibilities.title}
+            </h4>
+            <ul className="list-inside list-disc space-y-2 text-gray-400">
+              {spotlight.responsibilities.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="mb-2 font-semibold text-gray-100">
+              {spotlight.technologies.title}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {spotlight.technologies.items.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-blue-400"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <main>
-        {/* Projects Section */}
         <section id="projects" className="mb-20">
           <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Featured Projects
@@ -124,7 +155,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Skills Section */}
         <section id="skills" className="mb-20">
           <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Technical Skills
@@ -162,7 +192,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Experience Section */}
         <section id="experience" className="mb-16">
           <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Work Experience
@@ -176,7 +205,6 @@ export default function Home() {
                       <div className="h-3 w-3 rounded-full bg-gray-900"></div>
                     </div>
                   </div>
-                  {/* Hide the line for the last item in the list */}
                   {index < experiences.length - 1 && (
                     <div className="h-full w-px bg-gray-600"></div>
                   )}
@@ -201,7 +229,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Education Section */}
         <section id="education" className="mb-16">
           <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Education
@@ -215,7 +242,6 @@ export default function Home() {
                       <div className="h-3 w-3 rounded-full bg-gray-900"></div>
                     </div>
                   </div>
-                  {/* Hide the line for the last item in the list */}
                   {index < education.length - 1 && (
                     <div className="h-full w-px bg-gray-600"></div>
                   )}
@@ -235,7 +261,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer Section */}
       <footer className="mt-16 text-center text-gray-500">
         <p>
           &copy; {new Date().getFullYear()} {personalInfo.name}. All rights
