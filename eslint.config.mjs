@@ -20,6 +20,12 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    "lint-staged": {
+      "*.{js,jsx,ts,tsx}":
+        "cross-env NODE_OPTIONS=--max-old-space-size=4096 eslint --fix",
+    },
+  },
 ];
 
 export default eslintConfig;

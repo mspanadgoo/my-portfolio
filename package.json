@@ -19,7 +19,7 @@
     "format:check": "prettier --check .",
     "check:types": "tsc --noEmit",
     "check:all": "npm run check:types && npm run lint && npm run format:check",
-    "prepare": "husky"
+    "prepare": "husky && husky install"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.3.1",
@@ -37,7 +37,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "lint-staged": "^15.5.2",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",

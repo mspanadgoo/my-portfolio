@@ -9,14 +9,12 @@ import {
   spotlight,
 } from "@/lib/data";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 export default function Home() {
-  const router = useRouter();
   return (
     <div className="mx-auto max-w-5xl p-8 antialiased">
       <header className="mb-16 flex flex-col items-center md:flex-row md:items-start">
@@ -127,7 +125,7 @@ export default function Home() {
                   <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
                     {project.title}
                   </h4>
-                  <p className="mt-2 line-clamp-3 flex-grow text-sm text-gray-400">
+                  <p className="mt-2 flex-grow text-sm text-gray-400">
                     {project.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">

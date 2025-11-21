@@ -3,16 +3,13 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Confetti from "react-confetti";
 
-// --- Configuration ---
 const SYMBOLS = ["🍒", "🍋", "🍊", "🍉", "🔔", "⭐", "🍀"];
 const REEL_COUNT = 3;
 const SPIN_COST = 10;
 const WIN_PAYOUT = 100;
 const INITIAL_CREDITS = 100;
-const SPIN_DURATION_PER_REEL = 1000; // Each reel spins for 1 second
-const REEL_STOP_DELAY = 500; // Delay between each reel stopping
+const SPIN_DURATION_PER_REEL = 1000;
 
-// --- TypeScript Types ---
 type ResultType = "info" | "win" | "lose" | "gameover";
 
 interface ResultState {
@@ -20,9 +17,7 @@ interface ResultState {
   type: ResultType;
 }
 
-// --- Custom Hook for Audio ---
 const useAudio = (src: string, loop = false) => {
-  // Use a ref to hold the audio element so it persists across re-renders
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -57,17 +52,15 @@ const Jackpot = () => {
   });
 
   const intervalRefs = useRef<(NodeJS.Timeout | null)[]>([]);
-
-  // --- Sound Effects ---
   const spinSound = useAudio("/sounds/spin-loop.mp3", true);
   const stopSound = useAudio("/sounds/reel-stop.mp3");
   const winSound = useAudio("/sounds/win.mp3");
   const loseSound = useAudio("/sounds/lose.mp3");
 
-  // Cleanup intervals on component unmount
   useEffect(() => {
+    const intervals = intervalRefs.current;
     return () => {
-      intervalRefs.current.forEach((ref) => ref && clearInterval(ref));
+      intervals.forEach((ref) => ref && clearInterval(ref));
     };
   }, []);
 
@@ -83,7 +76,6 @@ const Jackpot = () => {
     setResult({ message: "Spinning...", type: "info" });
     spinSound.play();
 
-    // Start all reels spinning visually
     for (let i = 0; i < REEL_COUNT; i++) {
       intervalRefs.current[i] = setInterval(() => {
         setReels((prev) => {
@@ -94,7 +86,6 @@ const Jackpot = () => {
       }, 75);
     }
 
-    // Stagger the stopping of each reel
     const finalReels: string[] = [];
     for (let i = 0; i < REEL_COUNT; i++) {
       await new Promise((resolve) =>
@@ -116,7 +107,6 @@ const Jackpot = () => {
 
     spinSound.stop();
 
-    // Determine the final result
     const isJackpot = finalReels.every((s) => s === finalReels[0]);
     if (isJackpot) {
       winSound.play();
@@ -162,21 +152,20 @@ const Jackpot = () => {
 
       <div className="mb-4 text-center">
         <h1 className="text-4xl font-bold text-yellow-400 [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">
-          {"Karan's Jackpot"}
+          {"Karan's Jackpot"}{" "}
         </h1>
         <p className="mt-2 text-lg text-slate-300">
           Credits: <span className="font-bold text-yellow-400">{credits}</span>
         </p>
       </div>
 
-      {/* The "Machine" frame */}
       <div className="mb-6 rounded-lg bg-slate-800 p-4 shadow-inner">
         <div className="flex gap-4">
           {reels.map((symbol, index) => (
             <div
               key={index}
               className={`flex h-28 w-28 items-center justify-center rounded-lg border-4 border-slate-600 bg-slate-700 text-6xl transition-all duration-300 ${isSpinning ? "blur-sm" : ""} ${result.type === "win" ? "animate-bounce border-green-400" : ""} `}
-              style={{ animationDelay: `${index * 100}ms` }} // Staggered bounce on win
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               {symbol}
             </div>
@@ -185,7 +174,9 @@ const Jackpot = () => {
       </div>
 
       <div
-        className={`mb-6 h-10 text-2xl font-bold transition-colors ${resultClasses[result.type]}`}
+        className={`mb-6 h-10 text-2xl font-bold transition-colors ${
+          resultClasses[result.type]
+        }`}
       >
         {result.message}
       </div>

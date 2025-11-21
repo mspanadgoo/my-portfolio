@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Font,
   Link,
+  Image,
 } from "@react-pdf/renderer";
 
 Font.register({
@@ -31,14 +32,24 @@ const styles = StyleSheet.create({
     lineHeight: 1.5,
     color: "#333",
   },
-  header: {
-    textAlign: "center",
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 20,
+  },
+  profileImage: {
+    width: 75,
+    height: 75,
+    borderRadius: 40,
+    marginRight: 20,
+  },
+  headerText: {
+    textAlign: "left",
   },
   name: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 12,
+    marginBottom: 6,
   },
   title: {
     fontSize: 14,
@@ -47,13 +58,14 @@ const styles = StyleSheet.create({
   contactInfo: {
     fontSize: 10,
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     marginTop: 5,
   },
   link: {
     textDecoration: "none",
     color: "#007BFF",
     marginHorizontal: 5,
+    marginLeft: 0,
   },
   section: {
     marginBottom: 15,
@@ -113,41 +125,45 @@ const ResumeDocument = ({
   education,
   projects,
   generationDate,
+  profilePictureUrl,
 }) => (
   <Document>
     <Page style={styles.page}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.name}>{personalInfo.name}</Text>
-        <Text style={styles.title}>{personalInfo.title}</Text>
-        <View style={styles.contactInfo}>
-          <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
-            {personalInfo.email}
-          </Link>
-          <Text>|</Text>
-          <Link style={styles.link} src={personalInfo.linkedin}>
-            LinkedIn
-          </Link>
-          <Text>|</Text>
-          <Link style={styles.link} src={personalInfo.github}>
-            GitHub
-          </Link>
-          <Text>|</Text>
-          <Link style={styles.link} src="https://mspanadgoo.ir">
-            mspanadgoo.ir
-          </Link>
+      <View style={styles.headerContainer}>
+        {profilePictureUrl && (
+          <Image
+            style={styles.profileImage}
+            src={profilePictureUrl}
+            alt="MSPanadgoo"
+          />
+        )}
+        <View style={styles.headerText}>
+          <Text style={styles.name}>{personalInfo.name}</Text>
+          <Text style={styles.title}>{personalInfo.title}</Text>
+          <View style={styles.contactInfo}>
+            <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
+              {personalInfo.email}
+            </Link>
+            <Text style={{ marginHorizontal: 5 }}>|</Text>
+            <Link style={styles.link} src={personalInfo.linkedin}>
+              LinkedIn
+            </Link>
+            <Text style={{ marginHorizontal: 5 }}>|</Text>
+            <Link style={styles.link} src={personalInfo.github}>
+              GitHub
+            </Link>
+            <Text style={{ marginHorizontal: 5 }}>|</Text>
+            <Link style={styles.link} src="https://mspanadgoo.ir">
+              mspanadgoo.ir
+            </Link>
+          </View>
         </View>
       </View>
 
-      {/* ... (All other sections: Summary, Skills, Experience, Projects, Education) remain the same */}
-
-      {/* Summary */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Summary</Text>
         <Text style={styles.description}>{personalInfo.summary}</Text>
       </View>
-
-      {/* Skills */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Technical Skills</Text>
         {skills.map((skill) => (
@@ -161,8 +177,6 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
-
-      {/* Work Experience */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Work Experience</Text>
         {experiences.map((exp) => (
@@ -177,8 +191,6 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
-
-      {/* Projects */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Featured Projects</Text>
         {projects.slice(0, 4).map((proj) => (
@@ -188,8 +200,6 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
-
-      {/* Education */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Education</Text>
         {education.map((edu) => (
