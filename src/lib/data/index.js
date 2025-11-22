@@ -1,6 +1,7 @@
 import { data as fullstack } from "./fullstack";
 import { data as ios } from "./ios";
 import { data as backend } from "./backend";
+import { data as frontend } from "./frontend";
 
 const profiles = {
   fullstack,
