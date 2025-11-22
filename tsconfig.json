@@ -30,7 +30,8 @@
     "src/lib/data/shared.js",
     "src/lib/data/index.js",
     "src/components/ResumeDownloadButton.js",
-    "src/app/page.js"
+    "src/app/page.tsx",
+    "src/app/r/[role]/page.js"
   ],
   "exclude": ["node_modules"]
 }
