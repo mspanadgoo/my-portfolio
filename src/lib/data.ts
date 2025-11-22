@@ -84,6 +84,24 @@ export const skills = [
   },
 ];
 
+export const languages = [
+  {
+    language: "Persian",
+    proficiency: "Native",
+    detail: "Mother Tongue",
+  },
+  {
+    language: "English",
+    proficiency: "Professional Proficiency",
+    detail: "IELTS General Training: 6.0 (Each Skill)",
+  },
+  {
+    language: "German",
+    proficiency: "Intermediate",
+    detail: "Completed B1 Level",
+  },
+];
+
 export const experiences = [
   {
     company: "Sadad PSP Co.",

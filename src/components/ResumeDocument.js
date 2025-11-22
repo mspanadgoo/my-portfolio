@@ -26,11 +26,26 @@ Font.register({
 
 const styles = StyleSheet.create({
   page: {
-    padding: 30,
+    paddingTop: 35,
+    paddingHorizontal: 45,
+    paddingBottom: 65, // Reserves space for the footer
     fontFamily: "Helvetica",
     fontSize: 11,
     lineHeight: 1.5,
     color: "#333",
+    position: "relative",
+  },
+  // Footer positioned absolutely at the bottom
+  footer: {
+    position: "absolute",
+    bottom: 20,
+    left: 45,
+    right: 45,
+    textAlign: "center",
+    fontSize: 9,
+    color: "#777",
+    borderTop: "1px solid #eee",
+    paddingTop: 10,
   },
   headerContainer: {
     flexDirection: "row",
@@ -45,76 +60,91 @@ const styles = StyleSheet.create({
   },
   headerText: {
     textAlign: "left",
+    flex: 1,
   },
   name: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 6,
+    marginBottom: 5,
+    textTransform: "uppercase",
   },
   title: {
     fontSize: 14,
     color: "#555",
+    marginBottom: 4,
   },
   contactInfo: {
     fontSize: 10,
     flexDirection: "row",
-    justifyContent: "flex-start",
-    marginTop: 5,
+    flexWrap: "wrap",
+    marginTop: 4,
   },
   link: {
     textDecoration: "none",
     color: "#007BFF",
+    marginRight: 5,
+  },
+  separator: {
     marginHorizontal: 5,
-    marginLeft: 0,
+    color: "#ccc",
   },
   section: {
     marginBottom: 15,
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold",
-    marginBottom: 8,
-    borderBottom: "2px solid #ddd",
-    paddingBottom: 2,
+    marginBottom: 10,
+    borderBottom: "1px solid #ccc",
+    paddingBottom: 4,
     textTransform: "uppercase",
+    letterSpacing: 1,
   },
   entry: {
-    marginBottom: 10,
+    marginBottom: 12,
   },
   jobTitle: {
     fontSize: 12,
     fontWeight: "bold",
+    color: "#000",
   },
   company: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   dates: {
-    fontSize: 11,
-    color: "#555",
+    fontSize: 10,
+    color: "#666",
+    fontStyle: "italic",
   },
   description: {
     fontSize: 11,
+    textAlign: "justify",
+    color: "#444",
   },
+  // === REVERTED SKILLS STYLING (Compact) ===
   skillsCategory: {
     marginBottom: 8,
   },
   skillsTitle: {
     fontWeight: "bold",
     fontSize: 11,
+    marginBottom: 2,
   },
   skillsList: {
     fontSize: 11,
+    color: "#333",
+    lineHeight: 1.4,
   },
-  footer: {
-    position: "absolute",
-    bottom: 20,
-    left: 0,
-    right: 0,
-    textAlign: "center",
-    fontSize: 9,
-    color: "#888",
+  // Languages styling
+  langRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
+  },
+  langCol: {
+    width: "30%",
   },
 });
 
@@ -126,16 +156,23 @@ const ResumeDocument = ({
   projects,
   generationDate,
   profilePictureUrl,
+  languages,
 }) => (
   <Document>
     <Page style={styles.page}>
+      {/* Footer (Fixed) */}
+      <Text
+        style={styles.footer}
+        fixed
+        render={({ pageNumber, totalPages }) =>
+          `Generated on ${generationDate || "Today"}  |  Page ${pageNumber} of ${totalPages}`
+        }
+      />
+
+      {/* Header */}
       <View style={styles.headerContainer}>
         {profilePictureUrl && (
-          <Image
-            style={styles.profileImage}
-            src={profilePictureUrl}
-            alt="MSPanadgoo"
-          />
+          <Image style={styles.profileImage} src={profilePictureUrl} />
         )}
         <View style={styles.headerText}>
           <Text style={styles.name}>{personalInfo.name}</Text>
@@ -144,15 +181,15 @@ const ResumeDocument = ({
             <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
               {personalInfo.email}
             </Link>
-            <Text style={{ marginHorizontal: 5 }}>|</Text>
+            <Text style={styles.separator}>|</Text>
             <Link style={styles.link} src={personalInfo.linkedin}>
               LinkedIn
             </Link>
-            <Text style={{ marginHorizontal: 5 }}>|</Text>
+            <Text style={styles.separator}>|</Text>
             <Link style={styles.link} src={personalInfo.github}>
               GitHub
             </Link>
-            <Text style={{ marginHorizontal: 5 }}>|</Text>
+            <Text style={styles.separator}>|</Text>
             <Link style={styles.link} src="https://mspanadgoo.ir">
               mspanadgoo.ir
             </Link>
@@ -160,10 +197,13 @@ const ResumeDocument = ({
         </View>
       </View>
 
+      {/* Summary */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Summary</Text>
         <Text style={styles.description}>{personalInfo.summary}</Text>
       </View>
+
+      {/* Technical Skills (Reverted to Compact Version) */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Technical Skills</Text>
         {skills.map((skill) => (
@@ -177,6 +217,8 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
+
+      {/* Work Experience */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Work Experience</Text>
         {experiences.map((exp) => (
@@ -191,6 +233,8 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
+
+      {/* Projects */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Featured Projects</Text>
         {projects.slice(0, 4).map((proj) => (
@@ -200,6 +244,8 @@ const ResumeDocument = ({
           </View>
         ))}
       </View>
+
+      {/* Education */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Education</Text>
         {education.map((edu) => (
@@ -213,11 +259,23 @@ const ResumeDocument = ({
         ))}
       </View>
 
-      {generationDate && (
-        <View style={styles.footer}>
-          <Text>Generated on {generationDate}</Text>
+      {/* Languages Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Languages</Text>
+        <View style={styles.langRow}>
+          {languages.map((lang) => (
+            <View key={lang.language} style={styles.langCol}>
+              <Text style={{ fontWeight: "bold", fontSize: 11 }}>
+                {lang.language}
+              </Text>
+              <Text style={{ fontSize: 10, color: "#555" }}>
+                {lang.proficiency}
+              </Text>
+              <Text style={{ fontSize: 9, color: "#777" }}>{lang.detail}</Text>
+            </View>
+          ))}
         </View>
-      )}
+      </View>
     </Page>
   </Document>
 );

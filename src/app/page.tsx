@@ -7,6 +7,7 @@ import {
   projects,
   skills,
   spotlight,
+  languages,
 } from "@/lib/data";
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -154,7 +155,7 @@ export default function Home() {
 
         <section id="skills" className="mb-20">
           <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
-            Technical Skills
+            Technical Skills & Languages
           </h3>
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
             {skills.map((skill) => (
@@ -184,6 +185,28 @@ export default function Home() {
                     ))}
                   </div>
                 )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="languages" className="mb-20">
+          <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
+            Languages
+          </h3>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {languages.map((lang) => (
+              <div
+                key={lang.language}
+                className="rounded-lg bg-gray-800 p-6 shadow-lg transition-transform hover:-translate-y-1"
+              >
+                <h4 className="text-xl font-bold text-gray-100">
+                  {lang.language}
+                </h4>
+                <p className="text-md mt-1 font-semibold text-blue-400">
+                  {lang.proficiency}
+                </p>
+                <p className="mt-2 text-sm text-gray-400">{lang.detail}</p>
               </div>
             ))}
           </div>

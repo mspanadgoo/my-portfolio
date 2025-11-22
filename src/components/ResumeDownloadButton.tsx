@@ -9,6 +9,7 @@ import {
   experiences,
   education,
   projects,
+  languages,
 } from "@/lib/data";
 
 const ResumeDownloadButton = () => {
@@ -38,6 +39,7 @@ const ResumeDownloadButton = () => {
               experiences={experiences}
               education={education}
               projects={projects}
+              languages={languages}
               generationDate={generationDate}
               profilePictureUrl={profilePictureUrl}
             />
