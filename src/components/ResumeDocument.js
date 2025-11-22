@@ -28,17 +28,16 @@ const styles = StyleSheet.create({
   page: {
     paddingTop: 35,
     paddingHorizontal: 45,
-    paddingBottom: 65, // Reserves space for the footer
+    paddingBottom: 65,
     fontFamily: "Helvetica",
     fontSize: 11,
     lineHeight: 1.5,
     color: "#333",
     position: "relative",
   },
-  // Footer positioned absolutely at the bottom
   footer: {
     position: "absolute",
-    bottom: 20,
+    bottom: 25,
     left: 45,
     right: 45,
     textAlign: "center",
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 12,
     textTransform: "uppercase",
   },
   title: {
@@ -95,6 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     marginBottom: 10,
+    marginTop: 5,
     borderBottom: "1px solid #ccc",
     paddingBottom: 4,
     textTransform: "uppercase",
@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     color: "#444",
   },
-  // === REVERTED SKILLS STYLING (Compact) ===
   skillsCategory: {
     marginBottom: 8,
   },
@@ -137,7 +136,6 @@ const styles = StyleSheet.create({
     color: "#333",
     lineHeight: 1.4,
   },
-  // Languages styling
   langRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -160,14 +158,10 @@ const ResumeDocument = ({
 }) => (
   <Document>
     <Page style={styles.page}>
-      {/* Footer (Fixed) */}
-      <Text
-        style={styles.footer}
-        fixed
-        render={({ pageNumber, totalPages }) =>
-          `Generated on ${generationDate || "Today"}  |  Page ${pageNumber} of ${totalPages}`
-        }
-      />
+      {/* Footer */}
+      <Text style={styles.footer} fixed>
+        Generated on {generationDate || "Today"}
+      </Text>
 
       {/* Header */}
       <View style={styles.headerContainer}>
@@ -203,11 +197,11 @@ const ResumeDocument = ({
         <Text style={styles.description}>{personalInfo.summary}</Text>
       </View>
 
-      {/* Technical Skills (Reverted to Compact Version) */}
+      {/* Technical Skills */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Technical Skills</Text>
         {skills.map((skill) => (
-          <View key={skill.category} style={styles.skillsCategory}>
+          <View key={skill.category} style={styles.skillsCategory} wrap={false}>
             <Text style={styles.skillsTitle}>{skill.category}:</Text>
             <Text style={styles.skillsList}>
               {skill.subcategories
@@ -218,49 +212,43 @@ const ResumeDocument = ({
         ))}
       </View>
 
-      {/* Work Experience */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Work Experience</Text>
-        {experiences.map((exp) => (
-          <View key={exp.company} style={styles.entry}>
-            <View style={styles.company}>
-              <Text style={styles.jobTitle}>
-                {exp.title} | {exp.company}
-              </Text>
-              <Text style={styles.dates}>{exp.dates}</Text>
-            </View>
-            <Text style={styles.description}>{exp.description}</Text>
+      {/* 1. The Title */}
+      <Text style={styles.sectionTitle}>Work Experience</Text>
+      {experiences.map((exp) => (
+        <View key={exp.company} style={styles.entry} wrap={true}>
+          <View style={styles.company}>
+            <Text style={styles.jobTitle}>
+              {exp.title} | {exp.company}
+            </Text>
+            <Text style={styles.dates}>{exp.dates}</Text>
           </View>
-        ))}
-      </View>
+          <Text style={styles.description}>{exp.description}</Text>
+        </View>
+      ))}
 
-      {/* Projects */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Featured Projects</Text>
-        {projects.slice(0, 4).map((proj) => (
-          <View key={proj.title} style={styles.entry}>
-            <Text style={styles.jobTitle}>{proj.title}</Text>
-            <Text style={styles.description}>{proj.description}</Text>
+      {/* Projects - UNWRAPPED */}
+      <Text style={styles.sectionTitle}>Featured Projects</Text>
+      {projects.slice(0, 4).map((proj) => (
+        <View key={proj.title} style={styles.entry} wrap={true}>
+          <Text style={styles.jobTitle}>{proj.title}</Text>
+          <Text style={styles.description}>{proj.description}</Text>
+        </View>
+      ))}
+
+      {/* Education - UNWRAPPED */}
+      <Text style={styles.sectionTitle}>Education</Text>
+      {education.map((edu) => (
+        <View key={edu.degree} style={styles.entry} wrap={false}>
+          <View style={styles.company}>
+            <Text style={styles.jobTitle}>{edu.degree}</Text>
+            <Text style={styles.dates}>{edu.dates}</Text>
           </View>
-        ))}
-      </View>
+          <Text>{edu.university}</Text>
+        </View>
+      ))}
 
-      {/* Education */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Education</Text>
-        {education.map((edu) => (
-          <View key={edu.degree} style={styles.entry}>
-            <View style={styles.company}>
-              <Text style={styles.jobTitle}>{edu.degree}</Text>
-              <Text style={styles.dates}>{edu.dates}</Text>
-            </View>
-            <Text>{edu.university}</Text>
-          </View>
-        ))}
-      </View>
-
-      {/* Languages Section */}
-      <View style={styles.section}>
+      {/* Languages Section - Kept wrapped as it's small */}
+      <View style={styles.section} wrap={false}>
         <Text style={styles.sectionTitle}>Languages</Text>
         <View style={styles.langRow}>
           {languages.map((lang) => (

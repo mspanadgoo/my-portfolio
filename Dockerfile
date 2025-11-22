@@ -14,7 +14,6 @@ RUN corepack enable pnpm
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-# --frozen-lockfile ensures it crashes if the lockfile doesn't match package.json (good for CI/Docker)
 RUN pnpm install --frozen-lockfile
 
 # Copy the rest of the application source code
@@ -32,6 +31,11 @@ RUN apk update && apk upgrade
 WORKDIR /app
 
 ENV NODE_ENV=production
+
+# === CHANGE DEFAULT RESUME HERE ===
+# You can change 'fullstack', 'ios', 'backend', 'frontend'
+# ENV NEXT_PUBLIC_DEFAULT_ROLE=fullstack
+
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # Create a non-root user for security
@@ -40,9 +44,6 @@ RUN adduser --system --uid 1001 nextjs
 
 # Copy the standalone output from the builder stage
 COPY --from=builder /app/public ./public
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static
 

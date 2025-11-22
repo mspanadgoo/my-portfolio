@@ -1,31 +1,42 @@
 "use client";
 
-import {
-  education,
-  experiences,
-  personalInfo,
-  projects,
-  skills,
-  spotlight,
-  languages,
-} from "@/lib/data";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
-import ResumeDownloadButton from "@/components/ResumeDownloadButton";
+import dynamic from "next/dynamic";
 
-export default function Home() {
+const ResumeDownloadButton = dynamic(
+  () => import("@/components/ResumeDownloadButton"),
+  { ssr: false },
+);
+
+export default function ResumeView({ data }) {
+  const router = useRouter();
+
+  const {
+    personalInfo,
+    skills,
+    experiences,
+    projects,
+    education,
+    languages,
+    spotlight,
+  } = data;
+
   return (
     <div className="mx-auto max-w-5xl p-8 antialiased">
+      {/* Hero Section */}
       <header className="mb-16 flex flex-col items-center md:flex-row md:items-start">
         <Image
           src="/profile.png"
-          alt="Mohammad Sadegh Panadgoo"
+          alt={personalInfo.name}
           width={150}
           height={150}
-          className="mr-0 mb-4 rounded-full md:mr-8 md:mb-0"
+          className="mr-0 mb-4 cursor-pointer rounded-full md:mr-8 md:mb-0"
           priority
+          onClick={() => router.push("/jackpot")}
         />
         <div className="text-center md:text-left">
           <h1 className="text-4xl font-bold text-blue-400">
@@ -59,45 +70,51 @@ export default function Home() {
               <MdEmail size={28} />
             </a>
           </div>
-          <ResumeDownloadButton />
+
+          {/* PASS THE DATA PROP TO THE BUTTON */}
+          <ResumeDownloadButton data={data} />
         </div>
       </header>
 
-      <section className="mb-16 rounded-lg bg-gray-800 p-8 shadow-lg">
-        <h3 className="mb-4 text-2xl font-bold text-blue-400">
-          {spotlight.title}
-        </h3>
-        <p className="mb-6 text-gray-400">{spotlight.description}</p>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div>
-            <h4 className="mb-2 font-semibold text-gray-100">
-              {spotlight.responsibilities.title}
-            </h4>
-            <ul className="list-inside list-disc space-y-2 text-gray-400">
-              {spotlight.responsibilities.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-2 font-semibold text-gray-100">
-              {spotlight.technologies.title}
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {spotlight.technologies.items.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-blue-400"
-                >
-                  {item}
-                </span>
-              ))}
+      {/* Spotlight Section - Only render if data exists in this profile */}
+      {spotlight && (
+        <section className="mb-16 rounded-lg bg-gray-800 p-8 shadow-lg">
+          <h3 className="mb-4 text-2xl font-bold text-blue-400">
+            {spotlight.title}
+          </h3>
+          <p className="mb-6 text-gray-400">{spotlight.description}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <h4 className="mb-2 font-semibold text-gray-100">
+                {spotlight.responsibilities.title}
+              </h4>
+              <ul className="list-inside list-disc space-y-2 text-gray-400">
+                {spotlight.responsibilities.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-2 font-semibold text-gray-100">
+                {spotlight.technologies.title}
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {spotlight.technologies.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-blue-400"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <main>
+        {/* Projects Section */}
         <section id="projects" className="mb-20">
           <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Featured Projects
@@ -153,9 +170,10 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Skills Section */}
         <section id="skills" className="mb-20">
           <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
-            Technical Skills & Languages
+            Technical Skills
           </h3>
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
             {skills.map((skill) => (
@@ -190,6 +208,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Languages Section */}
         <section id="languages" className="mb-20">
           <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Languages
@@ -212,6 +231,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Experience Section */}
         <section id="experience" className="mb-16">
           <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Work Experience
@@ -249,6 +269,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Education Section */}
         <section id="education" className="mb-16">
           <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
             Education

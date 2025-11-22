@@ -1,6 +1,8 @@
-# Mohammad Sadegh Panadgoo - Personal Portfolio
+# Mohammad Sadegh Panadgoo - Personal Portfolio & Dynamic Resume System
 
-This repository contains the source code for my personal portfolio website, built with Next.js, TypeScript, and Tailwind CSS. The site showcases my skills, work experience, and featured projects in a clean, modern, and fully responsive design.
+This repository contains the source code for my personal portfolio website. More than just a static site, this is a **Dynamic Resume System** built with Next.js, TypeScript, and Tailwind CSS.
+
+It features a unique architecture that allows me to present different professional personas (Full Stack, iOS, Backend, Frontend) from a single codebase, complete with on-the-fly PDF resume generation.
 
 <br />
 
@@ -12,13 +14,17 @@ This repository contains the source code for my personal portfolio website, buil
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- **Modern Tech Stack**: Built with the latest Next.js App Router for optimal performance and SEO.
-- **Fully Responsive**: A clean and accessible UI that looks great on all devices, from mobile phones to desktops.
-- **Dynamic Content**: Project and experience data is separated from the UI for easy updates.
-- **SEO Optimized**: Includes metadata, sitemap, and structured data for better search engine visibility.
-- **Dockerized**: Comes with a multi-stage `Dockerfile` for easy and efficient deployment.
+- **🎭 Multi-Profile Architecture**: The site dynamically renders different content, skills, and summaries based on the URL or configuration.
+  - **Full Stack** (Default)
+  - **iOS Engineer**: Focuses on Swift, UIKit, and mobile architecture.
+  - **Backend Engineer**: Highlights NestJS, Microservices, and System Design.
+  - **Frontend Engineer**: Showcases Next.js, React, and UI/UX skills.
+- **📄 Dynamic PDF Generation**: Generates ATS-friendly, distinct PDF resumes for each profile on the fly using `@react-pdf/renderer`.
+- **🔒 Secret Routes**: Access specific profiles via unique URLs (e.g., `/r/ios`, `/r/backend`) without changing the main homepage.
+- **⚡ High Performance**: Powered by **pnpm** and Next.js App Router.
+- **🐳 Dockerized**: Production-ready multi-stage Docker build.
 
 ---
 
@@ -28,46 +34,97 @@ This repository contains the source code for my personal portfolio website, buil
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white)
+![React PDF](https://img.shields.io/badge/React_PDF-D00000?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ---
 
-## 🚀 Running the Project Locally
+## 🚀 Running Locally
 
-To get a local copy up and running, follow these simple steps.
+This project uses **pnpm** for package management.
 
 ### Prerequisites
 
 - Node.js (v18 or later)
-- npm, yarn, or pnpm
+- pnpm (`npm install -g pnpm`)
 
-### Installation & Setup
+### Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/mspanadgoo/my-portfolio.git
-    ```
-2.  **Navigate to the project directory:**
-    ```bash
-    cd my-portfolio
-    ```
-3.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/mspanadgoo/my-portfolio.git
+   ```
+
+2. **Navigate to the directory:**
+
+   ```bash
+   cd my-portfolio
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   pnpm install
+   ```
+
+4. **Run the development server:**
+
+   ```bash
+   pnpm dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ---
 
-## 🌐 Deployment
+## ⚙️ Configuration & Profiles
 
-This application is deployed on Hamravesh and is also configured for easy deployment on [Vercel](https://vercel.com), the creators of Next.js. The `Dockerfile` in the root directory is optimized for containerized deployments.
+### Changing the Main Page Profile
+
+You can change which resume is shown on the home page (`/`) by setting an Environment Variable.
+
+**Available Roles:** `fullstack` (default), `ios`, `backend`, `frontend`.
+
+In your `.env.local` or deployment settings:
+
+```bash
+NEXT_PUBLIC_DEFAULT_ROLE=ios
+```
+
+### Accessing "Secret" Routes
+
+Even if the main page is set to Full Stack, you can access (and share) specific versions of the resume using these routes:
+
+- `localhost:3000/r/ios`
+- `localhost:3000/r/backend`
+- `localhost:3000/r/frontend`
+
+---
+
+## 🐳 Docker Deployment
+
+The project includes an optimized multi-stage `Dockerfile`.
+
+**Build the image:**
+
+```bash
+docker build -t my-portfolio .
+```
+
+**Run the container (Default Full Stack):**
+
+```bash
+docker run -p 3000:3000 my-portfolio
+```
+
+**Run the container (Switch to iOS Profile):**
+You can change the website content without rebuilding the image:
+
+```bash
+docker run -p 3000:3000 -e NEXT_PUBLIC_DEFAULT_ROLE=ios my-portfolio
+```
 
 ---
 
@@ -76,7 +133,3 @@ This application is deployed on Hamravesh and is also configured for easy deploy
 Mohammad Sadegh Panadgoo - [mspanadgoo@me.com](mailto:mspanadgoo@me.com)
 
 LinkedIn: [linkedin.com/in/mspanadgoo](https://linkedin.com/in/mspanadgoo)
-
-<br />
-
-_This README was created with care._

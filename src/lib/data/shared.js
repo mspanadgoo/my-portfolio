@@ -1,13 +1,43 @@
-export const personalInfo = {
+// lib/data/shared.js
+
+export const basePersonalInfo = {
   name: "Mohammad Sadegh Panadgoo",
-  title: "Senior Software Engineer",
-  summary:
-    "I build the systems that move money. As a senior software engineer with over a decade of experience, my passion is engineering the secure and scalable backends at the heart of financial technology. I was a key architect on the Behpardakht Mellat banking wallet, where I got hands-on experience building everything from the core transaction engine to partner integration APIs. I thrive on the challenges of event-driven architecture and creating robust platforms from the ground up.",
   email: "mspanadgoo@me.com",
   linkedin: "https://linkedin.com/in/mspanadgoo",
   github: "https://github.com/mspanadgoo",
-  resumePdf: "/Mohammad-Sadegh-Panadgoo-Resume.pdf",
+  resumePdf: "/Mohammad-Sadegh-Panadgoo-Resume.pdf", // You might want different PDFs later
 };
+
+export const education = [
+  {
+    degree: "Master's Degree, Computer Software Engineering",
+    university: "Azad University",
+    dates: "2013 – 2018",
+  },
+  {
+    degree: "Bachelor's Degree, Computer Software Engineering",
+    university: "Azad University",
+    dates: "2008 – 2012",
+  },
+];
+
+export const languages = [
+  {
+    language: "Persian",
+    proficiency: "Native",
+    detail: "Mother Tongue",
+  },
+  {
+    language: "English",
+    proficiency: "Professional Proficiency",
+    detail: "IELTS General Training: 6.0 (Each Skill)",
+  },
+  {
+    language: "German",
+    proficiency: "Intermediate",
+    detail: "Completed B1 Level",
+  },
+];
 
 export const spotlight = {
   title: "Spotlight: Architecting a Banking Wallet",
@@ -34,7 +64,7 @@ export const spotlight = {
   },
 };
 
-export const skills = [
+export const allSkills = [
   {
     category: "Backend Development",
     subcategories: [
@@ -84,25 +114,7 @@ export const skills = [
   },
 ];
 
-export const languages = [
-  {
-    language: "Persian",
-    proficiency: "Native",
-    detail: "Mother Tongue",
-  },
-  {
-    language: "English",
-    proficiency: "Professional Proficiency",
-    detail: "IELTS General Training: 6.0 (Each Skill)",
-  },
-  {
-    language: "German",
-    proficiency: "Intermediate",
-    detail: "Completed B1 Level",
-  },
-];
-
-export const experiences = [
+export const allExperiences = [
   {
     company: "Sadad PSP Co.",
     link: "https://sadadpsp.ir",
@@ -137,9 +149,9 @@ export const experiences = [
   },
 ];
 
-export const projects = [
+export const allProjects = [
   {
-    title: "Mellat Wallet",
+    title: "Mellat Bank Wallet",
     description:
       "As a key architect, I designed and built the core microservices for a new banking wallet, including the high-throughput transaction engine, partner APIs, and payment gateway for partners like Irancell.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Wallet",
@@ -179,7 +191,7 @@ export const projects = [
     tags: ["Swift", "Refactoring", "Performance", "Architecture"],
   },
   {
-    title: "Jackpot Game",
+    title: "Jackpot Fun Game",
     description:
       "A simple and fun jackpot game I built for my son. Developed with React and CSS animations to create an engaging and playful user experience. A great exercise in state management and UI.",
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Jackpot+Game",
@@ -201,18 +213,5 @@ export const projects = [
     image: "https://placehold.co/800x450/1F2937/60A5FA?text=Ketabrah",
     link: "https://www.ketabrah.ir/apps",
     tags: ["Swift", "UIKit", "iOS", "User Experience"],
-  },
-];
-
-export const education = [
-  {
-    degree: "Master's Degree, Computer Software Engineering",
-    university: "Azad University",
-    dates: "2013 – 2018",
-  },
-  {
-    degree: "Bachelor's Degree, Computer Software Engineering",
-    university: "Azad University",
-    dates: "2008 – 2012",
   },
 ];

@@ -22,6 +22,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/lib/data/shared.js",
+    "src/lib/data/index.js",
+    "src/components/ResumeDownloadButton.js",
+    "src/app/page.js"
+  ],
   "exclude": ["node_modules"]
 }

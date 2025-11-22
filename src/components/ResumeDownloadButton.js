@@ -3,18 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ResumeDocument from "./ResumeDocument";
-import {
-  personalInfo,
-  skills,
-  experiences,
-  education,
-  projects,
-  languages,
-} from "@/lib/data";
 
-const ResumeDownloadButton = () => {
+const ResumeDownloadButton = ({ data }) => {
   const [isClient, setIsClient] = useState(false);
-
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
 
   useEffect(() => {
@@ -27,6 +18,9 @@ const ResumeDownloadButton = () => {
     month: "long",
     day: "numeric",
   });
+
+  const { personalInfo, skills, experiences, education, projects, languages } =
+    data;
 
   return (
     <>
@@ -44,12 +38,11 @@ const ResumeDownloadButton = () => {
               profilePictureUrl={profilePictureUrl}
             />
           }
-          fileName={`${personalInfo.name.replace(" ", "-")}-Resume.pdf`}
+          // Dynamic filename based on role! e.g., "Mohammad-Sadegh-Panadgoo-Senior-iOS-Engineer.pdf"
+          fileName={`${personalInfo.name.replace(" ", "-")}-${personalInfo.title.replace(/ /g, "-")}.pdf`}
           className="mt-6 inline-block rounded-lg bg-blue-600 px-6 py-2 font-bold text-white transition-colors hover:bg-blue-700"
         >
-          {({ loading }: { loading: boolean }) =>
-            loading ? "Generating PDF..." : "Download Resume"
-          }
+          {({ loading }) => (loading ? "Generating PDF..." : "Download Resume")}
         </PDFDownloadLink>
       ) : (
         <button
