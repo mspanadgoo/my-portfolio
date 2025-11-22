@@ -1,36 +1,37 @@
 # ---- Stage 1: Build ----
-# This stage builds the Next.js application
 FROM node:20-alpine AS builder
 
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
 RUN apk update && apk upgrade
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (or yarn.lock, pnpm-lock.yaml)
-COPY package*.json ./
+# Enable pnpm via Corepack (included in Node.js)
+RUN corepack enable pnpm
 
-# Install all dependencies (including devDependencies) needed for the build
-RUN npm install
+# Copy package.json and pnpm-lock.yaml
+COPY package.json pnpm-lock.yaml ./
+
+# Install dependencies
+# --frozen-lockfile ensures it crashes if the lockfile doesn't match package.json (good for CI/Docker)
+RUN pnpm install --frozen-lockfile
 
 # Copy the rest of the application source code
 COPY . .
 
-# Build the Next.js application for production
-RUN npm run build
+# Build the Next.js application
+RUN pnpm run build
 
 
 # ---- Stage 2: Production ----
-# This stage creates the final, small production image
 FROM node:20-alpine AS runner
 
 RUN apk update && apk upgrade
 
 WORKDIR /app
 
-# Set the environment to production
 ENV NODE_ENV=production
-# Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # Create a non-root user for security
@@ -38,19 +39,20 @@ RUN addgroup --system --gid 1001 nextjs
 RUN adduser --system --uid 1001 nextjs
 
 # Copy the standalone output from the builder stage
-COPY --from=builder /app/.next/standalone ./
-# Copy the public and static assets
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/static ./.next/static
 
-# Change ownership of the files to the non-root user
-RUN chown -R nextjs:nextjs .
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static
 
 # Switch to the non-root user
 USER nextjs
 
-# Expose the port the app will run on
 EXPOSE 3000
 
-# The command to start the Next.js server
+ENV PORT=3000
+# set hostname to localhost
+ENV HOSTNAME="0.0.0.0"
+
 CMD ["node", "server.js"]

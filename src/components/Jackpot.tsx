@@ -183,14 +183,14 @@ const Jackpot = () => {
 
       {isGameOver ? (
         <button
-          className="w-full cursor-pointer rounded-full bg-gradient-to-br from-green-400 to-teal-500 px-10 py-3 text-lg font-bold text-white shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg"
+          className="w-full cursor-pointer rounded-full bg-linear-to-br from-green-400 to-teal-500 px-10 py-3 text-lg font-bold text-white shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg"
           onClick={resetGame}
         >
           Play Again
         </button>
       ) : (
         <button
-          className="w-full cursor-pointer rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 px-10 py-3 text-lg font-bold text-white shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/40 disabled:translate-y-0 disabled:cursor-not-allowed disabled:from-slate-600 disabled:to-slate-700 disabled:opacity-70 disabled:shadow-none"
+          className="w-full cursor-pointer rounded-full bg-linear-to-br from-yellow-400 to-orange-500 px-10 py-3 text-lg font-bold text-white shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/40 disabled:translate-y-0 disabled:cursor-not-allowed disabled:from-slate-600 disabled:to-slate-700 disabled:opacity-70 disabled:shadow-none"
           onClick={handleSpin}
           disabled={isSpinning}
         >

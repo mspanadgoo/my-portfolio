@@ -122,11 +122,11 @@ export default function Home() {
                     unoptimized={true}
                   />
                 </a>
-                <div className="flex flex-grow flex-col p-6">
+                <div className="flex grow flex-col p-6">
                   <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
                     {project.title}
                   </h4>
-                  <p className="mt-2 flex-grow text-sm text-gray-400">
+                  <p className="mt-2 grow text-sm text-gray-400">
                     {project.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
