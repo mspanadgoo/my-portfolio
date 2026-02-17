@@ -11,7 +11,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -31,7 +31,8 @@
     "src/lib/data/index.js",
     "src/components/ResumeDownloadButton.js",
     "src/app/page.tsx",
-    "src/app/r/[role]/page.js"
+    "src/app/r/[role]/page.js",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
