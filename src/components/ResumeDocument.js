@@ -26,13 +26,13 @@ Font.register({
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 35,
-    paddingHorizontal: 45,
-    paddingBottom: 65,
+    paddingTop: 30,
+    paddingHorizontal: 40,
+    paddingBottom: 40,
     fontFamily: "Helvetica",
-    fontSize: 11,
-    lineHeight: 1.5,
-    color: "#333",
+    fontSize: 10,
+    lineHeight: 1.4,
+    color: "#000",
     position: "relative",
   },
   footer: {
@@ -62,21 +62,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 12,
-    textTransform: "uppercase",
+    marginBottom: 8,
   },
   title: {
-    fontSize: 14,
-    color: "#555",
+    fontSize: 12,
+    color: "#000",
     marginBottom: 4,
   },
   contactInfo: {
-    fontSize: 10,
+    fontSize: 9,
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 4,
+    marginTop: 3,
   },
   link: {
     textDecoration: "none",
@@ -91,20 +90,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   sectionTitle: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "bold",
-    marginBottom: 10,
-    marginTop: 5,
-    borderBottom: "1px solid #ccc",
-    paddingBottom: 4,
-    textTransform: "uppercase",
-    letterSpacing: 1,
+    marginBottom: 8,
+    marginTop: 4,
+    borderBottom: "1px solid #000",
+    paddingBottom: 2,
   },
   entry: {
     marginBottom: 12,
   },
   jobTitle: {
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "bold",
     color: "#000",
   },
@@ -119,9 +116,9 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
   },
   description: {
-    fontSize: 11,
-    textAlign: "justify",
-    color: "#444",
+    fontSize: 10,
+    textAlign: "left",
+    color: "#000",
   },
   skillsCategory: {
     marginBottom: 8,
@@ -132,9 +129,9 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   skillsList: {
-    fontSize: 11,
-    color: "#333",
-    lineHeight: 1.4,
+    fontSize: 10,
+    color: "#000",
+    lineHeight: 1.3,
   },
   langRow: {
     flexDirection: "row",
@@ -175,6 +172,10 @@ const ResumeDocument = ({
             <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
               {personalInfo.email}
             </Link>
+            <Text style={styles.separator}>|</Text>
+            <Text style={styles.link}>
+              {personalInfo.location || "Tehran, Iran"}
+            </Text>
             <Text style={styles.separator}>|</Text>
             <Link style={styles.link} src={personalInfo.linkedin}>
               LinkedIn

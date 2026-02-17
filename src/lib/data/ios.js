@@ -15,7 +15,7 @@ export const data = {
     ...shared.basePersonalInfo,
     title: "Senior iOS Engineer",
     summary:
-      "I craft high-performance mobile banking experiences. With over a decade of engineering experience, I specialize in building secure, scalable native iOS applications for the fintech sector. I have architected and launched flagship apps like Mellat Mobile Bank and led major modernization efforts, always focusing on clean architecture (MVVM), performance optimization, and seamless user experiences.",
+      "Senior iOS Engineer with 10+ years building secure, scalable native banking applications. Architected and launched flagship apps serving millions of users. Expert in Swift, MVVM architecture, and performance optimization. Led major modernization efforts reducing app startup time by 50%.",
   },
   skills: iosSkills,
   experiences: shared.allExperiences,

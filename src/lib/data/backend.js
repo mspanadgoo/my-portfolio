@@ -19,7 +19,7 @@ export const data = {
     ...shared.basePersonalInfo,
     title: "Senior Backend Engineer",
     summary:
-      "I architect the invisible engines of fintech. As a Senior Backend Engineer, I specialize in designing resilient, event-driven microservices using NestJS and NATS. My experience includes building the core transaction engines for major banking wallets and designing scalable APIs that handle millions of transactions. I am passionate about distributed systems, clean code, and database optimization.",
+      "Senior Backend Engineer with 10+ years designing secure, high-throughput transaction engines and event-driven microservices for major banking wallets. Built core payment APIs serving millions of daily transactions. Deep expertise in NestJS, NATS, PostgreSQL, and distributed systems architecture.",
   },
   skills: backendSkills,
   experiences: shared.allExperiences,

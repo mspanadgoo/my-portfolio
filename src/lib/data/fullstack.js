@@ -5,7 +5,7 @@ export const data = {
     ...shared.basePersonalInfo,
     title: "Senior Software Engineer",
     summary:
-      "I build the systems that move money. As a senior software engineer with over a decade of experience, my passion is engineering the secure and scalable backends at the heart of financial technology. I was a key architect on the Behpardakht Mellat banking wallet, where I got hands-on experience building everything from the core transaction engine to partner integration APIs. I thrive on the challenges of event-driven architecture and creating robust platforms from the ground up.",
+      "Full-stack engineer with 10+ years building secure financial platforms. Led architecture of banking wallets handling millions of daily transactions. Expert in NestJS, React, PostgreSQL, and event-driven microservices. Strong track record delivering scalable fintech solutions from concept to production.",
   },
   skills: shared.allSkills,
   experiences: shared.allExperiences,

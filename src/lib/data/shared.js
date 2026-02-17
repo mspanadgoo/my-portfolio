@@ -5,6 +5,7 @@ export const basePersonalInfo = {
   email: "mspanadgoo@me.com",
   linkedin: "https://linkedin.com/in/mspanadgoo",
   github: "https://github.com/mspanadgoo",
+  location: "Tehran, Iran",
   resumePdf: "/Mohammad-Sadegh-Panadgoo-Resume.pdf", // You might want different PDFs later
 };
 
@@ -39,30 +40,7 @@ export const languages = [
   },
 ];
 
-// export const spotlight = {
-//   title: "Spotlight: Architecting a Banking Wallet",
-//   description:
-//     "At Behpardakht Mellat, I was part of the core team that designed and built a modern, microservices-based banking wallet from scratch. My primary focus was on the critical backend infrastructure that ensured security, scalability, and reliability.",
-//   responsibilities: {
-//     title: "Key Responsibilities",
-//     items: [
-//       "Designed the high-throughput transaction engine.",
-//       "Engineered the core wallet and ledger system.",
-//       "Built the payment gateway & user management services.",
-//       "Developed the partner API for major integrations (Irancell).",
-//     ],
-//   },
-//   technologies: {
-//     title: "Core Technologies",
-//     items: [
-//       "NestJS",
-//       "Node.js",
-//       "Microservices",
-//       "Event-Driven Architecture",
-//       "PostgreSQL",
-//     ],
-//   },
-// };
+export const spotlight = null;
 
 export const allSkills = [
   {
@@ -154,7 +132,7 @@ export const allProjects = [
     title: "Mellat Bank Wallet",
     description:
       "As a key architect, I designed and built the core microservices for a new banking wallet, including the high-throughput transaction engine, partner APIs, and payment gateway for partners like Irancell.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Wallet",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Mellat+Wallet",
     link: "https://behpardakht.com",
     tags: ["Architecture", "Microservices", "NestJS", "Fintech", "Node.js"],
   },
@@ -162,7 +140,7 @@ export const allProjects = [
     title: "Iva Neobank Platform",
     description:
       "I designed the entire system architecture for a new neobank. My solution was a resilient, event-driven backend using NestJS and NATS to ensure safe, asynchronous processing of financial transactions.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Iva",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Iva",
     link: "https://ivaapp.com",
     tags: ["Architecture", "Event-Driven", "NATS", "NestJS", "System Design"],
   },
@@ -170,7 +148,7 @@ export const allProjects = [
     title: "Mellat Mobile Bank",
     description:
       "Engineered the flagship native mobile banking app for one of Iran's largest banks. I architected a secure and performant solution designed to reliably serve over 3 million users.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Mellat+Mobile+Bank",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Mellat+Mobile+Bank",
     link: "https://mobile.bankmellat.ir/mobile/ios.html",
     tags: ["Swift", "Security", "Fintech", "Scale", "iOS"],
   },
@@ -178,7 +156,7 @@ export const allProjects = [
     title: "Sibbank App Store",
     description:
       "Architected and led the development of a full-stack application ecosystem, including the primary native iOS app (Swift), its supporting backend (Nest.js), and the web admin portal.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sibbank",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Sibbank",
     link: "https://sibbank.com",
     tags: ["Swift", "Nest.js", "Next.js", "Full-Stack", "iOS"],
   },
@@ -186,7 +164,7 @@ export const allProjects = [
     title: "Sekkeh App Modernization",
     description:
       "I led the complete technical overhaul of a major payment app. By strategically refactoring the codebase to a modern MVVM architecture, we cut startup time by 50% and boosted system maintainability.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Sekkeh",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Sekkeh",
     link: "https://sekeh.behpardakht.com",
     tags: ["Swift", "Refactoring", "Performance", "Architecture"],
   },
@@ -194,7 +172,7 @@ export const allProjects = [
     title: "Jackpot Fun Game",
     description:
       "A simple and fun jackpot game I built for my son. Developed with React and CSS animations to create an engaging and playful user experience. A great exercise in state management and UI.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Jackpot+Game",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Jackpot+Game",
     link: "/jackpot",
     tags: ["React", "CSS Animations", "Frontend", "Personal Project"],
   },
@@ -202,7 +180,7 @@ export const allProjects = [
     title: "Paysib Currency Exchange",
     description:
       "Engineered a secure, full-stack currency exchange platform. I built the user-facing trading interface with Next.js and the core backend transaction logic with Node.js.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Paysib",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Paysib",
     link: "https://paysib.com",
     tags: ["Next.js", "Node.js", "MongoDB", "Fintech", "Security"],
   },
@@ -210,7 +188,7 @@ export const allProjects = [
     title: "Ketabrah E-Reader",
     description:
       "Contributed to one of Iran's leading iOS e-reader apps. My work focused on implementing new features to enhance the digital reading experience for its large user base.",
-    image: "https://placehold.co/800x450/1F2937/60A5FA?text=Ketabrah",
+    image: "https://placehold.co/800x450/0B1B3B/E5E7EB?text=Ketabrah",
     link: "https://www.ketabrah.ir/apps",
     tags: ["Swift", "UIKit", "iOS", "User Experience"],
   },

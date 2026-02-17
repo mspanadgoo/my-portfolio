@@ -208,12 +208,12 @@ const Jackpot = () => {
   const resultClasses: Record<ResultType, string> = {
     win: "text-green-400 animate-pulse",
     lose: "text-red-400",
-    info: "text-slate-400",
-    gameover: "text-yellow-400",
+    info: "text-light-gray",
+    gameover: "text-brand",
   };
 
   return (
-    <div className="flex w-full max-w-md flex-col items-center justify-center rounded-2xl bg-slate-900 p-8 text-white shadow-2xl shadow-blue-500/20">
+    <div className="bg-surface text-foreground flex w-full max-w-md flex-col items-center justify-center rounded-2xl p-8 shadow-2xl">
       {result.type === "win" && (
         <Confetti
           width={size.width}
@@ -224,23 +224,21 @@ const Jackpot = () => {
       )}
 
       <div className="mb-4 text-center">
-        <h1 className="text-4xl font-bold text-yellow-400 [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">
-          {"Karan's Jackpot"}{" "}
-        </h1>
-        <div className="mt-2 flex items-center justify-center gap-3 text-lg text-slate-300">
+        <h1 className="text-brand text-4xl font-bold">{"Karan's Jackpot"} </h1>
+        <div className="text-light-gray mt-2 flex items-center justify-center gap-3 text-lg">
           <span>Credits:</span>
-          <span className="rounded-full bg-slate-800 px-3 py-1 font-bold text-yellow-400">
+          <span className="bg-background text-brand rounded-full px-3 py-1 font-bold">
             {credits}
           </span>
         </div>
       </div>
 
-      <div className="mb-6 rounded-lg bg-slate-800 p-4 shadow-inner">
+      <div className="bg-surface mb-6 rounded-lg p-4 shadow-inner">
         <div className="flex gap-4">
           {reels.map((symbol, index) => (
             <div
               key={index}
-              className={`flex h-28 w-28 items-center justify-center rounded-lg border-4 border-slate-600 bg-slate-700 text-6xl transition-all duration-300 ${isSpinning ? "blur-sm" : ""} ${result.type === "win" ? "animate-bounce border-green-400" : ""} `}
+              className={`border-border bg-background flex h-28 w-28 items-center justify-center rounded-lg border-4 text-6xl transition-all duration-300 ${isSpinning ? "blur-sm" : ""} ${result.type === "win" ? "animate-bounce border-green-400" : ""} `}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {symbol}
@@ -261,7 +259,7 @@ const Jackpot = () => {
       <div className="flex w-full items-center gap-3">
         {isGameOver ? (
           <button
-            className="w-full cursor-pointer rounded-full bg-linear-to-br from-green-400 to-teal-500 px-10 py-3 text-lg font-bold text-white shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg"
+            className="bg-brand text-background w-full cursor-pointer rounded-full px-10 py-3 text-lg font-bold shadow-md transition-transform hover:-translate-y-1 hover:opacity-90"
             onClick={resetGame}
             aria-label="Play again"
           >
@@ -269,7 +267,7 @@ const Jackpot = () => {
           </button>
         ) : (
           <button
-            className="w-full cursor-pointer rounded-full bg-linear-to-br from-yellow-400 to-orange-500 px-10 py-3 text-lg font-bold text-white shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/40 disabled:translate-y-0 disabled:cursor-not-allowed disabled:from-slate-600 disabled:to-slate-700 disabled:opacity-70 disabled:shadow-none"
+            className="bg-brand text-background w-full cursor-pointer rounded-full px-10 py-3 text-lg font-bold shadow-md transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:opacity-90 disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70 disabled:shadow-none"
             onClick={handleSpin}
             disabled={isSpinning || credits < SPIN_COST}
             aria-label="Spin"
@@ -278,7 +276,7 @@ const Jackpot = () => {
           </button>
         )}
         <button
-          className="rounded-full border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-300 transition hover:bg-slate-800"
+          className="border-border text-light-gray hover:bg-surface rounded-full border px-5 py-3 text-sm font-semibold transition"
           onClick={resetGame}
           aria-label="Reset credits"
         >
@@ -286,23 +284,23 @@ const Jackpot = () => {
         </button>
       </div>
 
-      <div className="mt-6 w-full rounded-lg bg-slate-800 p-4">
-        <div className="mb-2 text-sm font-semibold text-slate-300">
+      <div className="bg-surface mt-6 w-full rounded-lg p-4">
+        <div className="text-foreground mb-2 text-sm font-semibold">
           Recent Spins
         </div>
         {history.length === 0 ? (
-          <div className="text-sm text-slate-500">No spins yet</div>
+          <div className="text-light-gray text-sm">No spins yet</div>
         ) : (
           <ul className="space-y-2">
             {history.map((h, idx) => (
               <li
                 key={idx}
-                className="flex items-center justify-between rounded-md bg-slate-900 px-3 py-2"
+                className="bg-background flex items-center justify-between rounded-md px-3 py-2"
               >
                 <span className="text-xl">{h.reels.join(" ")}</span>
                 <span
                   className={`text-sm font-bold ${
-                    h.payout > 0 ? "text-green-400" : "text-slate-400"
+                    h.payout > 0 ? "text-green-400" : "text-light-gray"
                   }`}
                 >
                   {h.payout > 0 ? `+${h.payout}` : "—"}

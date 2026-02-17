@@ -15,7 +15,7 @@ export default async function Image() {
       // ImageResponse JSX element
       <div
         style={{
-          background: "linear-gradient(to bottom right, #111827, #000000)",
+          background: "linear-gradient(to bottom right, #0B1B3B, #14284D)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -33,7 +33,7 @@ export default async function Image() {
             left: "-150px",
             width: "500px",
             height: "500px",
-            background: "rgba(96, 165, 250, 0.2)", // Blue-400 with opacity
+            background: "rgba(229, 231, 235, 0.18)",
             borderRadius: "50%",
             filter: "blur(80px)",
           }}
@@ -63,7 +63,7 @@ export default async function Image() {
           <div
             style={{
               fontSize: 36,
-              color: "#60A5FA", // Tailwind Blue-400
+              color: "#FFFFFF",
               fontWeight: 600,
               textAlign: "center",
               letterSpacing: "-0.02em",
@@ -77,7 +77,7 @@ export default async function Image() {
             <div
               style={{
                 padding: "10px 25px",
-                background: "#1F2937",
+                background: "#0B1B3B",
                 color: "#E5E7EB",
                 borderRadius: 50,
                 fontSize: 24,
@@ -88,7 +88,7 @@ export default async function Image() {
             <div
               style={{
                 padding: "10px 25px",
-                background: "#1F2937",
+                background: "#0B1B3B",
                 color: "#E5E7EB",
                 borderRadius: 50,
                 fontSize: 24,
@@ -99,7 +99,7 @@ export default async function Image() {
             <div
               style={{
                 padding: "10px 25px",
-                background: "#1F2937",
+                background: "#0B1B3B",
                 color: "#E5E7EB",
                 borderRadius: 50,
                 fontSize: 24,

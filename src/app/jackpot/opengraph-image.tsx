@@ -14,7 +14,7 @@ export default async function Image() {
     (
       <div
         style={{
-          background: "linear-gradient(to bottom, #1e1b4b, #0f172a)", // Deep Indigo to Dark Slate
+          background: "linear-gradient(to bottom, #0B1B3B, #14284D)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -33,7 +33,7 @@ export default async function Image() {
             transform: "translate(-50%, -50%)",
             width: "600px",
             height: "600px",
-            background: "rgba(251, 191, 36, 0.15)", // Amber color
+            background: "rgba(229, 231, 235, 0.18)",
             borderRadius: "50%",
             filter: "blur(100px)",
           }}
@@ -43,7 +43,7 @@ export default async function Image() {
         <div
           style={{
             fontSize: 24,
-            color: "#94A3B8",
+            color: "#E5E7EB",
             marginBottom: 10,
             textTransform: "uppercase",
             letterSpacing: "4px",
@@ -58,8 +58,8 @@ export default async function Image() {
           style={{
             fontSize: 86,
             fontWeight: 900,
-            color: "#FCD34D", // Amber-300
-            textShadow: "0 0 40px rgba(252, 211, 77, 0.4)",
+            color: "#FFFFFF",
+            textShadow: "0 0 40px rgba(255, 255, 255, 0.3)",
             marginBottom: 50,
             zIndex: 10,
             textAlign: "center",
@@ -75,13 +75,13 @@ export default async function Image() {
             style={{
               width: 130,
               height: 130,
-              background: "#1F2937",
+              background: "#E5E7EB",
               borderRadius: 20,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 70,
-              border: "4px solid #374151",
+              border: "4px solid #0B1B3B",
             }}
           >
             🍒
@@ -92,14 +92,14 @@ export default async function Image() {
             style={{
               width: 130,
               height: 130,
-              background: "#312E81", // Indigo background
+              background: "#FFFFFF",
               borderRadius: 20,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 70,
-              border: "6px solid #FCD34D", // Gold Border
-              boxShadow: "0 0 30px rgba(252, 211, 77, 0.5)",
+              border: "6px solid #0B1B3B",
+              boxShadow: "0 0 30px rgba(11, 27, 59, 0.5)",
             }}
           >
             ⭐
@@ -110,13 +110,13 @@ export default async function Image() {
             style={{
               width: 130,
               height: 130,
-              background: "#1F2937",
+              background: "#E5E7EB",
               borderRadius: 20,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 70,
-              border: "4px solid #374151",
+              border: "4px solid #0B1B3B",
             }}
           >
             🍋
@@ -126,14 +126,13 @@ export default async function Image() {
         {/* Call to Action */}
         <div
           style={{
-            marginTop: 60,
-            padding: "12px 40px",
-            background: "#2563EB",
-            color: "white",
+            padding: "14px 32px",
+            background: "#0B1B3B",
+            color: "#FFFFFF",
             borderRadius: 50,
             fontSize: 28,
             fontWeight: 600,
-            boxShadow: "0 10px 25px -5px rgba(37, 99, 235, 0.4)",
+            boxShadow: "0 10px 25px -5px rgba(11, 27, 59, 0.5)",
           }}
         >
           Play Now

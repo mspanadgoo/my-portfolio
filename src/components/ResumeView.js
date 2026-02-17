@@ -34,23 +34,19 @@ export default function ResumeView({ data }) {
           alt={personalInfo.name}
           width={150}
           height={150}
-          className="mr-0 mb-4 cursor-pointer rounded-full md:mr-8 md:mb-0"
+          className="border-border bg-background mr-0 mb-4 cursor-pointer rounded-full border-2 md:mr-8 md:mb-0"
           priority
         />
         <div className="text-center md:text-left">
-          <h1 className="text-4xl font-bold text-blue-400">
-            {personalInfo.name}
-          </h1>
-          <h2 className="mt-2 text-xl text-gray-500 dark:text-gray-100">
-            {personalInfo.title}
-          </h2>
-          <p className="mt-4 text-gray-400">{personalInfo.summary}</p>
+          <h1 className="text-brand text-4xl font-bold">{personalInfo.name}</h1>
+          <h2 className="text-foreground mt-2 text-xl">{personalInfo.title}</h2>
+          <p className="text-foreground mt-4">{personalInfo.summary}</p>
           <div className="mt-6 flex justify-center space-x-4 md:justify-start">
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-blue-400"
+              className="text-light-gray hover:text-brand transition-colors"
             >
               <FaLinkedin size={28} />
             </a>
@@ -58,13 +54,13 @@ export default function ResumeView({ data }) {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-blue-400"
+              className="text-light-gray hover:text-brand transition-colors"
             >
               <FaGithub size={28} />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="text-gray-400 transition-colors hover:text-blue-400"
+              className="text-light-gray hover:text-brand transition-colors"
             >
               <MdEmail size={28} />
             </a>
@@ -77,31 +73,31 @@ export default function ResumeView({ data }) {
 
       {/* Spotlight Section - Only render if data exists in this profile */}
       {spotlight && (
-        <section className="mb-16 rounded-lg bg-gray-800 p-8 shadow-lg">
-          <h3 className="mb-4 text-2xl font-bold text-blue-400">
+        <section className="bg-surface mb-16 rounded-lg p-8 shadow-lg">
+          <h3 className="text-brand mb-4 text-2xl font-bold">
             {spotlight.title}
           </h3>
-          <p className="mb-6 text-gray-400">{spotlight.description}</p>
+          <p className="text-light-gray mb-6">{spotlight.description}</p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
-              <h4 className="mb-2 font-semibold text-gray-100">
+              <h4 className="text-foreground mb-2 font-semibold">
                 {spotlight.responsibilities.title}
               </h4>
-              <ul className="list-inside list-disc space-y-2 text-gray-400">
+              <ul className="text-light-gray list-inside list-disc space-y-2">
                 {spotlight.responsibilities.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="mb-2 font-semibold text-gray-100">
+              <h4 className="text-foreground mb-2 font-semibold">
                 {spotlight.technologies.title}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {spotlight.technologies.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-blue-400"
+                    className="bg-surface text-brand rounded-full px-3 py-1 text-sm font-medium"
                   >
                     {item}
                   </span>
@@ -115,14 +111,14 @@ export default function ResumeView({ data }) {
       <main>
         {/* Projects Section */}
         <section id="projects" className="mb-20">
-          <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
+          <h3 className="border-brand/30 text-brand mb-8 border-b-2 pb-2 text-3xl font-bold">
             Featured Projects
           </h3>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <div
                 key={project.title}
-                className="flex transform flex-col overflow-hidden rounded-lg bg-gray-800 shadow-lg transition-transform hover:scale-105"
+                className="bg-surface flex transform flex-col overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105"
               >
                 <a
                   href={project.link}
@@ -134,22 +130,22 @@ export default function ResumeView({ data }) {
                     alt={project.title}
                     width={500}
                     height={300}
-                    className="h-48 w-full object-cover"
+                    className="border-border h-48 w-full rounded-t-lg border-b object-cover"
                     unoptimized={true}
                   />
                 </a>
                 <div className="flex grow flex-col p-6">
-                  <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
+                  <h4 className="text-foreground text-xl font-bold">
                     {project.title}
                   </h4>
-                  <p className="mt-2 grow text-sm text-gray-400">
+                  <p className="text-foreground mt-2 grow text-sm">
                     {project.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-gray-700 px-2.5 py-1 text-xs font-semibold text-blue-400"
+                        className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
                       >
                         {tag}
                       </span>
@@ -159,7 +155,7 @@ export default function ResumeView({ data }) {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-block font-semibold text-blue-400 transition-colors hover:text-blue-300"
+                    className="text-brand mt-6 inline-block font-semibold transition-colors hover:opacity-80"
                   >
                     Visit Site &rarr;
                   </a>
@@ -171,13 +167,13 @@ export default function ResumeView({ data }) {
 
         {/* Skills Section */}
         <section id="skills" className="mb-20">
-          <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
+          <h3 className="border-brand/30 text-brand mb-6 border-b-2 pb-2 text-3xl font-bold">
             Technical Skills
           </h3>
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
             {skills.map((skill) => (
               <div key={skill.category}>
-                <h4 className="mb-4 text-xl font-semibold text-gray-500 dark:text-gray-100">
+                <h4 className="text-foreground mb-4 text-xl font-semibold">
                   {skill.category}
                 </h4>
 
@@ -185,14 +181,14 @@ export default function ResumeView({ data }) {
                   <div className="space-y-4">
                     {skill.subcategories.map((sub) => (
                       <div key={sub.title}>
-                        <h5 className="text-md mb-2 font-medium text-blue-400">
+                        <h5 className="text-md text-brand mb-2 font-medium">
                           {sub.title}
                         </h5>
                         <div className="flex flex-wrap gap-2">
                           {sub.items.map((item) => (
                             <span
                               key={item}
-                              className="rounded-full bg-gray-700 px-3 py-1 text-sm font-medium text-gray-300"
+                              className="bg-surface text-light-gray rounded-full px-3 py-1 text-sm font-medium"
                             >
                               {item}
                             </span>
@@ -209,22 +205,22 @@ export default function ResumeView({ data }) {
 
         {/* Languages Section */}
         <section id="languages" className="mb-20">
-          <h3 className="mb-6 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
+          <h3 className="border-brand/30 text-brand mb-6 border-b-2 pb-2 text-3xl font-bold">
             Languages
           </h3>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {languages.map((lang) => (
               <div
                 key={lang.language}
-                className="rounded-lg bg-gray-800 p-6 shadow-lg transition-transform hover:-translate-y-1"
+                className="bg-surface rounded-lg p-6 shadow-lg transition-transform hover:-translate-y-1"
               >
-                <h4 className="text-xl font-bold text-gray-100">
+                <h4 className="text-foreground text-xl font-bold">
                   {lang.language}
                 </h4>
-                <p className="text-md mt-1 font-semibold text-blue-400">
+                <p className="text-md text-brand mt-1 font-semibold">
                   {lang.proficiency}
                 </p>
-                <p className="mt-2 text-sm text-gray-400">{lang.detail}</p>
+                <p className="text-foreground mt-2 text-sm">{lang.detail}</p>
               </div>
             ))}
           </div>
@@ -232,7 +228,7 @@ export default function ResumeView({ data }) {
 
         {/* Experience Section */}
         <section id="experience" className="mb-16">
-          <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
+          <h3 className="border-brand/30 text-brand mb-8 border-b-2 pb-2 text-3xl font-bold">
             Work Experience
           </h3>
           <div className="space-y-8">
@@ -240,28 +236,28 @@ export default function ResumeView({ data }) {
               <div key={exp.company} className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500">
-                      <div className="h-3 w-3 rounded-full bg-gray-900"></div>
+                    <div className="bg-brand flex h-8 w-8 items-center justify-center rounded-full">
+                      <div className="bg-background h-3 w-3 rounded-full"></div>
                     </div>
                   </div>
                   {index < experiences.length - 1 && (
-                    <div className="h-full w-px bg-gray-600"></div>
+                    <div className="bg-border h-full w-px"></div>
                   )}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
+                  <h4 className="text-foreground text-xl font-bold">
                     {exp.title}
                   </h4>
                   <a
                     href={exp.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-md flex items-center gap-2 font-semibold text-blue-400 hover:underline"
+                    className="text-md text-brand flex items-center gap-2 font-semibold hover:underline"
                   >
                     {exp.company} <FiExternalLink />
                   </a>
-                  <p className="mb-2 text-sm text-gray-500">{exp.dates}</p>
-                  <p className="text-gray-400">{exp.description}</p>
+                  <p className="text-light-gray mb-2 text-sm">{exp.dates}</p>
+                  <p className="text-foreground">{exp.description}</p>
                 </div>
               </div>
             ))}
@@ -270,7 +266,7 @@ export default function ResumeView({ data }) {
 
         {/* Education Section */}
         <section id="education" className="mb-16">
-          <h3 className="mb-8 border-b-2 border-blue-400/30 pb-2 text-3xl font-bold text-blue-400">
+          <h3 className="border-brand/30 text-brand mb-8 border-b-2 pb-2 text-3xl font-bold">
             Education
           </h3>
           <div className="space-y-8">
@@ -278,22 +274,22 @@ export default function ResumeView({ data }) {
               <div key={edu.degree} className="flex">
                 <div className="mr-4 flex flex-col items-center">
                   <div>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500">
-                      <div className="h-3 w-3 rounded-full bg-gray-900"></div>
+                    <div className="bg-brand flex h-8 w-8 items-center justify-center rounded-full">
+                      <div className="bg-background h-3 w-3 rounded-full"></div>
                     </div>
                   </div>
                   {index < education.length - 1 && (
-                    <div className="h-full w-px bg-gray-600"></div>
+                    <div className="bg-border h-full w-px"></div>
                   )}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-500 dark:text-gray-100">
+                  <h4 className="text-foreground text-xl font-bold">
                     {edu.degree}
                   </h4>
-                  <p className="text-md font-semibold text-blue-400">
+                  <p className="text-md text-brand font-semibold">
                     {edu.university}
                   </p>
-                  <p className="mb-2 text-sm text-gray-500">{edu.dates}</p>
+                  <p className="text-light-gray mb-2 text-sm">{edu.dates}</p>
                 </div>
               </div>
             ))}
@@ -301,7 +297,7 @@ export default function ResumeView({ data }) {
         </section>
       </main>
 
-      <footer className="mt-16 text-center text-gray-500">
+      <footer className="text-light-gray mt-16 text-center">
         <p>
           &copy; {new Date().getFullYear()} {personalInfo.name}. All rights
           reserved.
@@ -311,7 +307,7 @@ export default function ResumeView({ data }) {
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-blue-400"
+            className="hover:text-brand transition-colors"
           >
             <FaLinkedin size={24} />
           </a>
@@ -319,13 +315,13 @@ export default function ResumeView({ data }) {
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-blue-400"
+            className="hover:text-brand transition-colors"
           >
             <FaGithub size={24} />
           </a>
           <a
             href={`mailto:${personalInfo.email}`}
-            className="transition-colors hover:text-blue-400"
+            className="hover:text-brand transition-colors"
           >
             <MdEmail size={24} />
           </a>

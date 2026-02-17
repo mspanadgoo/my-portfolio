@@ -27,7 +27,7 @@ export const data = {
     ...shared.basePersonalInfo,
     title: "Senior Frontend Engineer",
     summary:
-      "I build pixel-perfect, high-performance user interfaces. As a Senior Frontend Engineer with extensive experience in the fintech sector, I specialize in creating responsive, accessible, and dynamic web applications using Next.js, React, and Tailwind CSS. I have a strong background in translating complex design requirements into seamless user experiences, optimizing core web vitals, and architecting scalable frontend codebases for high-traffic banking platforms.",
+      "Senior Frontend Engineer with 10+ years building responsive, accessible web applications for high-traffic banking platforms. Expert in Next.js, React, and Tailwind CSS. Proven track record optimizing core web vitals and translating complex requirements into seamless user experiences.",
   },
   skills: frontendSkills,
   experiences: shared.allExperiences,

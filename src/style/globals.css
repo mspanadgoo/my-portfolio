@@ -2,21 +2,31 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b1b3b;
+  --brand: #0b1b3b;
+  --light-gray: #374151;
+  --surface: #f1f5f9;
+  --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-light-gray: var(--light-gray);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark:root {
+  --background: #0b1b3b;
+  --foreground: #e5e7eb;
+  --brand: #ffffff;
+  --light-gray: #cbd5e1;
+  --surface: #14284d;
+  --border: #1f2f4d;
 }
 
 body {
