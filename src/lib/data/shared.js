@@ -39,30 +39,30 @@ export const languages = [
   },
 ];
 
-export const spotlight = {
-  title: "Spotlight: Architecting a Banking Wallet",
-  description:
-    "At Behpardakht Mellat, I was part of the core team that designed and built a modern, microservices-based banking wallet from scratch. My primary focus was on the critical backend infrastructure that ensured security, scalability, and reliability.",
-  responsibilities: {
-    title: "Key Responsibilities",
-    items: [
-      "Designed the high-throughput transaction engine.",
-      "Engineered the core wallet and ledger system.",
-      "Built the payment gateway & user management services.",
-      "Developed the partner API for major integrations (Irancell).",
-    ],
-  },
-  technologies: {
-    title: "Core Technologies",
-    items: [
-      "NestJS",
-      "Node.js",
-      "Microservices",
-      "Event-Driven Architecture",
-      "PostgreSQL",
-    ],
-  },
-};
+// export const spotlight = {
+//   title: "Spotlight: Architecting a Banking Wallet",
+//   description:
+//     "At Behpardakht Mellat, I was part of the core team that designed and built a modern, microservices-based banking wallet from scratch. My primary focus was on the critical backend infrastructure that ensured security, scalability, and reliability.",
+//   responsibilities: {
+//     title: "Key Responsibilities",
+//     items: [
+//       "Designed the high-throughput transaction engine.",
+//       "Engineered the core wallet and ledger system.",
+//       "Built the payment gateway & user management services.",
+//       "Developed the partner API for major integrations (Irancell).",
+//     ],
+//   },
+//   technologies: {
+//     title: "Core Technologies",
+//     items: [
+//       "NestJS",
+//       "Node.js",
+//       "Microservices",
+//       "Event-Driven Architecture",
+//       "PostgreSQL",
+//     ],
+//   },
+// };
 
 export const allSkills = [
   {
