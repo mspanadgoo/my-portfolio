@@ -32,10 +32,6 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# === CHANGE DEFAULT RESUME HERE ===
-# You can change 'fullstack', 'ios', 'backend', 'frontend'
-# ENV NEXT_PUBLIC_DEFAULT_ROLE=fullstack
-
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # Create a non-root user for security

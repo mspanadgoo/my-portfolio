@@ -1,10 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ResumeDocument from "./ResumeDocument";
+import type { Profile } from "@/lib/data";
 
-const ResumeDownloadButton = ({ data }) => {
+function resumeFileName(name: string, title: string) {
+  const slug = `${name}-${title}`
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return `${slug}.pdf`;
+}
+
+const ResumeDownloadButton = ({ data }: { data: Profile }) => {
   const [isClient, setIsClient] = useState(false);
   const [profilePictureUrl, setProfilePictureUrl] = useState("");
 
@@ -38,15 +46,14 @@ const ResumeDownloadButton = ({ data }) => {
               profilePictureUrl={profilePictureUrl}
             />
           }
-          // Dynamic filename based on role! e.g., "Mohammad-Sadegh-Panadgoo-Senior-iOS-Engineer.pdf"
-          fileName={`${personalInfo.name.replace(" ", "-")}-${personalInfo.title.replace(/ /g, "-")}.pdf`}
-          className="mt-6 inline-block rounded-lg bg-blue-600 px-6 py-2 font-bold text-white transition-colors hover:bg-blue-700"
+          fileName={resumeFileName(personalInfo.name, personalInfo.headline)}
+          className="bg-brand text-background inline-block rounded-lg px-5 py-2 text-sm font-bold transition-colors hover:opacity-90"
         >
           {({ loading }) => (loading ? "Generating PDF..." : "Download Resume")}
         </PDFDownloadLink>
       ) : (
         <button
-          className="mt-6 inline-block cursor-not-allowed rounded-lg bg-gray-500 px-6 py-2 font-bold text-white opacity-70"
+          className="inline-block cursor-not-allowed rounded-lg bg-gray-500 px-5 py-2 text-sm font-bold text-white opacity-70"
           disabled
         >
           Loading...

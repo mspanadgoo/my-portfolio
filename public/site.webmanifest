@@ -1,7 +1,26 @@
 {
-  "name": "MyPortfolio",
-  "short_name": "MSP",
+  "name": "Mohammad Sadegh Panadgoo | Portfolio",
+  "short_name": "MSP Portfolio",
+  "description": "Senior Software Engineer Portfolio",
   "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
@@ -15,7 +34,9 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#0B1B3B",
+  "background_color": "#0B1B3B",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
 }

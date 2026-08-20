@@ -1,28 +1,20 @@
-import React from "react";
 import {
   Page,
   Text,
   View,
   Document,
   StyleSheet,
-  Font,
   Link,
   Image,
 } from "@react-pdf/renderer";
-
-Font.register({
-  family: "Helvetica",
-  fonts: [
-    {
-      src: `https://fonts.gstatic.com/s/helvetica/v11/TK3iWkU9c0w_hE0gYE6-0g.ttf`,
-      fontWeight: "normal",
-    },
-    {
-      src: `https://fonts.gstatic.com/s/helvetica/v11/TK3hWkU9c0w_hE0gYE6-0Y-B.ttf`,
-      fontWeight: "bold",
-    },
-  ],
-});
+import type {
+  Education,
+  Experience,
+  Language,
+  PersonalInfo,
+  Project,
+  SkillCategory,
+} from "@/lib/data/types";
 
 const styles = StyleSheet.create({
   page: {
@@ -80,6 +72,10 @@ const styles = StyleSheet.create({
   link: {
     textDecoration: "none",
     color: "#007BFF",
+    marginRight: 5,
+  },
+  muted: {
+    color: "#333",
     marginRight: 5,
   },
   separator: {
@@ -143,6 +139,17 @@ const styles = StyleSheet.create({
   },
 });
 
+type ResumeDocumentProps = {
+  personalInfo: PersonalInfo;
+  skills: SkillCategory[];
+  experiences: Experience[];
+  education: Education[];
+  projects: Project[];
+  languages: Language[];
+  generationDate: string;
+  profilePictureUrl: string;
+};
+
 const ResumeDocument = ({
   personalInfo,
   skills,
@@ -152,28 +159,26 @@ const ResumeDocument = ({
   generationDate,
   profilePictureUrl,
   languages,
-}) => (
+}: ResumeDocumentProps) => (
   <Document>
     <Page style={styles.page}>
-      {/* Footer */}
       <Text style={styles.footer} fixed>
         Generated on {generationDate || "Today"}
       </Text>
 
-      {/* Header */}
       <View style={styles.headerContainer}>
-        {profilePictureUrl && (
+        {profilePictureUrl ? (
           <Image style={styles.profileImage} src={profilePictureUrl} />
-        )}
+        ) : null}
         <View style={styles.headerText}>
           <Text style={styles.name}>{personalInfo.name}</Text>
-          <Text style={styles.title}>{personalInfo.title}</Text>
+          <Text style={styles.title}>{personalInfo.headline}</Text>
           <View style={styles.contactInfo}>
             <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
               {personalInfo.email}
             </Link>
             <Text style={styles.separator}>|</Text>
-            <Text style={styles.link}>
+            <Text style={styles.muted}>
               {personalInfo.location || "Tehran, Iran"}
             </Text>
             <Text style={styles.separator}>|</Text>
@@ -192,13 +197,11 @@ const ResumeDocument = ({
         </View>
       </View>
 
-      {/* Summary */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Summary</Text>
         <Text style={styles.description}>{personalInfo.summary}</Text>
       </View>
 
-      {/* Technical Skills */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Technical Skills</Text>
         {skills.map((skill) => (
@@ -213,10 +216,9 @@ const ResumeDocument = ({
         ))}
       </View>
 
-      {/* 1. The Title */}
       <Text style={styles.sectionTitle}>Work Experience</Text>
       {experiences.map((exp) => (
-        <View key={exp.company} style={styles.entry} wrap={true}>
+        <View key={exp.company} style={styles.entry} wrap>
           <View style={styles.company}>
             <Text style={styles.jobTitle}>
               {exp.title} | {exp.company}
@@ -227,16 +229,14 @@ const ResumeDocument = ({
         </View>
       ))}
 
-      {/* Projects - UNWRAPPED */}
       <Text style={styles.sectionTitle}>Featured Projects</Text>
       {projects.slice(0, 4).map((proj) => (
-        <View key={proj.title} style={styles.entry} wrap={true}>
+        <View key={proj.title} style={styles.entry} wrap>
           <Text style={styles.jobTitle}>{proj.title}</Text>
           <Text style={styles.description}>{proj.description}</Text>
         </View>
       ))}
 
-      {/* Education - UNWRAPPED */}
       <Text style={styles.sectionTitle}>Education</Text>
       {education.map((edu) => (
         <View key={edu.degree} style={styles.entry} wrap={false}>
@@ -248,7 +248,6 @@ const ResumeDocument = ({
         </View>
       ))}
 
-      {/* Languages Section - Kept wrapped as it's small */}
       <View style={styles.section} wrap={false}>
         <Text style={styles.sectionTitle}>Languages</Text>
         <View style={styles.langRow}>

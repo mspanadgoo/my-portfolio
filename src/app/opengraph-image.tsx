@@ -69,22 +69,11 @@ export default async function Image() {
               letterSpacing: "-0.02em",
             }}
           >
-            Senior Software Engineer
+            Lead Software Engineer
           </div>
 
           {/* Chips / Tags */}
           <div style={{ display: "flex", marginTop: 40, gap: "20px" }}>
-            <div
-              style={{
-                padding: "10px 25px",
-                background: "#0B1B3B",
-                color: "#E5E7EB",
-                borderRadius: 50,
-                fontSize: 24,
-              }}
-            >
-              Full Stack
-            </div>
             <div
               style={{
                 padding: "10px 25px",
@@ -105,7 +94,18 @@ export default async function Image() {
                 fontSize: 24,
               }}
             >
-              Microservices
+              Next.js
+            </div>
+            <div
+              style={{
+                padding: "10px 25px",
+                background: "#0B1B3B",
+                color: "#E5E7EB",
+                borderRadius: 50,
+                fontSize: 24,
+              }}
+            >
+              NestJS
             </div>
           </div>
         </div>
