@@ -169,6 +169,10 @@ const ResumeDocument = ({
             {personalInfo.email}
           </Link>
           <Text style={styles.separator}>|</Text>
+          <Link style={styles.link} src="tel:+989126185482">
+            +989126185482
+          </Link>
+          <Text style={styles.separator}>|</Text>
           <Text style={styles.muted}>
             {personalInfo.location || "Tehran, Iran"}
           </Text>
