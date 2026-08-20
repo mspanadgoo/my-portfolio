@@ -97,72 +97,74 @@ export default function ResumeView({ data }: { data: Profile }) {
           >
             <h3 className="text-foreground mb-6 text-xl font-bold">Featured</h3>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {projects.map((project) => {
-                const internal = isInternalLink(project.link);
-                const image = (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={500}
-                    height={300}
-                    className="border-border h-40 w-full rounded-t-lg border-b object-cover"
-                  />
-                );
+              {projects
+                .filter((project) => project.featured)
+                .map((project) => {
+                  const internal = isInternalLink(project.link);
+                  const image = (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={500}
+                      height={300}
+                      className="border-border h-40 w-full rounded-t-lg border-b object-cover"
+                    />
+                  );
 
-                return (
-                  <article
-                    key={project.title}
-                    className="border-border bg-background flex flex-col overflow-hidden rounded-lg border"
-                  >
-                    {internal ? (
-                      <Link href={project.link}>{image}</Link>
-                    ) : (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {image}
-                      </a>
-                    )}
-                    <div className="flex grow flex-col p-4">
-                      <h4 className="text-foreground font-bold">
-                        {project.title}
-                      </h4>
-                      <p className="text-light-gray mt-2 grow text-sm">
-                        {project.description}
-                      </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                  return (
+                    <article
+                      key={project.title}
+                      className="border-border bg-background flex flex-col overflow-hidden rounded-lg border"
+                    >
                       {internal ? (
-                        <Link
-                          href={project.link}
-                          className="text-brand mt-4 inline-block text-sm font-semibold hover:opacity-80"
-                        >
-                          Play Game →
-                        </Link>
+                        <Link href={project.link}>{image}</Link>
                       ) : (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-brand mt-4 inline-block text-sm font-semibold hover:opacity-80"
                         >
-                          View →
+                          {image}
                         </a>
                       )}
-                    </div>
-                  </article>
-                );
-              })}
+                      <div className="flex grow flex-col p-4">
+                        <h4 className="text-foreground font-bold">
+                          {project.title}
+                        </h4>
+                        <p className="text-light-gray mt-2 grow text-sm">
+                          {project.description}
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        {internal ? (
+                          <Link
+                            href={project.link}
+                            className="text-brand mt-4 inline-block text-sm font-semibold hover:opacity-80"
+                          >
+                            Play Game →
+                          </Link>
+                        ) : (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-brand mt-4 inline-block text-sm font-semibold hover:opacity-80"
+                          >
+                            View →
+                          </a>
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
             </div>
           </section>
 
@@ -192,9 +194,11 @@ export default function ResumeView({ data }: { data: Profile }) {
                   </a>
                   <p className="text-light-gray mt-1 text-sm">{exp.dates}</p>
                   <p className="text-light-gray text-sm">{exp.location}</p>
-                  <p className="text-foreground mt-3 leading-relaxed">
-                    {exp.description}
-                  </p>
+                  <ul className="text-foreground mt-3 list-disc space-y-1.5 pl-5 leading-relaxed">
+                    {exp.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>

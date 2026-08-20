@@ -14,14 +14,12 @@ function resumeFileName(name: string, title: string) {
 
 const ResumeDownloadButton = ({ data }: { data: Profile }) => {
   const [isClient, setIsClient] = useState(false);
-  const [profilePictureUrl, setProfilePictureUrl] = useState("");
 
   useEffect(() => {
     setIsClient(true);
-    setProfilePictureUrl(`${window.location.origin}/profile.png`);
   }, []);
 
-  const generationDate = new Date().toLocaleDateString("en-US", {
+  const lastUpdated = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -42,8 +40,7 @@ const ResumeDownloadButton = ({ data }: { data: Profile }) => {
               education={education}
               projects={projects}
               languages={languages}
-              generationDate={generationDate}
-              profilePictureUrl={profilePictureUrl}
+              lastUpdated={lastUpdated}
             />
           }
           fileName={resumeFileName(personalInfo.name, personalInfo.headline)}

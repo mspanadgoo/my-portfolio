@@ -21,7 +21,7 @@ export type Experience = {
   title: string;
   dates: string;
   location: string;
-  description: string;
+  bullets: string[];
 };
 
 export type Project = {
@@ -30,6 +30,7 @@ export type Project = {
   image: string;
   link: string;
   tags: string[];
+  featured?: boolean;
 };
 
 export type Education = {

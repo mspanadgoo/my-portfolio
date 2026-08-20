@@ -11,7 +11,7 @@ export const profile: Profile = {
     github: "https://github.com/mspanadgoo",
     location: "Tehran, Iran",
     summary:
-      "A software engineer with a decade of experience designing, building, and scaling high-quality applications. My expertise spans the stack, from native iOS development and high-performance frontend with Next.js, to engineering resilient, event-driven backends with NestJS and message brokers like NATS. I am passionate about solving complex challenges with clean, maintainable architecture.",
+      "Lead Software Engineer with 11+ years in fintech. Native iOS (Swift, SwiftUI), TypeScript, Next.js, and event-driven NestJS/NATS backends. Currently leading Iva (neobank) and Pulse (merchant iOS) at Sadad Electronic Payment.",
   },
   skills: [
     {
@@ -19,7 +19,7 @@ export const profile: Profile = {
       subcategories: [
         {
           title: "Frameworks & Runtimes",
-          items: ["NestJS", "Fastify", "Express.js", "Node.js"],
+          items: ["NestJS", "Nest.js", "Fastify", "Express.js", "Node.js"],
         },
         {
           title: "Databases & Caching",
@@ -54,6 +54,19 @@ export const profile: Profile = {
       ],
     },
     {
+      category: "Testing",
+      subcategories: [
+        {
+          title: "End-to-End",
+          items: ["Playwright", "end-to-end testing"],
+        },
+        {
+          title: "Unit & Integration",
+          items: ["Jest", "XCTest", "unit testing"],
+        },
+      ],
+    },
+    {
       category: "Architecture & DevOps",
       subcategories: [
         {
@@ -62,11 +75,11 @@ export const profile: Profile = {
         },
         {
           title: "Tools & Containerization",
-          items: ["Docker", "Git", "Jest"],
+          items: ["Docker", "Git"],
         },
         {
           title: "CI/CD",
-          items: ["GitHub Actions", "Mobile CI/CD Pipelines"],
+          items: ["GitHub Actions", "iOS CI/CD"],
         },
       ],
     },
@@ -78,8 +91,12 @@ export const profile: Profile = {
       title: "Principal Software Engineer",
       dates: "Jun 2024 – Present",
       location: "Tehran, Iran",
-      description:
-        "As the architectural lead, I am defining the entire technology vision for the new version of Iva, our payment and neobank application. My goal is to create a highly scalable system that guarantees a flawless and fast user experience for the mobile app. I also lead Pulse, the native iOS merchant app for Bank Melli acquirers on the Sadad PSP network — transaction details, statistics, and in-app support that used to require a branch, the web portal, or a phone call.",
+      bullets: [
+        "Lead a cross-functional team of 18 (7 .NET, 3 frontend, 5 Android, plus Scrum Master, tester, and DevOps).",
+        "Shipped the new Iva payment/neobank platform; raised throughput from ~3 TPS to 200+ TPS with no lag, and grew transaction volume 3-5x versus the previous Iva.",
+        "Lead Pulse (iOS/Swift) for Bank Melli merchants: transaction history, dashboards, and in-app support (tickets, receipt rolls, discrepancies).",
+        "Introduced Playwright end-to-end tests for the Iva Next.js frontend.",
+      ],
     },
     {
       company: "Sibbank",
@@ -87,8 +104,9 @@ export const profile: Profile = {
       title: "Senior Software Engineer",
       dates: "Mar 2024 – Jun 2024",
       location: "Tehran, Iran",
-      description:
-        "Developed and enhanced frontend features for a web application using Next.js (React) and TypeScript, improving user-facing components and interactions. Contributed to backend API services using Nest.js. Led the development of a native iOS application using SwiftUI and MVVM, gaining deep experience in declarative UI and state management patterns.",
+      bullets: [
+        "Shipped native iOS (SwiftUI, MVVM) plus Next.js UI and Nest.js APIs for the flagship product.",
+      ],
     },
     {
       company: "Behpardakht Mellat",
@@ -96,8 +114,10 @@ export const profile: Profile = {
       title: "Senior Software Engineer",
       dates: "Feb 2019 – Mar 2024",
       location: "Tehran, Iran",
-      description:
-        "Architected and developed complex, feature-rich applications used by millions of users. Led the modernization of the main application's architecture (from MVC to MVVM), significantly improving testability and maintainability. Reduced technical debt by refactoring legacy code and minimizing dependencies on third-party libraries, resulting in a more stable and performant application.",
+      bullets: [
+        "Modernized a production payment app from MVC to MVVM; cut startup time ~50% and reduced third-party surface area.",
+        "Built high-throughput wallet services (transactions, partners, payment gateway) used with partners such as Irancell.",
+      ],
     },
     {
       company: "Behsazan Mellat",
@@ -105,26 +125,29 @@ export const profile: Profile = {
       title: "iOS Developer",
       dates: "Apr 2015 – Feb 2019",
       location: "Tehran, Iran",
-      description:
-        "Developed and maintained features for a large-scale mobile banking application. Collaborated with security teams to implement robust security measures and improve the overall user experience. Built the first version of the flagship Mellat Mobile Bank iOS app.",
+      bullets: [
+        "Built v1 of Mellat Mobile Bank (iOS), later serving 3M+ users, with security-focused client work.",
+      ],
     },
   ],
   projects: [
     {
       title: "Pulse Merchant App",
       description:
-        "Native iOS app for Bank Melli merchants on the Sadad PSP network. Merchants inspect transaction details and statistics through daily and weekly dashboards, charts by amount and volume, and in-app support — tickets, receipt-roll requests, and discrepancy reports.",
+        "Native iOS app for Bank Melli merchants on the Sadad PSP network. Merchants inspect transaction details and statistics through daily and weekly dashboards, charts by amount and volume, and in-app support: tickets, receipt-roll requests, and discrepancy reports.",
       image: "/projects/pulse.png",
       link: "https://cafebazaar.ir/app/ir.sadadpsp.sadadMerchant",
       tags: ["Swift", "iOS", "Fintech", "Reporting"],
+      featured: true,
     },
     {
       title: "Iva Neobank Platform",
       description:
-        "I designed the entire system architecture for a new neobank. My solution was a resilient, event-driven backend using Node.js and NATS to ensure safe, asynchronous processing of financial transactions.",
+        "Led the architecture of Sadad's new Iva neobank platform. Throughput went from about 3 TPS to 200+ TPS with no lag, and transaction volume rose 3-5x after launch.",
       image: "/projects/iva-neobank.png",
       link: "https://ivaapp.com",
       tags: ["Architecture", "Event-Driven", "NATS", "NestJS", "System Design"],
+      featured: true,
     },
     {
       title: "Mellat Bank Wallet",
@@ -133,6 +156,7 @@ export const profile: Profile = {
       image: "/projects/mellat-wallet.png",
       link: "https://behpardakht.com",
       tags: ["Architecture", "Microservices", "NestJS", "Fintech", "Node.js"],
+      featured: true,
     },
     {
       title: "Mellat Mobile Bank",
@@ -141,6 +165,7 @@ export const profile: Profile = {
       image: "/projects/mellat-mobile-bank.png",
       link: "https://mobile.bankmellat.ir/mobile/ios.html",
       tags: ["Swift", "Security", "Fintech", "Scale", "iOS"],
+      featured: true,
     },
     {
       title: "Sibbank App Store",
@@ -149,6 +174,7 @@ export const profile: Profile = {
       image: "/projects/sibbank.png",
       link: "https://sibbank.com",
       tags: ["Swift", "Nest.js", "Next.js", "Full-Stack", "iOS"],
+      featured: true,
     },
     {
       title: "Sekkeh App Modernization",
@@ -157,6 +183,7 @@ export const profile: Profile = {
       image: "/projects/sekkeh.png",
       link: "https://sekeh.behpardakht.com",
       tags: ["Swift", "Refactoring", "Performance", "Architecture"],
+      featured: true,
     },
     {
       title: "Paysib Currency Exchange",

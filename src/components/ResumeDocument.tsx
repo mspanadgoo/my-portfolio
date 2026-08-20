@@ -5,7 +5,6 @@ import {
   Document,
   StyleSheet,
   Link,
-  Image,
 } from "@react-pdf/renderer";
 import type {
   Education,
@@ -39,19 +38,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   headerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  profileImage: {
-    width: 75,
-    height: 75,
-    borderRadius: 40,
-    marginRight: 20,
-  },
-  headerText: {
-    textAlign: "left",
-    flex: 1,
+    marginBottom: 16,
   },
   name: {
     fontSize: 22,
@@ -116,6 +103,13 @@ const styles = StyleSheet.create({
     textAlign: "left",
     color: "#000",
   },
+  bullet: {
+    fontSize: 10,
+    textAlign: "left",
+    color: "#000",
+    marginTop: 2,
+    paddingLeft: 8,
+  },
   skillsCategory: {
     marginBottom: 8,
   },
@@ -146,9 +140,11 @@ type ResumeDocumentProps = {
   education: Education[];
   projects: Project[];
   languages: Language[];
-  generationDate: string;
-  profilePictureUrl: string;
+  lastUpdated: string;
 };
+
+const resumeProjects = (projects: Project[]) =>
+  projects.filter((project) => project.featured).slice(0, 4);
 
 const ResumeDocument = ({
   personalInfo,
@@ -156,44 +152,38 @@ const ResumeDocument = ({
   experiences,
   education,
   projects,
-  generationDate,
-  profilePictureUrl,
+  lastUpdated,
   languages,
 }: ResumeDocumentProps) => (
   <Document>
     <Page style={styles.page}>
       <Text style={styles.footer} fixed>
-        Generated on {generationDate || "Today"}
+        Last updated {lastUpdated}
       </Text>
 
       <View style={styles.headerContainer}>
-        {profilePictureUrl ? (
-          <Image style={styles.profileImage} src={profilePictureUrl} />
-        ) : null}
-        <View style={styles.headerText}>
-          <Text style={styles.name}>{personalInfo.name}</Text>
-          <Text style={styles.title}>{personalInfo.headline}</Text>
-          <View style={styles.contactInfo}>
-            <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
-              {personalInfo.email}
-            </Link>
-            <Text style={styles.separator}>|</Text>
-            <Text style={styles.muted}>
-              {personalInfo.location || "Tehran, Iran"}
-            </Text>
-            <Text style={styles.separator}>|</Text>
-            <Link style={styles.link} src={personalInfo.linkedin}>
-              LinkedIn
-            </Link>
-            <Text style={styles.separator}>|</Text>
-            <Link style={styles.link} src={personalInfo.github}>
-              GitHub
-            </Link>
-            <Text style={styles.separator}>|</Text>
-            <Link style={styles.link} src="https://mspanadgoo.ir">
-              mspanadgoo.ir
-            </Link>
-          </View>
+        <Text style={styles.name}>{personalInfo.name}</Text>
+        <Text style={styles.title}>{personalInfo.headline}</Text>
+        <View style={styles.contactInfo}>
+          <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
+            {personalInfo.email}
+          </Link>
+          <Text style={styles.separator}>|</Text>
+          <Text style={styles.muted}>
+            {personalInfo.location || "Tehran, Iran"}
+          </Text>
+          <Text style={styles.separator}>|</Text>
+          <Link style={styles.link} src={personalInfo.linkedin}>
+            LinkedIn
+          </Link>
+          <Text style={styles.separator}>|</Text>
+          <Link style={styles.link} src={personalInfo.github}>
+            GitHub
+          </Link>
+          <Text style={styles.separator}>|</Text>
+          <Link style={styles.link} src="https://mspanadgoo.ir">
+            mspanadgoo.ir
+          </Link>
         </View>
       </View>
 
@@ -225,12 +215,16 @@ const ResumeDocument = ({
             </Text>
             <Text style={styles.dates}>{exp.dates}</Text>
           </View>
-          <Text style={styles.description}>{exp.description}</Text>
+          {exp.bullets.map((bullet) => (
+            <Text key={bullet} style={styles.bullet}>
+              {`• ${bullet}`}
+            </Text>
+          ))}
         </View>
       ))}
 
       <Text style={styles.sectionTitle}>Featured Projects</Text>
-      {projects.slice(0, 4).map((proj) => (
+      {resumeProjects(projects).map((proj) => (
         <View key={proj.title} style={styles.entry} wrap>
           <Text style={styles.jobTitle}>{proj.title}</Text>
           <Text style={styles.description}>{proj.description}</Text>
