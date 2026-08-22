@@ -4,14 +4,14 @@ export const profile: Profile = {
   personalInfo: {
     name: "Mohammad Sadegh Panadgoo",
     headline: "Lead Software Engineer",
-    title: "Principal Software Engineer",
-    company: "Sadad Electronic Payment",
+    title: "Lead Software Engineer",
+    company: "Sadad Electronic Payment (Sadad PSP · Bank Melli)",
     email: "mspanadgoo@me.com",
     linkedin: "https://linkedin.com/in/mspanadgoo",
     github: "https://github.com/mspanadgoo",
-    location: "Tehran, Iran",
+    location: "Tehran, Iran · GMT+3:30 · Open to remote",
     summary:
-      "Lead Software Engineer with 11+ years in fintech. Native iOS (Swift, SwiftUI), TypeScript, Next.js, and event-driven NestJS/NATS backends. Currently leading Iva (neobank) and Pulse (merchant iOS) at Sadad Electronic Payment.",
+      "Lead Software Engineer with 11+ years in fintech. Native iOS (Swift, SwiftUI), TypeScript, Next.js, and event-driven NestJS/NATS backends. Currently leading Iva (neobank) and Pulse (merchant iOS) at Sadad Electronic Payment, the PSP for Bank Melli.",
   },
   skills: [
     {
@@ -19,7 +19,7 @@ export const profile: Profile = {
       subcategories: [
         {
           title: "Frameworks & Runtimes",
-          items: ["NestJS", "Nest.js", "Fastify", "Express.js", "Node.js"],
+          items: ["Node.js", "NestJS", "Fastify", "Express.js"],
         },
         {
           title: "Databases & Caching",
@@ -58,11 +58,11 @@ export const profile: Profile = {
       subcategories: [
         {
           title: "End-to-End",
-          items: ["Playwright", "end-to-end testing"],
+          items: ["Playwright"],
         },
         {
           title: "Unit & Integration",
-          items: ["Jest", "XCTest", "unit testing"],
+          items: ["Jest", "XCTest"],
         },
       ],
     },
@@ -86,13 +86,14 @@ export const profile: Profile = {
   ],
   experiences: [
     {
-      company: "Sadad Electronic Payment",
+      company: "Sadad Electronic Payment (Sadad PSP · Bank Melli)",
       link: "https://sadadpsp.ir",
-      title: "Principal Software Engineer",
+      title: "Lead Software Engineer",
       dates: "Jun 2024 – Present",
       location: "Tehran, Iran",
       bullets: [
-        "Lead a cross-functional team of 18 (7 .NET, 3 frontend, 5 Android, plus Scrum Master, tester, and DevOps).",
+        "Lead a cross-functional team of 18 at Sadad PSP, the payment provider for Bank Melli (7 .NET, 3 frontend, 5 Android, plus Scrum Master, tester, and DevOps).",
+        "Mentor engineers on Iva and Pulse and run technical reviews so quality stays consistent across backend, web, and iOS.",
         "Shipped the new Iva payment/neobank platform; raised throughput from ~3 TPS to 200+ TPS with no lag, and grew transaction volume 3-5x versus the previous Iva.",
         "Lead Pulse (iOS/Swift) for Bank Melli merchants: transaction history, dashboards, and in-app support (tickets, receipt rolls, discrepancies).",
         "Introduced Playwright end-to-end tests for the Iva Next.js frontend.",
@@ -156,7 +157,6 @@ export const profile: Profile = {
       image: "/projects/mellat-wallet.png",
       link: "https://behpardakht.com",
       tags: ["Architecture", "Microservices", "NestJS", "Fintech", "Node.js"],
-      featured: true,
     },
     {
       title: "Mellat Mobile Bank",
@@ -174,7 +174,6 @@ export const profile: Profile = {
       image: "/projects/sibbank.png",
       link: "https://sibbank.com",
       tags: ["Swift", "Nest.js", "Next.js", "Full-Stack", "iOS"],
-      featured: true,
     },
     {
       title: "Sekkeh App Modernization",
@@ -183,7 +182,6 @@ export const profile: Profile = {
       image: "/projects/sekkeh.png",
       link: "https://sekeh.behpardakht.com",
       tags: ["Swift", "Refactoring", "Performance", "Architecture"],
-      featured: true,
     },
     {
       title: "Paysib Currency Exchange",
@@ -231,7 +229,7 @@ export const profile: Profile = {
     {
       language: "English",
       proficiency: "Professional Proficiency",
-      detail: "IELTS General Training: 6.0 (Each Skill)",
+      detail: "Work, docs, and interviews",
     },
     {
       language: "German",

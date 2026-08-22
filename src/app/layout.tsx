@@ -12,9 +12,9 @@ const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(
 export const metadata: Metadata = {
   title: "Mohammad Sadegh Panadgoo | Lead Software Engineer",
   description:
-    "Lead Software Engineer based in Tehran. Native iOS, Next.js, NestJS, and event-driven backends with NATS — currently Principal Software Engineer at Sadad Electronic Payment.",
+    "Lead Software Engineer based in Tehran. Native iOS, Next.js, Node.js, and event-driven backends with NATS — currently at Sadad Electronic Payment (Sadad PSP · Bank Melli).",
   keywords:
-    "Mohammad Sadegh Panadgoo, Lead Software Engineer, Principal Software Engineer, Sadad, iOS, Next.js, NestJS, NATS, Tehran",
+    "Mohammad Sadegh Panadgoo, Lead Software Engineer, Sadad PSP, Bank Melli, iOS, Next.js, Node.js, NestJS, NATS, Tehran",
   authors: [{ name: "Mohammad Sadegh Panadgoo" }],
   metadataBase: new URL("https://mspanadgoo.ir"),
   alternates: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mohammad Sadegh Panadgoo | Lead Software Engineer",
     description:
-      "Native iOS, Next.js, NestJS, and event-driven backends with NATS.",
+      "Native iOS, Next.js, Node.js, and event-driven backends with NATS.",
   },
 };
 
@@ -58,7 +58,7 @@ export default function RootLayout({
     jobTitle: "Lead Software Engineer",
     worksFor: {
       "@type": "Organization",
-      name: "Sadad Electronic Payment",
+      name: "Sadad Electronic Payment (Sadad PSP · Bank Melli)",
       logo: "https://mspanadgoo.ir/logo.svg",
     },
     sameAs: [

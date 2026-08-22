@@ -1,14 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="MP">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32" role="img" aria-label="MSP">
   <style>
     .mark { fill: #0B1B3B; }
     @media (prefers-color-scheme: dark) {
       .mark { fill: #E5E7EB; }
     }
   </style>
-  <path
+  <text
     class="mark"
+    x="256"
+    y="348"
     fill="#0B1B3B"
-    fill-rule="evenodd"
-    d="M4 26V8h3.8L11 17.5 14.2 8H18v18h-3.8v-13L11 21.2 7.8 13v13H4zM18 8h4.8c3.6 0 5.5 2.5 5.5 5.5S26.4 19 22.8 19H18V8zm3.6 3h1.4c1.6 0 2.6 1.1 2.6 2.5S24.6 16 23 16h-1.4v-5z"
-  />
+    text-anchor="middle"
+    font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+    font-size="188"
+    font-weight="800"
+    letter-spacing="10"
+  >MSP</text>
 </svg>

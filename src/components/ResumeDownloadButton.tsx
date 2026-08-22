@@ -44,13 +44,13 @@ const ResumeDownloadButton = ({ data }: { data: Profile }) => {
             />
           }
           fileName={resumeFileName(personalInfo.name, personalInfo.headline)}
-          className="bg-brand text-background inline-block rounded-lg px-5 py-2 text-sm font-bold transition-colors hover:opacity-90"
+          className="bg-brand text-background inline-block shrink-0 rounded-lg px-5 py-2 text-sm font-bold whitespace-nowrap transition-colors hover:opacity-90"
         >
           {({ loading }) => (loading ? "Generating PDF..." : "Download Resume")}
         </PDFDownloadLink>
       ) : (
         <button
-          className="inline-block cursor-not-allowed rounded-lg bg-gray-500 px-5 py-2 text-sm font-bold text-white opacity-70"
+          className="inline-block shrink-0 cursor-not-allowed rounded-lg bg-gray-500 px-5 py-2 text-sm font-bold whitespace-nowrap text-white opacity-70"
           disabled
         >
           Loading...

@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink, FiMapPin } from "react-icons/fi";
-import { MdEmail } from "react-icons/md";
 import dynamic from "next/dynamic";
-import type { Profile } from "@/lib/data";
+import type { Profile, Project } from "@/lib/data";
 
 const ResumeDownloadButton = dynamic(
   () => import("@/components/ResumeDownloadButton"),
@@ -17,65 +16,136 @@ function isInternalLink(href: string) {
   return href.startsWith("/");
 }
 
+function FeaturedCard({
+  project,
+  hero = false,
+}: {
+  project: Project;
+  hero?: boolean;
+}) {
+  const internal = isInternalLink(project.link);
+  const content = (
+    <article
+      className={`border-border bg-background overflow-hidden rounded-lg border ${
+        hero ? "flex flex-col sm:flex-row" : "flex h-full flex-col"
+      }`}
+    >
+      <Image
+        src={project.image}
+        alt={project.title}
+        width={hero ? 800 : 500}
+        height={hero ? 400 : 300}
+        className={
+          hero
+            ? "border-border h-48 w-full border-b object-cover sm:h-auto sm:w-72 sm:shrink-0 sm:border-r sm:border-b-0"
+            : "border-border h-40 w-full border-b object-cover"
+        }
+      />
+      <div className="flex grow flex-col p-4">
+        <h4 className="text-foreground font-bold">{project.title}</h4>
+        <p className="text-light-gray mt-2 grow text-sm">
+          {project.description}
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+
+  const className = "block rounded-lg transition-opacity hover:opacity-90";
+
+  if (internal) {
+    return (
+      <Link href={project.link} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
+      {content}
+    </a>
+  );
+}
+
 export default function ResumeView({ data }: { data: Profile }) {
   const { personalInfo, skills, experiences, projects, education, languages } =
     data;
+  const featured = projects.filter((project) => project.featured);
+  const [heroProject, ...otherFeatured] = featured;
 
   return (
     <div className="bg-background min-h-screen">
       <div className="h-44 bg-gradient-to-br from-[#0B1B3B] via-[#0B1B3B] to-[#14284D] md:h-56" />
 
-      <div className="mx-auto max-w-3xl px-4 pb-16 antialiased sm:px-6">
+      <div className="mx-auto max-w-4xl px-4 pb-16 antialiased sm:px-6">
         <header className="bg-surface border-border relative -mt-16 mb-6 rounded-xl border p-6 shadow-sm md:-mt-20 md:p-8">
-          <Image
-            src="/profile.png"
-            alt={personalInfo.name}
-            width={152}
-            height={152}
-            className="border-surface bg-background absolute -top-16 left-6 h-28 w-28 rounded-full border-4 object-cover md:-top-20 md:h-36 md:w-36"
-            priority
-          />
-          <div className="mt-14 md:mt-16">
-            <h1 className="text-foreground text-3xl font-bold">
-              {personalInfo.name}
-            </h1>
-            <h2 className="text-foreground mt-1 text-lg">
-              {personalInfo.headline}
-            </h2>
-            <p className="text-light-gray mt-2 text-sm">
-              {personalInfo.title} at {personalInfo.company}
-            </p>
-            <p className="text-light-gray mt-2 flex items-center gap-1.5 text-sm">
-              <FiMapPin aria-hidden />
-              {personalInfo.location}
-            </p>
-            <div className="mt-5 flex flex-wrap items-center gap-4">
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${personalInfo.name} on LinkedIn`}
-                className="text-light-gray hover:text-brand transition-colors"
-              >
-                <FaLinkedin size={24} />
-              </a>
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${personalInfo.name} on GitHub`}
-                className="text-light-gray hover:text-brand transition-colors"
-              >
-                <FaGithub size={24} />
-              </a>
-              <a
-                href={`mailto:${personalInfo.email}`}
-                aria-label={`Email ${personalInfo.name}`}
-                className="text-light-gray hover:text-brand transition-colors"
-              >
-                <MdEmail size={24} />
-              </a>
-              <ResumeDownloadButton data={data} />
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
+            <Image
+              src="/profile.png"
+              alt={personalInfo.name}
+              width={152}
+              height={152}
+              className="border-surface bg-background -mt-16 h-28 w-28 shrink-0 rounded-full border-4 object-cover md:-mt-20 md:h-36 md:w-36"
+              priority
+            />
+            <div className="min-w-0 flex-1 md:pt-1">
+              <h1 className="text-foreground text-3xl font-bold">
+                {personalInfo.name}
+              </h1>
+              <h2 className="text-foreground mt-1 text-lg">
+                {personalInfo.headline}
+              </h2>
+              <p className="text-light-gray mt-2 text-sm">
+                {personalInfo.company}
+              </p>
+              <p className="text-light-gray mt-2 flex items-center gap-1.5 text-sm">
+                <FiMapPin aria-hidden />
+                {personalInfo.location}
+              </p>
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-4">
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${personalInfo.name} on LinkedIn`}
+                    className="text-light-gray hover:text-brand transition-colors"
+                  >
+                    <FaLinkedin size={24} />
+                  </a>
+                  <a
+                    href={personalInfo.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${personalInfo.name} on GitHub`}
+                    className="text-light-gray hover:text-brand transition-colors"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-light-gray text-sm hover:underline"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
+                <ResumeDownloadButton data={data} />
+              </div>
             </div>
           </div>
         </header>
@@ -96,75 +166,15 @@ export default function ResumeView({ data }: { data: Profile }) {
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
             <h3 className="text-foreground mb-6 text-xl font-bold">Featured</h3>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {projects
-                .filter((project) => project.featured)
-                .map((project) => {
-                  const internal = isInternalLink(project.link);
-                  const image = (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={500}
-                      height={300}
-                      className="border-border h-40 w-full rounded-t-lg border-b object-cover"
-                    />
-                  );
-
-                  return (
-                    <article
-                      key={project.title}
-                      className="border-border bg-background flex flex-col overflow-hidden rounded-lg border"
-                    >
-                      {internal ? (
-                        <Link href={project.link}>{image}</Link>
-                      ) : (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {image}
-                        </a>
-                      )}
-                      <div className="flex grow flex-col p-4">
-                        <h4 className="text-foreground font-bold">
-                          {project.title}
-                        </h4>
-                        <p className="text-light-gray mt-2 grow text-sm">
-                          {project.description}
-                        </p>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        {internal ? (
-                          <Link
-                            href={project.link}
-                            className="text-brand mt-4 inline-block text-sm font-semibold hover:opacity-80"
-                          >
-                            Play Game →
-                          </Link>
-                        ) : (
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-brand mt-4 inline-block text-sm font-semibold hover:opacity-80"
-                          >
-                            View →
-                          </a>
-                        )}
-                      </div>
-                    </article>
-                  );
-                })}
+            <div className="space-y-6">
+              {heroProject ? <FeaturedCard project={heroProject} hero /> : null}
+              {otherFeatured.length > 0 ? (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  {otherFeatured.map((project) => (
+                    <FeaturedCard key={project.title} project={project} />
+                  ))}
+                </div>
+              ) : null}
             </div>
           </section>
 
@@ -181,9 +191,14 @@ export default function ResumeView({ data }: { data: Profile }) {
                   key={`${exp.company}-${exp.title}`}
                   className="py-6 first:pt-0 last:pb-0"
                 >
-                  <h4 className="text-foreground text-lg font-bold">
-                    {exp.title}
-                  </h4>
+                  <div className="flex items-start justify-between gap-4">
+                    <h4 className="text-foreground text-lg font-bold">
+                      {exp.title}
+                    </h4>
+                    <p className="text-light-gray shrink-0 text-right text-sm">
+                      {exp.dates}
+                    </p>
+                  </div>
                   <a
                     href={exp.link}
                     target="_blank"
@@ -192,7 +207,6 @@ export default function ResumeView({ data }: { data: Profile }) {
                   >
                     {exp.company} <FiExternalLink aria-hidden />
                   </a>
-                  <p className="text-light-gray mt-1 text-sm">{exp.dates}</p>
                   <p className="text-light-gray text-sm">{exp.location}</p>
                   <ul className="text-foreground mt-3 list-disc space-y-1.5 pl-5 leading-relaxed">
                     {exp.bullets.map((bullet) => (
@@ -214,11 +228,15 @@ export default function ResumeView({ data }: { data: Profile }) {
             <div className="divide-border divide-y">
               {education.map((edu) => (
                 <article key={edu.degree} className="py-6 first:pt-0 last:pb-0">
-                  <h4 className="text-foreground text-lg font-bold">
-                    {edu.degree}
-                  </h4>
+                  <div className="flex items-start justify-between gap-4">
+                    <h4 className="text-foreground text-lg font-bold">
+                      {edu.degree}
+                    </h4>
+                    <p className="text-light-gray shrink-0 text-right text-sm">
+                      {edu.dates}
+                    </p>
+                  </div>
                   <p className="text-brand font-semibold">{edu.university}</p>
-                  <p className="text-light-gray mt-1 text-sm">{edu.dates}</p>
                 </article>
               ))}
             </div>
