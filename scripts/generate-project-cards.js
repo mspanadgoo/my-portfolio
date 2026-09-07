@@ -24,11 +24,6 @@ const projects = [
     tags: "Swift · iOS · Scale",
   },
   {
-    file: "sibbank.png",
-    title: "Sibbank App Store",
-    tags: "Swift · Nest.js · Full-Stack",
-  },
-  {
     file: "sekkeh.png",
     title: "Sekkeh App Modernization",
     tags: "Swift · Performance · MVVM",

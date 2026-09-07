@@ -100,16 +100,6 @@ export const profile: Profile = {
       ],
     },
     {
-      company: "Sibbank",
-      link: "https://sibbank.ir",
-      title: "Senior Software Engineer",
-      dates: "Mar 2024 – Jun 2024",
-      location: "Tehran, Iran",
-      bullets: [
-        "Shipped native iOS (SwiftUI, MVVM) plus Next.js UI and Nest.js APIs for the flagship product.",
-      ],
-    },
-    {
       company: "Behpardakht Mellat",
       link: "https://behpardakht.com",
       title: "Senior Software Engineer",
@@ -166,14 +156,6 @@ export const profile: Profile = {
       link: "https://mobile.bankmellat.ir/mobile/ios.html",
       tags: ["Swift", "Security", "Fintech", "Scale", "iOS"],
       featured: true,
-    },
-    {
-      title: "Sibbank App Store",
-      description:
-        "Architected and led the development of a full-stack application ecosystem, including the primary native iOS app (Swift), its supporting backend (Nest.js), and the web admin portal.",
-      image: "/projects/sibbank.png",
-      link: "https://sibbank.com",
-      tags: ["Swift", "Nest.js", "Next.js", "Full-Stack", "iOS"],
     },
     {
       title: "Sekkeh App Modernization",
