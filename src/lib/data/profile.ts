@@ -15,71 +15,59 @@ export const profile: Profile = {
   },
   skills: [
     {
-      category: "Backend Development",
+      category: "Native iOS",
       subcategories: [
         {
-          title: "Frameworks & Runtimes",
-          items: ["Node.js", "NestJS", "Fastify", "Express.js"],
+          title: "Languages & UI",
+          items: ["Swift", "SwiftUI", "UIKit", "Objective-C"],
         },
         {
-          title: "Databases & Caching",
-          items: ["PostgreSQL", "MongoDB", "Redis", "T-SQL"],
-        },
-        {
-          title: "Messaging & Event Streaming",
-          items: ["NATS (JetStream)", "Event-Driven Architecture"],
+          title: "Architecture & tooling",
+          items: ["MVVM", "Swift Concurrency", "Swift Package Manager"],
         },
       ],
     },
     {
-      category: "Frontend Development",
+      category: "Web",
       subcategories: [
-        { title: "Frameworks & Libraries", items: ["Next.js", "React"] },
         {
-          title: "Languages & Core Web",
-          items: ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3"],
-        },
-        {
-          title: "Styling & UI",
-          items: ["Tailwind CSS", "SCSS/SASS", "shadcn/ui"],
+          title: "Languages & frameworks",
+          items: ["TypeScript", "Next.js", "React", "Tailwind CSS"],
         },
       ],
     },
     {
-      category: "Native iOS Development",
-      subcategories: [
-        { title: "Languages", items: ["Swift", "Objective-C"] },
-        { title: "Frameworks & UI", items: ["SwiftUI", "UIKit", "XCTest"] },
-        { title: "Architecture", items: ["MVVM", "Clean Architecture"] },
-      ],
-    },
-    {
-      category: "Testing",
+      category: "Backend",
       subcategories: [
         {
-          title: "End-to-End",
-          items: ["Playwright"],
+          title: "Runtime & APIs",
+          items: ["Node.js", "NestJS", "REST APIs"],
         },
         {
-          title: "Unit & Integration",
-          items: ["Jest", "XCTest"],
+          title: "Data & messaging",
+          items: ["PostgreSQL", "Redis", "MongoDB", "NATS"],
         },
       ],
     },
     {
-      category: "Architecture & DevOps",
+      category: "Testing & delivery",
       subcategories: [
         {
-          title: "System Design",
-          items: ["Microservices", "SOLID Principles"],
+          title: "Testing",
+          items: ["Playwright", "XCTest", "Jest"],
         },
         {
-          title: "Tools & Containerization",
-          items: ["Docker", "Git"],
+          title: "Delivery",
+          items: ["Docker", "GitHub Actions", "Fastlane"],
         },
+      ],
+    },
+    {
+      category: "Domain",
+      subcategories: [
         {
-          title: "CI/CD",
-          items: ["GitHub Actions", "iOS CI/CD"],
+          title: "Payments",
+          items: ["Payments", "PSP", "Neobank"],
         },
       ],
     },
