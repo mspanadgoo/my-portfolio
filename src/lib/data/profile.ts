@@ -147,6 +147,7 @@ export const profile: Profile = {
       image: "/projects/mellat-wallet.png",
       link: "https://behpardakht.com",
       tags: ["Architecture", "Microservices", "NestJS", "Fintech", "Node.js"],
+      featured: true,
     },
     {
       title: "Mellat Mobile Bank",
@@ -164,6 +165,7 @@ export const profile: Profile = {
       image: "/projects/sekkeh.png",
       link: "https://sekeh.behpardakht.com",
       tags: ["Swift", "Refactoring", "Performance", "Architecture"],
+      featured: true,
     },
     {
       title: "Paysib Currency Exchange",
@@ -172,6 +174,7 @@ export const profile: Profile = {
       image: "/projects/paysib.png",
       link: "https://paysib.com",
       tags: ["Next.js", "Node.js", "MongoDB", "Fintech", "Security"],
+      featured: true,
     },
     {
       title: "Ketabrah E-Reader",
@@ -180,6 +183,7 @@ export const profile: Profile = {
       image: "/projects/ketabrah.png",
       link: "https://www.ketabrah.ir/apps",
       tags: ["Swift", "UIKit", "iOS", "User Experience"],
+      featured: true,
     },
     {
       title: "Jackpot Fun Game",
