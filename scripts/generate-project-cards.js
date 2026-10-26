@@ -116,24 +116,6 @@ function walletIcon() {
   );
 }
 
-function jackpotIcon() {
-  return svgIcon(
-    `
-      <text
-        x="108" y="148"
-        text-anchor="middle"
-        font-family="Helvetica, Arial, sans-serif"
-        font-size="120"
-        font-weight="700"
-        fill="#F5D76E"
-      >7</text>
-      <path d="M48 48h14M55 41v14" stroke="#F8E7A1" stroke-width="4" stroke-linecap="round"/>
-      <path d="M164 58h10M169 53v10" stroke="#E8C547" stroke-width="3" stroke-linecap="round"/>
-    `,
-    { background: "#1A1408" },
-  );
-}
-
 const projects = [
   {
     file: "pulse.png",
@@ -184,12 +166,6 @@ const projects = [
     label: "KETABRAH",
     kind: "raster",
     raster: "ketabrah.webp",
-  },
-  {
-    file: "jackpot.png",
-    label: "JACKPOT",
-    kind: "svg",
-    svg: jackpotIcon,
   },
 ];
 
