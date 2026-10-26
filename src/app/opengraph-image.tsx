@@ -2,7 +2,8 @@ import { ImageResponse } from "next/og";
 import { profile } from "@/lib/data";
 
 export const runtime = "edge";
-export const alt = "Mohammad Sadegh Panadgoo Portfolio";
+export const alt =
+  "Mohammad Sadegh Panadgoo, senior iOS and front-end engineer";
 export const size = {
   width: 1200,
   height: 630,
