@@ -28,9 +28,14 @@ function FeaturedCard({
     >
       <Image
         src={project.image}
-        alt={project.imageAlt ?? project.title}
+        alt={project.imageAlt ?? ""}
         width={hero ? 800 : 500}
         height={hero ? 400 : 300}
+        sizes={
+          hero
+            ? "(min-width: 640px) 288px, 100vw"
+            : "(min-width: 640px) 50vw, 100vw"
+        }
         className={
           hero
             ? "border-border h-48 w-full border-b object-cover sm:h-auto sm:w-72 sm:shrink-0 sm:border-r sm:border-b-0"
@@ -100,9 +105,10 @@ export default function ResumeView({ data }: { data: Profile }) {
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
             <Image
               src="/profile.png"
-              alt={personalInfo.name}
-              width={152}
-              height={152}
+              alt={`Portrait of ${personalInfo.name}`}
+              width={384}
+              height={384}
+              sizes="(min-width: 768px) 144px, 112px"
               className="border-surface bg-background -mt-16 h-28 w-28 shrink-0 rounded-full border-4 object-cover md:-mt-20 md:h-36 md:w-36"
               priority
             />
