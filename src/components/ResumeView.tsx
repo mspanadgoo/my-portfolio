@@ -43,7 +43,7 @@ function FeaturedCard({
         }
       />
       <div className="flex grow flex-col p-4">
-        <h4 className="text-foreground font-bold">{project.title}</h4>
+        <h3 className="text-foreground font-bold">{project.title}</h3>
         <p className="text-light-gray mt-2 grow text-sm">
           {project.description}
         </p>
@@ -51,7 +51,7 @@ function FeaturedCard({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
+              className="bg-surface text-foreground rounded-full px-2.5 py-1 text-xs font-semibold"
             >
               {tag}
             </span>
@@ -68,7 +68,8 @@ function FeaturedCard({
     return content;
   }
 
-  const className = "block rounded-lg transition-opacity hover:opacity-90";
+  const className =
+    "block rounded-lg transition-opacity hover:opacity-90 focus-visible:ring-foreground focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none";
 
   if (internal) {
     return (
@@ -98,6 +99,12 @@ export default function ResumeView({ data }: { data: Profile }) {
 
   return (
     <div className="bg-background min-h-screen">
+      <a
+        href="#content"
+        className="bg-brand text-background focus-visible:ring-foreground sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:px-4 focus:py-2 focus:ring-2 focus:outline-none"
+      >
+        Skip to content
+      </a>
       <div className="h-44 bg-gradient-to-br from-[#0B1B3B] via-[#0B1B3B] to-[#14284D] md:h-56" />
 
       <div className="mx-auto max-w-4xl px-4 pb-16 antialiased sm:px-6">
@@ -116,9 +123,9 @@ export default function ResumeView({ data }: { data: Profile }) {
               <h1 className="text-foreground text-3xl font-bold">
                 {personalInfo.name}
               </h1>
-              <h2 className="text-foreground mt-1 text-lg">
+              <p className="text-foreground mt-1 text-lg">
                 {personalInfo.headline}
-              </h2>
+              </p>
               <p className="text-light-gray mt-2 text-sm">
                 {personalInfo.company}
               </p>
@@ -133,7 +140,7 @@ export default function ResumeView({ data }: { data: Profile }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${personalInfo.name} on LinkedIn`}
-                    className="text-light-gray hover:text-brand transition-colors"
+                    className="text-light-gray hover:text-brand focus-visible:ring-foreground rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     <FaLinkedin size={24} />
                   </a>
@@ -142,13 +149,13 @@ export default function ResumeView({ data }: { data: Profile }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${personalInfo.name} on GitHub`}
-                    className="text-light-gray hover:text-brand transition-colors"
+                    className="text-light-gray hover:text-brand focus-visible:ring-foreground rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     <FaGithub size={24} />
                   </a>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    className="text-light-gray text-sm hover:underline"
+                    className="text-light-gray focus-visible:ring-foreground rounded-sm text-sm hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     {personalInfo.email}
                   </a>
@@ -159,12 +166,12 @@ export default function ResumeView({ data }: { data: Profile }) {
           </div>
         </header>
 
-        <main className="space-y-6">
+        <main id="content" className="space-y-6">
           <section
             id="about"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-4 text-xl font-bold">About</h3>
+            <h2 className="text-foreground mb-4 text-xl font-bold">About</h2>
             <p className="text-foreground leading-relaxed">
               {personalInfo.summary}
             </p>
@@ -174,7 +181,7 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="featured"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">Featured</h3>
+            <h2 className="text-foreground mb-6 text-xl font-bold">Featured</h2>
             <div className="space-y-6">
               {heroProject ? <FeaturedCard project={heroProject} hero /> : null}
               {otherFeatured.length > 0 ? (
@@ -191,9 +198,9 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="experience"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">
+            <h2 className="text-foreground mb-6 text-xl font-bold">
               Experience
-            </h3>
+            </h2>
             <div className="divide-border divide-y">
               {experiences.map((exp) => (
                 <article
@@ -201,9 +208,9 @@ export default function ResumeView({ data }: { data: Profile }) {
                   className="py-6 first:pt-0 last:pb-0"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <h4 className="text-foreground text-lg font-bold">
+                    <h3 className="text-foreground text-lg font-bold">
                       {exp.title}
-                    </h4>
+                    </h3>
                     <p className="text-light-gray shrink-0 text-right text-sm">
                       {exp.dates}
                     </p>
@@ -222,7 +229,7 @@ export default function ResumeView({ data }: { data: Profile }) {
                       href={exp.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-brand mt-0.5 flex items-center gap-1.5 font-semibold hover:underline"
+                      className="text-brand focus-visible:ring-foreground mt-0.5 flex items-center gap-1.5 rounded-sm font-semibold hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                     >
                       {exp.company} <FiExternalLink aria-hidden />
                     </a>
@@ -242,16 +249,16 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="education"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">
+            <h2 className="text-foreground mb-6 text-xl font-bold">
               Education
-            </h3>
+            </h2>
             <div className="divide-border divide-y">
               {education.map((edu) => (
                 <article key={edu.degree} className="py-6 first:pt-0 last:pb-0">
                   <div className="flex items-start justify-between gap-4">
-                    <h4 className="text-foreground text-lg font-bold">
+                    <h3 className="text-foreground text-lg font-bold">
                       {edu.degree}
-                    </h4>
+                    </h3>
                     <p className="text-light-gray shrink-0 text-right text-sm">
                       {edu.dates}
                     </p>
@@ -266,24 +273,24 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="skills"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">Skills</h3>
+            <h2 className="text-foreground mb-6 text-xl font-bold">Skills</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {skills.map((skill) => (
                 <div key={skill.category}>
-                  <h4 className="text-foreground mb-3 font-semibold">
+                  <h3 className="text-foreground mb-3 font-semibold">
                     {skill.category}
-                  </h4>
+                  </h3>
                   <div className="space-y-4">
                     {skill.subcategories.map((sub) => (
                       <div key={sub.title}>
-                        <h5 className="text-brand mb-2 text-sm font-medium">
+                        <p className="text-brand mb-2 text-sm font-medium">
                           {sub.title}
-                        </h5>
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           {sub.items.map((item) => (
                             <span
                               key={item}
-                              className="bg-background text-light-gray rounded-full px-3 py-1 text-sm"
+                              className="bg-background text-foreground rounded-full px-3 py-1 text-sm"
                             >
                               {item}
                             </span>
@@ -301,13 +308,13 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="languages"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">
+            <h2 className="text-foreground mb-6 text-xl font-bold">
               Languages
-            </h3>
+            </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {languages.map((lang) => (
                 <div key={lang.language}>
-                  <h4 className="text-foreground font-bold">{lang.language}</h4>
+                  <h3 className="text-foreground font-bold">{lang.language}</h3>
                   <p className="text-brand text-sm font-semibold">
                     {lang.proficiency}
                   </p>
@@ -323,7 +330,10 @@ export default function ResumeView({ data }: { data: Profile }) {
             &copy; {new Date().getFullYear()} {personalInfo.name}
           </p>
           <p className="mt-2">
-            <a href="/resume.pdf" className="hover:text-brand hover:underline">
+            <a
+              href="/resume.pdf"
+              className="hover:text-brand focus-visible:ring-foreground rounded-sm hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            >
               Resume PDF
             </a>
           </p>
