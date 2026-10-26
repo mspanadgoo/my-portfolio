@@ -202,16 +202,6 @@ export const profile: Profile = {
       featured: true,
       linkAvailability: "global",
     },
-    {
-      title: "Jackpot Fun Game",
-      description:
-        "A simple jackpot game I built for my son, using Next.js, TypeScript, and Tailwind CSS.",
-      image: "/projects/jackpot.png",
-      imageAlt:
-        "Gold seven mark on a navy card for a personal Next.js jackpot game",
-      link: "/jackpot",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Personal Project"],
-    },
   ],
   education: [
     {
