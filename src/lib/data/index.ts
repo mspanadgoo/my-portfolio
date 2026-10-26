@@ -3,6 +3,7 @@ export type {
   Education,
   Experience,
   Language,
+  LinkAvailability,
   PersonalInfo,
   Profile,
   Project,

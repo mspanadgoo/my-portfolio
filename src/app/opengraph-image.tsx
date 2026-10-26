@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { profile } from "@/lib/data";
 
 export const runtime = "edge";
 export const alt = "Mohammad Sadegh Panadgoo Portfolio";
@@ -57,22 +58,23 @@ export default async function Image() {
               textAlign: "center",
             }}
           >
-            Mohammad Sadegh Panadgoo
+            {profile.personalInfo.name}
           </div>
 
           <div
             style={{
-              fontSize: 36,
+              fontSize: 32,
               color: "#FFFFFF",
               fontWeight: 600,
               textAlign: "center",
               letterSpacing: "-0.02em",
+              paddingLeft: 40,
+              paddingRight: 40,
             }}
           >
-            Lead Software Engineer
+            {profile.personalInfo.headline}
           </div>
 
-          {/* Chips / Tags */}
           <div style={{ display: "flex", marginTop: 40, gap: "20px" }}>
             <div
               style={{
@@ -105,7 +107,7 @@ export default async function Image() {
                 fontSize: 24,
               }}
             >
-              NestJS
+              TypeScript
             </div>
           </div>
         </div>
