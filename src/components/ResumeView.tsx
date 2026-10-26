@@ -24,22 +24,25 @@ function FeaturedCard({
         hero ? "flex flex-col sm:flex-row" : "flex h-full flex-col"
       }`}
     >
-      <Image
-        src={project.image}
-        alt={project.imageAlt ?? ""}
-        width={hero ? 800 : 500}
-        height={hero ? 400 : 300}
-        sizes={
-          hero
-            ? "(min-width: 640px) 288px, 100vw"
-            : "(min-width: 640px) 50vw, 100vw"
-        }
+      <div
         className={
           hero
-            ? "border-border h-48 w-full border-b bg-[#0B1B3B] object-contain sm:h-auto sm:w-72 sm:shrink-0 sm:border-r sm:border-b-0"
-            : "border-border h-40 w-full border-b bg-[#0B1B3B] object-contain"
+            ? "border-border relative aspect-video w-full overflow-hidden border-b bg-[#0B1B3B] sm:aspect-auto sm:h-auto sm:w-72 sm:shrink-0 sm:self-stretch sm:border-r sm:border-b-0"
+            : "border-border relative aspect-video w-full overflow-hidden border-b bg-[#0B1B3B]"
         }
-      />
+      >
+        <Image
+          src={project.image}
+          alt={project.imageAlt ?? ""}
+          fill
+          sizes={
+            hero
+              ? "(min-width: 640px) 288px, 100vw"
+              : "(min-width: 640px) 50vw, 100vw"
+          }
+          className={hero ? "object-contain" : "object-cover"}
+        />
+      </div>
       <div className="flex grow flex-col p-4">
         <h3 className="text-foreground font-bold">{project.title}</h3>
         <p className="text-light-gray mt-2 grow text-sm">
