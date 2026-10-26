@@ -24,6 +24,7 @@ function FeaturedCard({
   hero?: boolean;
 }) {
   const internal = isInternalLink(project.link);
+  const iranOnly = project.linkAvailability === "iran-only";
   const content = (
     <article
       className={`border-border bg-background overflow-hidden rounded-lg border ${
@@ -32,7 +33,7 @@ function FeaturedCard({
     >
       <Image
         src={project.image}
-        alt={project.title}
+        alt={project.imageAlt ?? project.title}
         width={hero ? 800 : 500}
         height={hero ? 400 : 300}
         className={
@@ -56,9 +57,16 @@ function FeaturedCard({
             </span>
           ))}
         </div>
+        {iranOnly && project.linkNote ? (
+          <p className="text-light-gray mt-3 text-xs">{project.linkNote}</p>
+        ) : null}
       </div>
     </article>
   );
+
+  if (iranOnly) {
+    return content;
+  }
 
   const className = "block rounded-lg transition-opacity hover:opacity-90";
 
@@ -199,14 +207,25 @@ export default function ResumeView({ data }: { data: Profile }) {
                       {exp.dates}
                     </p>
                   </div>
-                  <a
-                    href={exp.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand mt-0.5 flex items-center gap-1.5 font-semibold hover:underline"
-                  >
-                    {exp.company} <FiExternalLink aria-hidden />
-                  </a>
+                  {exp.linkAvailability === "iran-only" ? (
+                    <p className="text-brand mt-0.5 font-semibold">
+                      {exp.company}
+                      {exp.linkNote ? (
+                        <span className="text-light-gray mt-1 block text-xs font-normal">
+                          {exp.linkNote}
+                        </span>
+                      ) : null}
+                    </p>
+                  ) : (
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand mt-0.5 flex items-center gap-1.5 font-semibold hover:underline"
+                    >
+                      {exp.company} <FiExternalLink aria-hidden />
+                    </a>
+                  )}
                   <p className="text-light-gray text-sm">{exp.location}</p>
                   <ul className="text-foreground mt-3 list-disc space-y-1.5 pl-5 leading-relaxed">
                     {exp.bullets.map((bullet) => (
