@@ -4,22 +4,55 @@ import "../style/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import ThemeToggle from "@/components/ThemeToggle";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { profile } from "@/lib/data";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
+const { name, headline, summary } = profile.personalInfo;
+const defaultTitle = `${name} | ${headline}`;
 
 const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  title: "Mohammad Sadegh Panadgoo | Lead Software Engineer",
-  description:
-    "Lead Software Engineer based in Tehran. Native iOS, Next.js, Node.js, and event-driven backends with NATS — currently at Sadad Electronic Payment (Sadad PSP · Bank Melli).",
-  keywords:
-    "Mohammad Sadegh Panadgoo, Lead Software Engineer, Sadad PSP, Bank Melli, iOS, Next.js, Node.js, NestJS, NATS, Tehran",
-  authors: [{ name: "Mohammad Sadegh Panadgoo" }],
+  title: {
+    default: defaultTitle,
+    template: `%s | ${name}`,
+  },
+  description: summary,
+  keywords: [
+    "Mohammad Sadegh Panadgoo",
+    "Senior iOS Engineer",
+    "Front-End Engineer",
+    "Swift",
+    "SwiftUI",
+    "UIKit",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "Fintech",
+    "Payments",
+    "Sadad PSP",
+    "Bank Melli",
+    "Tehran",
+  ],
+  authors: [{ name }],
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    title: defaultTitle,
+    description: summary,
+    url: SITE_URL,
+    siteName: name,
+    locale: "en_US",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: summary,
   },
   manifest: "/site.webmanifest",
   icons: {
@@ -35,12 +68,6 @@ export const metadata: Metadata = {
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Mohammad Sadegh Panadgoo | Lead Software Engineer",
-    description:
-      "Native iOS, Next.js, Node.js, and event-driven backends with NATS.",
   },
 };
 

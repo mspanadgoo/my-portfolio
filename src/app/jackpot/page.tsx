@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Karan's Jackpot",
   description:
     "A fun client-side jackpot game built with Next.js, TypeScript, and Tailwind CSS for my dear son Karan.",
+  robots: { index: false, follow: false },
 };
 
 const JackpotPage = () => {
