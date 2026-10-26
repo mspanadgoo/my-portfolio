@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import ThemeToggle from "@/components/ThemeToggle";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { profile } from "@/lib/data";
+import { buildJsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -76,34 +77,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Mohammad Sadegh Panadgoo",
-    url: SITE_URL,
-    image: `${SITE_URL}/profile.png`,
-    email: "mailto:mspanadgoo@me.com",
-    jobTitle: "Lead Software Engineer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Sadad Electronic Payment (Sadad PSP · Bank Melli)",
-      logo: `${SITE_URL}/logo.svg`,
-    },
-    sameAs: [
-      "https://linkedin.com/in/mspanadgoo",
-      "https://github.com/mspanadgoo",
-    ],
-    alumniOf: {
-      "@type": "EducationalOrganization",
-      name: "Azad University",
-    },
-    nationality: "Iranian",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Tehran",
-      addressCountry: "IR",
-    },
-  };
+  const jsonLd = buildJsonLd();
 
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
