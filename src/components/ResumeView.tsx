@@ -16,7 +16,8 @@ function FeaturedCard({
   project: Project;
   hero?: boolean;
 }) {
-  const internal = isInternalLink(project.link);
+  const hasLink = Boolean(project.link);
+  const internal = hasLink && isInternalLink(project.link!);
   const iranOnly = project.linkAvailability === "iran-only";
   const content = (
     <article
@@ -65,7 +66,7 @@ function FeaturedCard({
     </article>
   );
 
-  if (iranOnly) {
+  if (!hasLink || iranOnly) {
     return content;
   }
 
@@ -74,7 +75,7 @@ function FeaturedCard({
 
   if (internal) {
     return (
-      <Link href={project.link} className={className}>
+      <Link href={project.link!} className={className}>
         {content}
       </Link>
     );

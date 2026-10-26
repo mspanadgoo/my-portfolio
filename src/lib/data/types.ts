@@ -33,7 +33,7 @@ export type Project = {
   description: string;
   image: string;
   imageAlt?: string;
-  link: string;
+  link?: string;
   tags: string[];
   featured?: boolean;
   linkAvailability?: LinkAvailability;

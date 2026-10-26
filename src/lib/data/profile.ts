@@ -9,7 +9,7 @@ export const profile: Profile = {
     email: "mspanadgoo@me.com",
     linkedin: "https://linkedin.com/in/mspanadgoo",
     github: "https://github.com/mspanadgoo",
-    location: "Tehran, Iran · GMT+3:30 · Open to relocation (EU) and remote",
+    location: "Tehran, Iran · GMT+3:30 · Open to relocation and remote",
     summary:
       "Senior iOS and front-end engineer with 11+ years in fintech and payments. I shipped Sadad's Iva neobank platform, raising throughput from ~3 TPS to 200+ TPS and growing transaction volume 3–5x, while leading a cross-functional team of 18 at Sadad PSP (Bank Melli's payment provider). Earlier I built v1 of Mellat Mobile Bank for iOS, later serving 3M+ users.",
   },
@@ -87,7 +87,7 @@ export const profile: Profile = {
       linkAvailability: "iran-only",
       linkNote: "Site may be unavailable outside Iran",
       bullets: [
-        "Lead a cross-functional team of 18 at Sadad PSP, the payment provider for Bank Melli (7 .NET, 3 front-end, 5 Android, plus Scrum Master, QA engineer, and DevOps).",
+        "Lead a cross-functional team of 18 at Sadad PSP, Bank Melli's payment provider: backend, front-end, and Android engineers, plus a Scrum Master, QA, and DevOps.",
         "Mentor engineers on Iva and Pulse and run technical reviews across backend, web, and iOS.",
         "Shipped the new Iva payment/neobank platform; raised throughput from ~3 TPS to 200+ TPS and grew transaction volume 3–5x versus the previous Iva.",
         "Lead Pulse (iOS/Swift) for Bank Melli merchants: transaction history, dashboards, and in-app support (tickets, receipt rolls, discrepancies).",
@@ -103,7 +103,7 @@ export const profile: Profile = {
       linkAvailability: "iran-only",
       linkNote: "Site may be unavailable outside Iran",
       bullets: [
-        "Modernized a production payment app from MVC to MVVM; cut startup time ~50% and reduced third-party surface area.",
+        "Modernized a production payment app from MVC to MVVM; cut startup time ~50% and reduced third-party dependencies.",
         "Built high-throughput wallet services (transactions, partners, payment gateway) used with partners such as Irancell.",
       ],
     },
@@ -116,7 +116,7 @@ export const profile: Profile = {
       linkAvailability: "iran-only",
       linkNote: "Site may be unavailable outside Iran",
       bullets: [
-        "Built v1 of Mellat Mobile Bank (iOS), later serving 3M+ users, with security-focused client work.",
+        "Built v1 of Mellat Mobile Bank (iOS), later serving 3M+ users, with a focus on client-side security.",
       ],
     },
   ],
@@ -127,10 +127,8 @@ export const profile: Profile = {
         "Native iOS app for Bank Melli merchants on the Sadad PSP network. Merchants inspect transaction details and statistics through daily and weekly dashboards, charts by amount and volume, and in-app support: tickets, receipt-roll requests, and discrepancy reports.",
       image: "/projects/pulse.png",
       imageAlt: "Sadad emblem on a navy card for Pulse Merchant App",
-      link: "https://cafebazaar.ir/app/ir.sadadpsp.sadadMerchant",
       tags: ["Swift", "iOS", "Fintech", "Reporting"],
       featured: true,
-      linkAvailability: "global",
     },
     {
       title: "Iva Neobank Platform",
@@ -207,12 +205,12 @@ export const profile: Profile = {
     {
       title: "Jackpot Fun Game",
       description:
-        "A simple jackpot game I built for my son, using React and CSS animations.",
+        "A simple jackpot game I built for my son, using Next.js, TypeScript, and Tailwind CSS.",
       image: "/projects/jackpot.png",
       imageAlt:
-        "Gold seven mark on a navy card for a personal React jackpot game",
+        "Gold seven mark on a navy card for a personal Next.js jackpot game",
       link: "/jackpot",
-      tags: ["React", "CSS Animations", "Frontend", "Personal Project"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Personal Project"],
     },
   ],
   education: [
@@ -235,7 +233,7 @@ export const profile: Profile = {
     },
     {
       language: "English",
-      proficiency: "Professional proficiency",
+      proficiency: "Professional working proficiency",
       detail: "Used at work, in documentation, and in interviews",
     },
     {
