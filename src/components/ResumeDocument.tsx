@@ -14,6 +14,7 @@ import type {
   Project,
   SkillCategory,
 } from "@/lib/data/types";
+import { SITE_HOST, SITE_URL } from "@/lib/site";
 
 const styles = StyleSheet.create({
   page: {
@@ -185,8 +186,8 @@ const ResumeDocument = ({
             GitHub
           </Link>
           <Text style={styles.separator}>|</Text>
-          <Link style={styles.link} src="https://mspanadgoo.ir">
-            mspanadgoo.ir
+          <Link style={styles.link} src={SITE_URL}>
+            {SITE_HOST}
           </Link>
         </View>
       </View>

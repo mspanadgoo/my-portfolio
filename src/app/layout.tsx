@@ -4,6 +4,7 @@ import "../style/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import ThemeToggle from "@/components/ThemeToggle";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   keywords:
     "Mohammad Sadegh Panadgoo, Lead Software Engineer, Sadad PSP, Bank Melli, iOS, Next.js, Node.js, NestJS, NATS, Tehran",
   authors: [{ name: "Mohammad Sadegh Panadgoo" }],
-  metadataBase: new URL("https://mspanadgoo.ir"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -52,14 +53,14 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Mohammad Sadegh Panadgoo",
-    url: "https://mspanadgoo.ir",
-    image: "https://mspanadgoo.ir/profile.png",
+    url: SITE_URL,
+    image: `${SITE_URL}/profile.png`,
     email: "mailto:mspanadgoo@me.com",
     jobTitle: "Lead Software Engineer",
     worksFor: {
       "@type": "Organization",
       name: "Sadad Electronic Payment (Sadad PSP · Bank Melli)",
-      logo: "https://mspanadgoo.ir/logo.svg",
+      logo: `${SITE_URL}/logo.svg`,
     },
     sameAs: [
       "https://linkedin.com/in/mspanadgoo",
