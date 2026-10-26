@@ -4,13 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink, FiMapPin } from "react-icons/fi";
-import dynamic from "next/dynamic";
 import type { Profile, Project } from "@/lib/data";
-
-const ResumeDownloadButton = dynamic(
-  () => import("@/components/ResumeDownloadButton"),
-  { ssr: false },
-);
+import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 function isInternalLink(href: string) {
   return href.startsWith("/");
@@ -152,7 +147,7 @@ export default function ResumeView({ data }: { data: Profile }) {
                     {personalInfo.email}
                   </a>
                 </div>
-                <ResumeDownloadButton data={data} />
+                <ResumeDownloadButton />
               </div>
             </div>
           </div>
@@ -320,6 +315,11 @@ export default function ResumeView({ data }: { data: Profile }) {
         <footer className="text-light-gray mt-12 text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()} {personalInfo.name}
+          </p>
+          <p className="mt-2">
+            <a href="/resume.pdf" className="hover:text-brand hover:underline">
+              Resume PDF
+            </a>
           </p>
         </footer>
       </div>
