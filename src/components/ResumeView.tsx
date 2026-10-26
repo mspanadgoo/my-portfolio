@@ -1,16 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiExternalLink, FiMapPin } from "react-icons/fi";
-import dynamic from "next/dynamic";
 import type { Profile, Project } from "@/lib/data";
-
-const ResumeDownloadButton = dynamic(
-  () => import("@/components/ResumeDownloadButton"),
-  { ssr: false },
-);
+import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 function isInternalLink(href: string) {
   return href.startsWith("/");
@@ -23,26 +16,36 @@ function FeaturedCard({
   project: Project;
   hero?: boolean;
 }) {
-  const internal = isInternalLink(project.link);
+  const hasLink = Boolean(project.link);
+  const internal = hasLink && isInternalLink(project.link!);
+  const iranOnly = project.linkAvailability === "iran-only";
   const content = (
     <article
       className={`border-border bg-background overflow-hidden rounded-lg border ${
         hero ? "flex flex-col sm:flex-row" : "flex h-full flex-col"
       }`}
     >
-      <Image
-        src={project.image}
-        alt={project.title}
-        width={hero ? 800 : 500}
-        height={hero ? 400 : 300}
+      <div
         className={
           hero
-            ? "border-border h-48 w-full border-b object-cover sm:h-auto sm:w-72 sm:shrink-0 sm:border-r sm:border-b-0"
-            : "border-border h-40 w-full border-b object-cover"
+            ? "border-border relative aspect-video w-full overflow-hidden border-b bg-[#0B1B3B] sm:aspect-auto sm:h-auto sm:w-72 sm:shrink-0 sm:self-stretch sm:border-r sm:border-b-0"
+            : "border-border relative aspect-video w-full overflow-hidden border-b bg-[#0B1B3B]"
         }
-      />
+      >
+        <Image
+          src={project.image}
+          alt={project.imageAlt ?? ""}
+          fill
+          sizes={
+            hero
+              ? "(min-width: 640px) 288px, 100vw"
+              : "(min-width: 640px) 50vw, 100vw"
+          }
+          className={hero ? "object-contain" : "object-cover"}
+        />
+      </div>
       <div className="flex grow flex-col p-4">
-        <h4 className="text-foreground font-bold">{project.title}</h4>
+        <h3 className="text-foreground font-bold">{project.title}</h3>
         <p className="text-light-gray mt-2 grow text-sm">
           {project.description}
         </p>
@@ -50,21 +53,29 @@ function FeaturedCard({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="bg-surface text-brand rounded-full px-2.5 py-1 text-xs font-semibold"
+              className="bg-surface text-foreground rounded-full px-2.5 py-1 text-xs font-semibold"
             >
               {tag}
             </span>
           ))}
         </div>
+        {iranOnly && project.linkNote ? (
+          <p className="text-light-gray mt-3 text-xs">{project.linkNote}</p>
+        ) : null}
       </div>
     </article>
   );
 
-  const className = "block rounded-lg transition-opacity hover:opacity-90";
+  if (!hasLink || iranOnly) {
+    return content;
+  }
+
+  const className =
+    "block rounded-lg transition-opacity hover:opacity-90 focus-visible:ring-foreground focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none";
 
   if (internal) {
     return (
-      <Link href={project.link} className={className}>
+      <Link href={project.link!} className={className}>
         {content}
       </Link>
     );
@@ -90,6 +101,12 @@ export default function ResumeView({ data }: { data: Profile }) {
 
   return (
     <div className="bg-background min-h-screen">
+      <a
+        href="#content"
+        className="bg-brand text-background focus-visible:ring-foreground sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:rounded-md focus:px-4 focus:py-2 focus:ring-2 focus:outline-none"
+      >
+        Skip to content
+      </a>
       <div className="h-44 bg-gradient-to-br from-[#0B1B3B] via-[#0B1B3B] to-[#14284D] md:h-56" />
 
       <div className="mx-auto max-w-4xl px-4 pb-16 antialiased sm:px-6">
@@ -97,9 +114,10 @@ export default function ResumeView({ data }: { data: Profile }) {
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
             <Image
               src="/profile.png"
-              alt={personalInfo.name}
-              width={152}
-              height={152}
+              alt={`Portrait of ${personalInfo.name}`}
+              width={384}
+              height={384}
+              sizes="(min-width: 768px) 144px, 112px"
               className="border-surface bg-background -mt-16 h-28 w-28 shrink-0 rounded-full border-4 object-cover md:-mt-20 md:h-36 md:w-36"
               priority
             />
@@ -107,9 +125,9 @@ export default function ResumeView({ data }: { data: Profile }) {
               <h1 className="text-foreground text-3xl font-bold">
                 {personalInfo.name}
               </h1>
-              <h2 className="text-foreground mt-1 text-lg">
+              <p className="text-foreground mt-1 text-lg">
                 {personalInfo.headline}
-              </h2>
+              </p>
               <p className="text-light-gray mt-2 text-sm">
                 {personalInfo.company}
               </p>
@@ -124,7 +142,7 @@ export default function ResumeView({ data }: { data: Profile }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${personalInfo.name} on LinkedIn`}
-                    className="text-light-gray hover:text-brand transition-colors"
+                    className="text-light-gray hover:text-brand focus-visible:ring-foreground rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     <FaLinkedin size={24} />
                   </a>
@@ -133,29 +151,29 @@ export default function ResumeView({ data }: { data: Profile }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${personalInfo.name} on GitHub`}
-                    className="text-light-gray hover:text-brand transition-colors"
+                    className="text-light-gray hover:text-brand focus-visible:ring-foreground rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     <FaGithub size={24} />
                   </a>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    className="text-light-gray text-sm hover:underline"
+                    className="text-light-gray focus-visible:ring-foreground rounded-sm text-sm hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                   >
                     {personalInfo.email}
                   </a>
                 </div>
-                <ResumeDownloadButton data={data} />
+                <ResumeDownloadButton />
               </div>
             </div>
           </div>
         </header>
 
-        <main className="space-y-6">
+        <main id="content" className="space-y-6">
           <section
             id="about"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-4 text-xl font-bold">About</h3>
+            <h2 className="text-foreground mb-4 text-xl font-bold">About</h2>
             <p className="text-foreground leading-relaxed">
               {personalInfo.summary}
             </p>
@@ -165,7 +183,7 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="featured"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">Featured</h3>
+            <h2 className="text-foreground mb-6 text-xl font-bold">Featured</h2>
             <div className="space-y-6">
               {heroProject ? <FeaturedCard project={heroProject} hero /> : null}
               {otherFeatured.length > 0 ? (
@@ -182,9 +200,9 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="experience"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">
+            <h2 className="text-foreground mb-6 text-xl font-bold">
               Experience
-            </h3>
+            </h2>
             <div className="divide-border divide-y">
               {experiences.map((exp) => (
                 <article
@@ -192,21 +210,32 @@ export default function ResumeView({ data }: { data: Profile }) {
                   className="py-6 first:pt-0 last:pb-0"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <h4 className="text-foreground text-lg font-bold">
+                    <h3 className="text-foreground text-lg font-bold">
                       {exp.title}
-                    </h4>
+                    </h3>
                     <p className="text-light-gray shrink-0 text-right text-sm">
                       {exp.dates}
                     </p>
                   </div>
-                  <a
-                    href={exp.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand mt-0.5 flex items-center gap-1.5 font-semibold hover:underline"
-                  >
-                    {exp.company} <FiExternalLink aria-hidden />
-                  </a>
+                  {exp.linkAvailability === "iran-only" ? (
+                    <p className="text-brand mt-0.5 font-semibold">
+                      {exp.company}
+                      {exp.linkNote ? (
+                        <span className="text-light-gray mt-1 block text-xs font-normal">
+                          {exp.linkNote}
+                        </span>
+                      ) : null}
+                    </p>
+                  ) : (
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand focus-visible:ring-foreground mt-0.5 flex items-center gap-1.5 rounded-sm font-semibold hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                    >
+                      {exp.company} <FiExternalLink aria-hidden />
+                    </a>
+                  )}
                   <p className="text-light-gray text-sm">{exp.location}</p>
                   <ul className="text-foreground mt-3 list-disc space-y-1.5 pl-5 leading-relaxed">
                     {exp.bullets.map((bullet) => (
@@ -222,16 +251,16 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="education"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">
+            <h2 className="text-foreground mb-6 text-xl font-bold">
               Education
-            </h3>
+            </h2>
             <div className="divide-border divide-y">
               {education.map((edu) => (
                 <article key={edu.degree} className="py-6 first:pt-0 last:pb-0">
                   <div className="flex items-start justify-between gap-4">
-                    <h4 className="text-foreground text-lg font-bold">
+                    <h3 className="text-foreground text-lg font-bold">
                       {edu.degree}
-                    </h4>
+                    </h3>
                     <p className="text-light-gray shrink-0 text-right text-sm">
                       {edu.dates}
                     </p>
@@ -246,24 +275,24 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="skills"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">Skills</h3>
+            <h2 className="text-foreground mb-6 text-xl font-bold">Skills</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {skills.map((skill) => (
                 <div key={skill.category}>
-                  <h4 className="text-foreground mb-3 font-semibold">
+                  <h3 className="text-foreground mb-3 font-semibold">
                     {skill.category}
-                  </h4>
+                  </h3>
                   <div className="space-y-4">
                     {skill.subcategories.map((sub) => (
                       <div key={sub.title}>
-                        <h5 className="text-brand mb-2 text-sm font-medium">
+                        <p className="text-brand mb-2 text-sm font-medium">
                           {sub.title}
-                        </h5>
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           {sub.items.map((item) => (
                             <span
                               key={item}
-                              className="bg-background text-light-gray rounded-full px-3 py-1 text-sm"
+                              className="bg-background text-foreground rounded-full px-3 py-1 text-sm"
                             >
                               {item}
                             </span>
@@ -281,13 +310,13 @@ export default function ResumeView({ data }: { data: Profile }) {
             id="languages"
             className="bg-surface border-border rounded-xl border p-6 shadow-sm md:p-8"
           >
-            <h3 className="text-foreground mb-6 text-xl font-bold">
+            <h2 className="text-foreground mb-6 text-xl font-bold">
               Languages
-            </h3>
+            </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {languages.map((lang) => (
                 <div key={lang.language}>
-                  <h4 className="text-foreground font-bold">{lang.language}</h4>
+                  <h3 className="text-foreground font-bold">{lang.language}</h3>
                   <p className="text-brand text-sm font-semibold">
                     {lang.proficiency}
                   </p>
@@ -301,6 +330,14 @@ export default function ResumeView({ data }: { data: Profile }) {
         <footer className="text-light-gray mt-12 text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()} {personalInfo.name}
+          </p>
+          <p className="mt-2">
+            <a
+              href="/resume.pdf"
+              className="hover:text-brand focus-visible:ring-foreground rounded-sm hover:underline focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            >
+              Resume PDF
+            </a>
           </p>
         </footer>
       </div>

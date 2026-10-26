@@ -1,50 +1,34 @@
-# Mohammad Sadegh Panadgoo — Personal Portfolio
+# Mohammad Sadegh Panadgoo
 
-Personal site for Mohammad Sadegh Panadgoo, Lead Software Engineer. Built with Next.js, TypeScript, and Tailwind CSS, with on-the-fly PDF resume generation.
+Personal site and resume of Mohammad Sadegh Panadgoo, a senior iOS and front-end engineer in fintech. Live at [https://www.mspanadgoo.ir](https://www.mspanadgoo.ir).
 
-<br />
+## Stack
 
-<p align="center">
-  <a href="https://mspanadgoo.ir" target="_blank">
-    <img src="https://img.shields.io/badge/Live%20Demo-mspanadgoo.ir-blue?style=for-the-badge&logo=vercel" alt="Live Demo" />
-  </a>
-</p>
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, pnpm, `@react-pdf/renderer`. Deployed on Vercel.
 
----
+## Content
 
-## Tech Stack
+All profile copy lives in `src/lib/data/profile.ts` (types in `src/lib/data/types.ts`). The page (`src/components/ResumeView.tsx`) and the PDF (`src/components/ResumeDocument.tsx`) both render from that file. Do not add employers, dates, or metrics that are not already in the data.
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![pnpm](https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white)
-![React PDF](https://img.shields.io/badge/React_PDF-D00000?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+## Resume PDF
 
----
+`GET /resume.pdf` is a static route (`src/app/resume.pdf/route.tsx`) that renders `ResumeDocument` with `renderToBuffer` at build time. The Download Resume button and the footer link both point at `/resume.pdf`. The “Last updated” date is `profile.resumeUpdated`.
 
-## Running Locally
-
-This project uses **pnpm** for package management.
-
-### Prerequisites
-
-- Node.js (v18 or later)
-- pnpm (`npm install -g pnpm`)
-
-### Installation
+## Local development
 
 ```bash
-git clone https://github.com/mspanadgoo/my-portfolio.git
-cd my-portfolio
 pnpm install
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
----
+```bash
+pnpm check:all
+pnpm build
+```
+
+CI (`.github/workflows/ci.yml`) runs `pnpm check:all` and `pnpm build` on pull requests.
 
 ## Docker
 
@@ -52,11 +36,3 @@ Open [http://localhost:3000](http://localhost:3000).
 docker build -t my-portfolio .
 docker run -p 3000:3000 my-portfolio
 ```
-
----
-
-## Contact
-
-Mohammad Sadegh Panadgoo - [mspanadgoo@me.com](mailto:mspanadgoo@me.com)
-
-LinkedIn: [linkedin.com/in/mspanadgoo](https://linkedin.com/in/mspanadgoo)

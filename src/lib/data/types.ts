@@ -15,6 +15,8 @@ export type SkillCategory = {
   subcategories: { title: string; items: string[] }[];
 };
 
+export type LinkAvailability = "global" | "iran-only";
+
 export type Experience = {
   company: string;
   link: string;
@@ -22,15 +24,20 @@ export type Experience = {
   dates: string;
   location: string;
   bullets: string[];
+  linkAvailability?: LinkAvailability;
+  linkNote?: string;
 };
 
 export type Project = {
   title: string;
   description: string;
   image: string;
-  link: string;
+  imageAlt?: string;
+  link?: string;
   tags: string[];
   featured?: boolean;
+  linkAvailability?: LinkAvailability;
+  linkNote?: string;
 };
 
 export type Education = {
@@ -47,6 +54,7 @@ export type Language = {
 
 export type Profile = {
   personalInfo: PersonalInfo;
+  resumeUpdated: string;
   skills: SkillCategory[];
   experiences: Experience[];
   projects: Project[];

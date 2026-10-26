@@ -6,14 +6,8 @@ import {
   StyleSheet,
   Link,
 } from "@react-pdf/renderer";
-import type {
-  Education,
-  Experience,
-  Language,
-  PersonalInfo,
-  Project,
-  SkillCategory,
-} from "@/lib/data/types";
+import type { Profile } from "@/lib/data";
+import { SITE_HOST, SITE_URL } from "@/lib/site";
 
 const styles = StyleSheet.create({
   page: {
@@ -26,16 +20,10 @@ const styles = StyleSheet.create({
     color: "#000",
     position: "relative",
   },
-  footer: {
-    position: "absolute",
-    bottom: 25,
-    left: 45,
-    right: 45,
-    textAlign: "center",
+  updated: {
+    marginTop: 16,
     fontSize: 9,
     color: "#777",
-    borderTop: "1px solid #eee",
-    paddingTop: 10,
   },
   headerContainer: {
     marginBottom: 16,
@@ -46,9 +34,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   title: {
-    fontSize: 12,
+    fontSize: 11,
     color: "#000",
-    marginBottom: 4,
+    marginBottom: 6,
   },
   contactInfo: {
     fontSize: 9,
@@ -56,13 +44,13 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     marginTop: 3,
   },
+  contactLine: {
+    fontSize: 9,
+    marginTop: 2,
+  },
   link: {
     textDecoration: "none",
     color: "#007BFF",
-    marginRight: 5,
-  },
-  muted: {
-    color: "#333",
     marginRight: 5,
   },
   separator: {
@@ -70,7 +58,7 @@ const styles = StyleSheet.create({
     color: "#ccc",
   },
   section: {
-    marginBottom: 15,
+    marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 12,
@@ -81,7 +69,7 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
   },
   entry: {
-    marginBottom: 12,
+    marginBottom: 10,
   },
   jobTitle: {
     fontSize: 11,
@@ -111,7 +99,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   skillsCategory: {
-    marginBottom: 8,
+    marginBottom: 6,
   },
   skillsTitle: {
     fontWeight: "bold",
@@ -133,137 +121,143 @@ const styles = StyleSheet.create({
   },
 });
 
-type ResumeDocumentProps = {
-  personalInfo: PersonalInfo;
-  skills: SkillCategory[];
-  experiences: Experience[];
-  education: Education[];
-  projects: Project[];
-  languages: Language[];
-  lastUpdated: string;
-};
+function displayUrl(url: string) {
+  return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
 
-const resumeProjects = (projects: Project[]) =>
-  projects.filter((project) => project.featured).slice(0, 4);
+function formatResumeDate(isoDate: string) {
+  const [year, month, day] = isoDate.split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
 
-const ResumeDocument = ({
-  personalInfo,
-  skills,
-  experiences,
-  education,
-  projects,
-  lastUpdated,
-  languages,
-}: ResumeDocumentProps) => (
-  <Document>
-    <Page style={styles.page}>
-      <Text style={styles.footer} fixed>
-        Last updated {lastUpdated}
-      </Text>
+const ResumeDocument = ({ profile }: { profile: Profile }) => {
+  const { personalInfo, skills, experiences, education, languages } = profile;
+  const linkedInUrl = displayUrl(personalInfo.linkedin);
+  const githubUrl = displayUrl(personalInfo.github);
 
-      <View style={styles.headerContainer}>
-        <Text style={styles.name}>{personalInfo.name}</Text>
-        <Text style={styles.title}>{personalInfo.headline}</Text>
-        <View style={styles.contactInfo}>
-          <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
-            {personalInfo.email}
-          </Link>
-          <Text style={styles.separator}>|</Text>
-          <Link style={styles.link} src="tel:+989126185482">
-            +989126185482
-          </Link>
-          <Text style={styles.separator}>|</Text>
-          <Text style={styles.muted}>
-            {personalInfo.location || "Tehran, Iran"}
-          </Text>
-          <Text style={styles.separator}>|</Text>
-          <Link style={styles.link} src={personalInfo.linkedin}>
-            LinkedIn
-          </Link>
-          <Text style={styles.separator}>|</Text>
-          <Link style={styles.link} src={personalInfo.github}>
-            GitHub
-          </Link>
-          <Text style={styles.separator}>|</Text>
-          <Link style={styles.link} src="https://mspanadgoo.ir">
-            mspanadgoo.ir
-          </Link>
-        </View>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Summary</Text>
-        <Text style={styles.description}>{personalInfo.summary}</Text>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Technical Skills</Text>
-        {skills.map((skill) => (
-          <View key={skill.category} style={styles.skillsCategory} wrap={false}>
-            <Text style={styles.skillsTitle}>{skill.category}:</Text>
-            <Text style={styles.skillsList}>
-              {skill.subcategories
-                .map((sub) => sub.items.join(", "))
-                .join(", ")}
-            </Text>
+  return (
+    <Document
+      title={`${personalInfo.name} — Resume`}
+      author={personalInfo.name}
+      subject={personalInfo.headline}
+      creator={personalInfo.name}
+      keywords="iOS, Swift, Front-End, TypeScript, Next.js, Fintech, Payments"
+    >
+      <Page style={styles.page} wrap>
+        <View style={styles.headerContainer}>
+          <Text style={styles.name}>{personalInfo.name}</Text>
+          <Text style={styles.title}>{personalInfo.headline}</Text>
+          <View style={styles.contactInfo}>
+            <Link style={styles.link} src={`mailto:${personalInfo.email}`}>
+              {personalInfo.email}
+            </Link>
+            <Text style={styles.separator}>|</Text>
+            <Link style={styles.link} src="tel:+989126185482">
+              +989126185482
+            </Link>
           </View>
-        ))}
-      </View>
-
-      <Text style={styles.sectionTitle}>Work Experience</Text>
-      {experiences.map((exp) => (
-        <View key={exp.company} style={styles.entry} wrap>
-          <View style={styles.company}>
-            <Text style={styles.jobTitle}>
-              {exp.title} | {exp.company}
-            </Text>
-            <Text style={styles.dates}>{exp.dates}</Text>
+          <Text style={styles.contactLine}>{personalInfo.location}</Text>
+          <View style={styles.contactInfo}>
+            <Link style={styles.link} src={personalInfo.linkedin}>
+              {linkedInUrl}
+            </Link>
+            <Text style={styles.separator}>|</Text>
+            <Link style={styles.link} src={personalInfo.github}>
+              {githubUrl}
+            </Link>
+            <Text style={styles.separator}>|</Text>
+            <Link style={styles.link} src={SITE_URL}>
+              {SITE_HOST}
+            </Link>
           </View>
-          {exp.bullets.map((bullet) => (
-            <Text key={bullet} style={styles.bullet}>
-              {`• ${bullet}`}
-            </Text>
-          ))}
         </View>
-      ))}
 
-      <Text style={styles.sectionTitle}>Featured Projects</Text>
-      {resumeProjects(projects).map((proj) => (
-        <View key={proj.title} style={styles.entry} wrap>
-          <Text style={styles.jobTitle}>{proj.title}</Text>
-          <Text style={styles.description}>{proj.description}</Text>
+        <View style={styles.section} wrap={false} minPresenceAhead={48}>
+          <Text style={styles.sectionTitle}>Summary</Text>
+          <Text style={styles.description}>{personalInfo.summary}</Text>
         </View>
-      ))}
 
-      <Text style={styles.sectionTitle}>Education</Text>
-      {education.map((edu) => (
-        <View key={edu.degree} style={styles.entry} wrap={false}>
-          <View style={styles.company}>
-            <Text style={styles.jobTitle}>{edu.degree}</Text>
-            <Text style={styles.dates}>{edu.dates}</Text>
-          </View>
-          <Text>{edu.university}</Text>
-        </View>
-      ))}
-
-      <View style={styles.section} wrap={false}>
-        <Text style={styles.sectionTitle}>Languages</Text>
-        <View style={styles.langRow}>
-          {languages.map((lang) => (
-            <View key={lang.language} style={styles.langCol}>
-              <Text style={{ fontWeight: "bold", fontSize: 11 }}>
-                {lang.language}
+        <View style={styles.section} wrap={false} minPresenceAhead={48}>
+          <Text style={styles.sectionTitle}>Technical Skills</Text>
+          {skills.map((skill) => (
+            <View key={skill.category} style={styles.skillsCategory}>
+              <Text style={styles.skillsTitle}>{skill.category}:</Text>
+              <Text style={styles.skillsList}>
+                {skill.subcategories
+                  .map((sub) => sub.items.join(", "))
+                  .join(", ")}
               </Text>
-              <Text style={{ fontSize: 10, color: "#555" }}>
-                {lang.proficiency}
-              </Text>
-              <Text style={{ fontSize: 9, color: "#777" }}>{lang.detail}</Text>
             </View>
           ))}
         </View>
-      </View>
-    </Page>
-  </Document>
-);
+
+        <View minPresenceAhead={64}>
+          <Text style={styles.sectionTitle}>Work Experience</Text>
+        </View>
+        {experiences.map((exp) => (
+          <View
+            key={exp.company}
+            style={styles.entry}
+            wrap={false}
+            minPresenceAhead={56}
+          >
+            <View style={styles.company}>
+              <Text style={styles.jobTitle}>
+                {exp.title} | {exp.company}
+              </Text>
+              <Text style={styles.dates}>{exp.dates}</Text>
+            </View>
+            {exp.bullets.map((bullet) => (
+              <Text key={bullet} style={styles.bullet}>
+                {`• ${bullet}`}
+              </Text>
+            ))}
+          </View>
+        ))}
+
+        <View minPresenceAhead={48}>
+          <Text style={styles.sectionTitle}>Education</Text>
+        </View>
+        {education.map((edu) => (
+          <View key={edu.degree} style={styles.entry} wrap={false}>
+            <View style={styles.company}>
+              <Text style={styles.jobTitle}>{edu.degree}</Text>
+              <Text style={styles.dates}>{edu.dates}</Text>
+            </View>
+            <Text>{edu.university}</Text>
+          </View>
+        ))}
+
+        <View style={styles.section} wrap={false} minPresenceAhead={48}>
+          <Text style={styles.sectionTitle}>Languages</Text>
+          <View style={styles.langRow}>
+            {languages.map((lang) => (
+              <View key={lang.language} style={styles.langCol}>
+                <Text style={{ fontWeight: "bold", fontSize: 11 }}>
+                  {lang.language}
+                </Text>
+                <Text style={{ fontSize: 10, color: "#555" }}>
+                  {lang.proficiency}
+                </Text>
+                <Text style={{ fontSize: 9, color: "#777" }}>
+                  {lang.detail}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        <Text style={styles.updated}>
+          Last updated {formatResumeDate(profile.resumeUpdated)}
+        </Text>
+      </Page>
+    </Document>
+  );
+};
 
 export default ResumeDocument;
