@@ -126,8 +126,7 @@ export const profile: Profile = {
       description:
         "Native iOS app for Bank Melli merchants on the Sadad PSP network. Merchants inspect transaction details and statistics through daily and weekly dashboards, charts by amount and volume, and in-app support: tickets, receipt-roll requests, and discrepancy reports.",
       image: "/projects/pulse.png",
-      imageAlt:
-        "Navy branded card for Pulse Merchant App, a Bank Melli merchant iOS app",
+      imageAlt: "Sadad emblem on a navy card for Pulse Merchant App",
       link: "https://cafebazaar.ir/app/ir.sadadpsp.sadadMerchant",
       tags: ["Swift", "iOS", "Fintech", "Reporting"],
       featured: true,
@@ -138,7 +137,8 @@ export const profile: Profile = {
       description:
         "Led architecture for Sadad's new Iva neobank platform. Throughput went from about 3 TPS to 200+ TPS, and transaction volume rose 3–5x after launch.",
       image: "/projects/iva-neobank.png",
-      imageAlt: "Navy branded card for the Iva neobank platform",
+      imageAlt:
+        "Iva wordmark and blue mark on a navy card for the Iva neobank platform",
       link: "https://ivaapp.com",
       tags: ["Architecture", "Event-Driven", "NATS", "NestJS", "System Design"],
       featured: true,
@@ -150,7 +150,7 @@ export const profile: Profile = {
       description:
         "Designed and built the core microservices for a banking wallet, including the high-throughput transaction engine, partner APIs, and payment gateway for partners such as Irancell.",
       image: "/projects/mellat-wallet.png",
-      imageAlt: "Navy branded card for Mellat Bank Wallet",
+      imageAlt: "Mellat-red wallet mark on a navy card for Mellat Bank Wallet",
       link: "https://behpardakht.com",
       tags: ["Architecture", "Microservices", "NestJS", "Fintech", "Node.js"],
       featured: true,
@@ -162,7 +162,7 @@ export const profile: Profile = {
       description:
         "Built the native iOS app for one of Iran's largest banks, later serving 3M+ users.",
       image: "/projects/mellat-mobile-bank.png",
-      imageAlt: "Navy branded card for Mellat Mobile Bank on iOS",
+      imageAlt: "Bank Mellat emblem on a navy card for Mellat Mobile Bank",
       link: "https://mobile.bankmellat.ir/mobile/ios.html",
       tags: ["Swift", "Security", "Fintech", "Scale", "iOS"],
       featured: true,
@@ -174,7 +174,7 @@ export const profile: Profile = {
       description:
         "Refactored a production payment app to MVVM and cut startup time by 50%.",
       image: "/projects/sekkeh.png",
-      imageAlt: "Navy branded card for the Sekkeh payment app modernization",
+      imageAlt: "Sekkeh app icon on a navy card",
       link: "https://sekeh.behpardakht.com",
       tags: ["Swift", "Refactoring", "Performance", "Architecture"],
       featured: true,
@@ -186,7 +186,8 @@ export const profile: Profile = {
       description:
         "Built a currency exchange platform: the trading interface in Next.js and the backend transaction logic in Node.js.",
       image: "/projects/paysib.png",
-      imageAlt: "Navy branded card for Paysib currency exchange",
+      imageAlt:
+        "Paysib stencil wordmark on a navy card for the currency exchange",
       link: "https://paysib.com",
       tags: ["Next.js", "Node.js", "MongoDB", "Fintech", "Security"],
       featured: true,
@@ -197,7 +198,7 @@ export const profile: Profile = {
       description:
         "Contributed new features to one of Iran's leading iOS e-reader apps.",
       image: "/projects/ketabrah.png",
-      imageAlt: "Navy branded card for the Ketabrah iOS e-reader",
+      imageAlt: "Ketabrah book mark on a navy card for the iOS e-reader",
       link: "https://www.ketabrah.ir/apps",
       tags: ["Swift", "UIKit", "iOS", "User Experience"],
       featured: true,
@@ -208,7 +209,8 @@ export const profile: Profile = {
       description:
         "A simple jackpot game I built for my son, using React and CSS animations.",
       image: "/projects/jackpot.png",
-      imageAlt: "Navy branded card for a personal React jackpot game",
+      imageAlt:
+        "Gold seven mark on a navy card for a personal React jackpot game",
       link: "/jackpot",
       tags: ["React", "CSS Animations", "Frontend", "Personal Project"],
     },

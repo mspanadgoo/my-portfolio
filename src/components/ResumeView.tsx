@@ -36,8 +36,8 @@ function FeaturedCard({
         }
         className={
           hero
-            ? "border-border h-48 w-full border-b object-cover sm:h-auto sm:w-72 sm:shrink-0 sm:border-r sm:border-b-0"
-            : "border-border h-40 w-full border-b object-cover"
+            ? "border-border h-48 w-full border-b bg-[#0B1B3B] object-contain sm:h-auto sm:w-72 sm:shrink-0 sm:border-r sm:border-b-0"
+            : "border-border h-40 w-full border-b bg-[#0B1B3B] object-contain"
         }
       />
       <div className="flex grow flex-col p-4">
